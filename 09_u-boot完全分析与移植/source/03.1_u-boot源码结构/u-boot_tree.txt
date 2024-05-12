@@ -1,0 +1,1497 @@
+.
+├── api
+├── arch
+│   ├── arc
+│   │   ├── cpu
+│   │   │   ├── arcv1
+│   │   │   └── arcv2
+│   │   ├── dts
+│   │   ├── include
+│   │   │   └── asm
+│   │   └── lib
+│   ├── arm
+│   │   ├── cpu
+│   │   │   ├── arm11
+│   │   │   ├── arm1136
+│   │   │   │   ├── mx31
+│   │   │   │   └── mx35
+│   │   │   ├── arm1176
+│   │   │   ├── arm720t
+│   │   │   ├── arm920t
+│   │   │   │   ├── ep93xx
+│   │   │   │   ├── imx
+│   │   │   │   └── s3c24x0
+│   │   │   ├── arm926ejs
+│   │   │   │   ├── armada100
+│   │   │   │   ├── lpc32xx
+│   │   │   │   ├── mx25
+│   │   │   │   ├── mx27
+│   │   │   │   ├── mxs
+│   │   │   │   ├── omap
+│   │   │   │   ├── orion5x
+│   │   │   │   └── spear
+│   │   │   ├── arm946es
+│   │   │   ├── armv7
+│   │   │   │   ├── bcm235xx
+│   │   │   │   ├── bcm281xx
+│   │   │   │   ├── bcmcygnus
+│   │   │   │   ├── bcmnsp
+│   │   │   │   ├── iproc-common
+│   │   │   │   ├── kona-common
+│   │   │   │   ├── ls102xa
+│   │   │   │   ├── mx5
+│   │   │   │   ├── mx6
+│   │   │   │   ├── mx7
+│   │   │   │   ├── mx7ulp
+│   │   │   │   ├── s5p-common
+│   │   │   │   ├── stv0991
+│   │   │   │   ├── sunxi
+│   │   │   │   └── vf610
+│   │   │   ├── armv7m
+│   │   │   ├── armv8
+│   │   │   │   ├── fsl-layerscape
+│   │   │   │   │   └── doc
+│   │   │   │   ├── hisilicon
+│   │   │   │   ├── imx8
+│   │   │   │   ├── imx8m
+│   │   │   │   ├── s32v234
+│   │   │   │   └── zynqmp
+│   │   │   ├── pxa
+│   │   │   └── sa1100
+│   │   ├── dts
+│   │   │   └── include
+│   │   │       └── dt-bindings -> ../../../../include/dt-bindings
+│   │   ├── imx-common
+│   │   │   └── sci
+│   │   │       └── svc
+│   │   │           ├── irq
+│   │   │           ├── misc
+│   │   │           ├── pad
+│   │   │           ├── pm
+│   │   │           ├── rm
+│   │   │           └── timer
+│   │   ├── include
+│   │   │   ├── asm
+│   │   │   │   ├── arch-am33xx
+│   │   │   │   ├── arch-armada100
+│   │   │   │   ├── arch-armada8k
+│   │   │   │   ├── arch-armv7
+│   │   │   │   ├── arch-aspeed
+│   │   │   │   ├── arch-bcm235xx
+│   │   │   │   ├── arch-bcm281xx
+│   │   │   │   ├── arch-bcmcygnus
+│   │   │   │   ├── arch-bcmnsp
+│   │   │   │   ├── arch-ep93xx
+│   │   │   │   ├── arch-fsl-layerscape
+│   │   │   │   ├── arch-hi6220
+│   │   │   │   ├── arch-imx
+│   │   │   │   ├── arch-imx8
+│   │   │   │   ├── arch-imx8m
+│   │   │   │   ├── arch-lpc32xx
+│   │   │   │   ├── arch-ls102xa
+│   │   │   │   ├── arch-meson
+│   │   │   │   ├── arch-mvebu
+│   │   │   │   ├── arch-mx25
+│   │   │   │   ├── arch-mx27
+│   │   │   │   ├── arch-mx31
+│   │   │   │   ├── arch-mx35
+│   │   │   │   ├── arch-mx5
+│   │   │   │   ├── arch-mx6
+│   │   │   │   ├── arch-mx7
+│   │   │   │   ├── arch-mx7ulp
+│   │   │   │   ├── arch-mxs
+│   │   │   │   ├── arch-omap3
+│   │   │   │   ├── arch-omap4
+│   │   │   │   ├── arch-omap5
+│   │   │   │   ├── arch-orion5x
+│   │   │   │   ├── arch-pxa
+│   │   │   │   ├── arch-rockchip
+│   │   │   │   ├── arch-s32v234
+│   │   │   │   ├── arch-s3c24x0
+│   │   │   │   ├── arch-sa1100
+│   │   │   │   ├── arch-spear
+│   │   │   │   ├── arch-stm32f1
+│   │   │   │   ├── arch-stm32f4
+│   │   │   │   ├── arch-stm32f7
+│   │   │   │   ├── arch-stv0991
+│   │   │   │   ├── arch-sunxi
+│   │   │   │   ├── arch-tegra
+│   │   │   │   ├── arch-tegra114
+│   │   │   │   ├── arch-tegra124
+│   │   │   │   ├── arch-tegra186
+│   │   │   │   ├── arch-tegra20
+│   │   │   │   ├── arch-tegra210
+│   │   │   │   ├── arch-tegra30
+│   │   │   │   ├── arch-vf610
+│   │   │   │   ├── arch-zynqmp
+│   │   │   │   ├── armv8
+│   │   │   │   ├── imx-common
+│   │   │   │   │   └── sci
+│   │   │   │   │       └── svc
+│   │   │   │   │           ├── irq
+│   │   │   │   │           ├── misc
+│   │   │   │   │           ├── pad
+│   │   │   │   │           ├── pm
+│   │   │   │   │           ├── rm
+│   │   │   │   │           └── timer
+│   │   │   │   ├── iproc-common
+│   │   │   │   ├── kona-common
+│   │   │   │   ├── proc-armv
+│   │   │   │   └── ti-common
+│   │   │   └── debug
+│   │   ├── lib
+│   │   ├── mach-aspeed
+│   │   │   └── ast2500
+│   │   ├── mach-at91
+│   │   │   ├── arm920t
+│   │   │   ├── arm926ejs
+│   │   │   ├── armv7
+│   │   │   └── include
+│   │   │       └── mach
+│   │   ├── mach-bcm283x
+│   │   │   └── include
+│   │   │       └── mach
+│   │   ├── mach-davinci
+│   │   │   └── include
+│   │   │       └── mach
+│   │   ├── mach-exynos
+│   │   │   └── include
+│   │   │       └── mach
+│   │   ├── mach-highbank
+│   │   ├── mach-integrator
+│   │   ├── mach-keystone
+│   │   │   └── include
+│   │   │       └── mach
+│   │   ├── mach-kirkwood
+│   │   │   └── include
+│   │   │       └── mach
+│   │   ├── mach-meson
+│   │   ├── mach-mvebu
+│   │   │   ├── armada3700
+│   │   │   ├── armada8k
+│   │   │   ├── include
+│   │   │   │   └── mach
+│   │   │   └── serdes
+│   │   │       ├── a38x
+│   │   │       └── axp
+│   │   ├── mach-omap2
+│   │   │   ├── am33xx
+│   │   │   ├── omap3
+│   │   │   ├── omap4
+│   │   │   └── omap5
+│   │   ├── mach-orion5x
+│   │   │   └── include
+│   │   │       └── mach
+│   │   ├── mach-rmobile
+│   │   │   └── include
+│   │   │       └── mach
+│   │   ├── mach-rockchip
+│   │   │   ├── rk3036
+│   │   │   ├── rk3288
+│   │   │   └── rk3399
+│   │   ├── mach-s5pc1xx
+│   │   │   └── include
+│   │   │       └── mach
+│   │   ├── mach-snapdragon
+│   │   │   └── include
+│   │   │       └── mach
+│   │   ├── mach-socfpga
+│   │   │   └── include
+│   │   │       └── mach
+│   │   ├── mach-stm32
+│   │   │   ├── stm32f1
+│   │   │   ├── stm32f4
+│   │   │   └── stm32f7
+│   │   ├── mach-sunxi
+│   │   ├── mach-tegra
+│   │   │   ├── tegra114
+│   │   │   ├── tegra124
+│   │   │   ├── tegra186
+│   │   │   ├── tegra20
+│   │   │   ├── tegra210
+│   │   │   └── tegra30
+│   │   ├── mach-uniphier
+│   │   │   ├── arm32
+│   │   │   ├── arm64
+│   │   │   ├── bcu
+│   │   │   ├── boot-device
+│   │   │   ├── clk
+│   │   │   ├── debug-uart
+│   │   │   ├── dram
+│   │   │   └── sbc
+│   │   ├── mach-versatile
+│   │   ├── mach-zynq
+│   │   │   └── include
+│   │   │       └── mach
+│   │   └── thumb1
+│   │       └── include
+│   │           └── asm
+│   │               └── proc-armv
+│   ├── avr32
+│   │   ├── cpu
+│   │   │   └── at32ap700x
+│   │   ├── include
+│   │   │   └── asm
+│   │   │       ├── arch-at32ap700x
+│   │   │       └── arch-common
+│   │   └── lib
+│   ├── blackfin
+│   │   ├── cpu
+│   │   ├── include
+│   │   │   └── asm
+│   │   │       ├── mach-bf506
+│   │   │       ├── mach-bf518
+│   │   │       ├── mach-bf527
+│   │   │       ├── mach-bf533
+│   │   │       ├── mach-bf537
+│   │   │       ├── mach-bf538
+│   │   │       ├── mach-bf548
+│   │   │       ├── mach-bf561
+│   │   │       ├── mach-bf609
+│   │   │       └── mach-common
+│   │   │           └── bits
+│   │   └── lib
+│   ├── m68k
+│   │   ├── cpu
+│   │   │   ├── mcf5227x
+│   │   │   ├── mcf523x
+│   │   │   ├── mcf52x2
+│   │   │   ├── mcf530x
+│   │   │   ├── mcf532x
+│   │   │   ├── mcf5445x
+│   │   │   └── mcf547x_8x
+│   │   ├── include
+│   │   │   └── asm
+│   │   │       └── coldfire
+│   │   └── lib
+│   ├── microblaze
+│   │   ├── cpu
+│   │   ├── dts
+│   │   │   └── include
+│   │   │       └── dt-bindings -> ../../../../include/dt-bindings
+│   │   ├── include
+│   │   │   └── asm
+│   │   └── lib
+│   ├── mips
+│   │   ├── cpu
+│   │   │   ├── mips32
+│   │   │   └── mips64
+│   │   ├── dts
+│   │   │   └── include
+│   │   │       └── dt-bindings -> ../../../../include/dt-bindings
+│   │   ├── include
+│   │   │   └── asm
+│   │   │       └── mach-generic
+│   │   ├── lib
+│   │   ├── mach-ath79
+│   │   │   ├── ar933x
+│   │   │   ├── ar934x
+│   │   │   ├── include
+│   │   │   │   └── mach
+│   │   │   └── qca953x
+│   │   ├── mach-au1x00
+│   │   │   └── include
+│   │   │       └── mach
+│   │   └── mach-pic32
+│   │       └── include
+│   │           └── mach
+│   ├── nds32
+│   │   ├── cpu
+│   │   │   └── n1213
+│   │   │       └── ag101
+│   │   ├── include
+│   │   │   └── asm
+│   │   │       ├── arch-ag101
+│   │   │       └── arch-ag102
+│   │   └── lib
+│   ├── nios2
+│   │   ├── cpu
+│   │   ├── dts
+│   │   │   └── include
+│   │   │       └── dt-bindings -> ../../../../include/dt-bindings
+│   │   ├── include
+│   │   │   └── asm
+│   │   │       └── bitops
+│   │   └── lib
+│   ├── openrisc
+│   │   ├── cpu
+│   │   ├── include
+│   │   │   └── asm
+│   │   │       └── bitops
+│   │   └── lib
+│   ├── powerpc
+│   │   ├── cpu
+│   │   │   ├── mpc512x
+│   │   │   ├── mpc5xx
+│   │   │   ├── mpc5xxx
+│   │   │   ├── mpc8260
+│   │   │   ├── mpc83xx
+│   │   │   ├── mpc85xx
+│   │   │   ├── mpc86xx
+│   │   │   ├── mpc8xx
+│   │   │   ├── mpc8xxx
+│   │   │   └── ppc4xx
+│   │   ├── dts
+│   │   ├── include
+│   │   │   └── asm
+│   │   │       ├── arch-mpc83xx
+│   │   │       ├── arch-mpc85xx
+│   │   │       └── arch-ppc4xx
+│   │   └── lib
+│   ├── sandbox
+│   │   ├── cpu
+│   │   ├── dts
+│   │   │   └── include
+│   │   │       └── dt-bindings -> ../../../../include/dt-bindings
+│   │   ├── include
+│   │   │   └── asm
+│   │   └── lib
+│   ├── sh
+│   │   ├── cpu
+│   │   │   ├── sh2
+│   │   │   ├── sh3
+│   │   │   └── sh4
+│   │   ├── include
+│   │   │   └── asm
+│   │   └── lib
+│   ├── sparc
+│   │   ├── cpu
+│   │   │   ├── leon2
+│   │   │   └── leon3
+│   │   ├── include
+│   │   │   └── asm
+│   │   │       ├── arch-leon2
+│   │   │       └── arch-leon3
+│   │   └── lib
+│   ├── x86
+│   │   ├── cpu
+│   │   │   ├── baytrail
+│   │   │   ├── broadwell
+│   │   │   ├── coreboot
+│   │   │   ├── efi
+│   │   │   ├── i386
+│   │   │   ├── intel_common
+│   │   │   ├── ivybridge
+│   │   │   ├── qemu
+│   │   │   ├── quark
+│   │   │   ├── queensbay
+│   │   │   └── x86_64
+│   │   ├── dts
+│   │   │   ├── include
+│   │   │   │   └── dt-bindings -> ../../../../include/dt-bindings
+│   │   │   └── microcode
+│   │   ├── include
+│   │   │   └── asm
+│   │   │       ├── acpi
+│   │   │       ├── arch-baytrail
+│   │   │       │   ├── acpi
+│   │   │       │   └── fsp
+│   │   │       ├── arch-broadwell
+│   │   │       ├── arch-coreboot
+│   │   │       ├── arch-ivybridge
+│   │   │       │   └── fsp
+│   │   │       ├── arch-qemu
+│   │   │       ├── arch-quark
+│   │   │       │   └── acpi
+│   │   │       ├── arch-queensbay
+│   │   │       │   └── fsp
+│   │   │       ├── fsp
+│   │   │       └── video
+│   │   └── lib
+│   │       ├── efi
+│   │       └── fsp
+│   └── xtensa
+│       ├── cpu
+│       ├── dts
+│       │   └── include
+│       │       └── dt-bindings -> ../../../../include/dt-bindings
+│       ├── include
+│       │   └── asm
+│       │       ├── arch-dc232b
+│       │       ├── arch-dc233c
+│       │       └── arch-de212
+│       └── lib
+├── board
+│   ├── 8dtech
+│   │   └── eco5pk
+│   ├── a3m071
+│   ├── a4m072
+│   ├── abilis
+│   │   └── tb100
+│   ├── advantech
+│   │   ├── dms-ba16
+│   │   └── som-db5800-som-6867
+│   │       └── acpi
+│   ├── alphaproject
+│   │   └── ap_sh4a_4a
+│   ├── altera
+│   │   ├── arria5-socdk
+│   │   │   └── qts
+│   │   ├── cyclone5-socdk
+│   │   │   └── qts
+│   │   └── nios2
+│   ├── amazon
+│   │   └── kc1
+│   ├── amcc
+│   │   ├── acadia
+│   │   ├── bamboo
+│   │   ├── bubinga
+│   │   ├── canyonlands
+│   │   ├── common
+│   │   ├── katmai
+│   │   ├── kilauea
+│   │   ├── luan
+│   │   ├── makalu
+│   │   ├── redwood
+│   │   ├── sequoia
+│   │   ├── walnut
+│   │   ├── yosemite
+│   │   └── yucca
+│   ├── amlogic
+│   │   └── odroid-c2
+│   ├── AndesTech
+│   │   └── adp-ag101p
+│   ├── Arcturus
+│   │   └── ucp1020
+│   ├── aristainetos
+│   ├── armadeus
+│   │   └── apf27
+│   ├── armltd
+│   │   ├── integrator
+│   │   ├── vexpress
+│   │   └── vexpress64
+│   ├── aspeed
+│   │   └── evb_ast2500
+│   ├── astro
+│   │   └── mcf5373l
+│   ├── atmark-techno
+│   │   └── armadillo-800eva
+│   ├── atmel
+│   │   ├── at91rm9200ek
+│   │   ├── at91sam9260ek
+│   │   ├── at91sam9261ek
+│   │   ├── at91sam9263ek
+│   │   ├── at91sam9m10g45ek
+│   │   ├── at91sam9n12ek
+│   │   ├── at91sam9rlek
+│   │   ├── at91sam9x5ek
+│   │   ├── atngw100
+│   │   ├── atngw100mkii
+│   │   ├── atstk1000
+│   │   ├── sama5d2_ptc
+│   │   ├── sama5d2_xplained
+│   │   ├── sama5d3xek
+│   │   ├── sama5d3_xplained
+│   │   ├── sama5d4ek
+│   │   └── sama5d4_xplained
+│   ├── avionic-design
+│   │   ├── common
+│   │   ├── medcom-wide
+│   │   ├── plutux
+│   │   ├── tec
+│   │   └── tec-ng
+│   ├── bachmann
+│   │   └── ot1200
+│   ├── barco
+│   │   ├── platinum
+│   │   └── titanium
+│   ├── Barix
+│   │   └── ipam390
+│   ├── bct-brettl2
+│   ├── beckhoff
+│   │   └── mx53cx9020
+│   ├── bf506f-ezkit
+│   ├── bf518f-ezbrd
+│   ├── bf525-ucr2
+│   ├── bf526-ezbrd
+│   ├── bf527-ad7160-eval
+│   ├── bf527-ezkit
+│   ├── bf527-sdp
+│   ├── bf533-ezkit
+│   ├── bf533-stamp
+│   ├── bf537-minotaur
+│   ├── bf537-pnav
+│   ├── bf537-srv1
+│   ├── bf537-stamp
+│   ├── bf538f-ezkit
+│   ├── bf548-ezkit
+│   ├── bf561-acvilon
+│   ├── bf561-ezkit
+│   ├── bf609-ezkit
+│   ├── birdland
+│   │   └── bav335x
+│   ├── blackstamp
+│   ├── blackvme
+│   ├── bluegiga
+│   │   └── apx4devkit
+│   ├── bluewater
+│   │   ├── gurnard
+│   │   └── snapper9260
+│   ├── bosch
+│   │   └── shc
+│   ├── boundary
+│   │   └── nitrogen6x
+│   ├── br4
+│   ├── broadcom
+│   │   ├── bcm11130
+│   │   ├── bcm11130_nand
+│   │   ├── bcm23550_w1d
+│   │   ├── bcm28155_ap
+│   │   ├── bcm28155_w1d
+│   │   ├── bcm911360_entphn
+│   │   ├── bcm911360_entphn-ns
+│   │   ├── bcm911360k
+│   │   ├── bcm958300k
+│   │   ├── bcm958300k-ns
+│   │   ├── bcm958305k
+│   │   ├── bcm958622hr
+│   │   ├── bcmcygnus
+│   │   ├── bcm_ep
+│   │   └── bcmnsp
+│   ├── buffalo
+│   │   └── lsxl
+│   ├── BuR
+│   │   ├── brppt1
+│   │   ├── brxre1
+│   │   └── common
+│   ├── BuS
+│   │   └── eb_cpu5282
+│   ├── cadence
+│   │   └── xtfpga
+│   ├── calao
+│   │   └── usb_a9263
+│   ├── canmb
+│   ├── CarMediaLab
+│   │   └── flea3
+│   ├── cavium
+│   │   └── thunderx
+│   ├── ccv
+│   │   └── xpress
+│   ├── cei
+│   │   └── cei-tk1-som
+│   ├── chipspark
+│   │   └── popmetal_rk3288
+│   ├── cirrus
+│   │   └── edb93xx
+│   ├── cloudengines
+│   │   └── pogo_e02
+│   ├── cm5200
+│   ├── cm-bf527
+│   ├── cm-bf533
+│   ├── cm-bf537e
+│   ├── cm-bf537u
+│   ├── cm-bf548
+│   ├── cm-bf561
+│   ├── cobra5272
+│   │   └── bdm
+│   ├── compal
+│   │   └── paz00
+│   ├── compulab
+│   │   ├── cl-som-am57x
+│   │   ├── cm_fx6
+│   │   ├── cm_t335
+│   │   ├── cm_t35
+│   │   ├── cm_t3517
+│   │   ├── cm_t43
+│   │   ├── cm_t54
+│   │   ├── common
+│   │   └── trimslice
+│   ├── congatec
+│   │   ├── cgtqmx6eval
+│   │   └── conga-qeval20-qa3-e3845
+│   │       └── acpi
+│   ├── coreboot
+│   │   └── coreboot
+│   ├── corscience
+│   │   └── tricorder
+│   ├── creative
+│   │   └── xfi3
+│   ├── davedenx
+│   │   └── aria
+│   ├── davinci
+│   │   ├── da8xxevm
+│   │   └── ea20
+│   ├── dbau1x00
+│   ├── denx
+│   │   ├── m28evk
+│   │   ├── m53evk
+│   │   ├── ma5d4evk
+│   │   └── mcvevk
+│   │       └── qts
+│   ├── dfi
+│   │   └── dfi-bt700
+│   │       └── acpi
+│   ├── d-link
+│   │   └── dns325
+│   ├── dnp5370
+│   ├── ebv
+│   │   └── socrates
+│   │       └── qts
+│   ├── efi
+│   │   └── efi-x86
+│   ├── egnite
+│   │   └── ethernut5
+│   ├── el
+│   │   └── el6x
+│   ├── embest
+│   │   └── mx6boards
+│   ├── emulation
+│   │   └── qemu-x86
+│   ├── engicam
+│   │   ├── geam6ul
+│   │   ├── icorem6
+│   │   └── icorem6_rqs
+│   ├── esd
+│   │   ├── common
+│   │   │   └── xilinx_jtag
+│   │   ├── cpci2dp
+│   │   ├── cpci405
+│   │   ├── mecp5123
+│   │   ├── meesc
+│   │   ├── plu405
+│   │   ├── pmc405de
+│   │   ├── pmc440
+│   │   ├── vme8349
+│   │   └── vom405
+│   ├── espt
+│   ├── firefly
+│   │   └── firefly-rk3288
+│   ├── freescale
+│   │   ├── b4860qds
+│   │   ├── bsc9131rdb
+│   │   ├── bsc9132qds
+│   │   ├── c29xpcie
+│   │   ├── common
+│   │   │   └── p_corenet
+│   │   ├── corenet_ds
+│   │   ├── imx8mq_arm2
+│   │   │   └── ddr
+│   │   │       ├── ddr3l
+│   │   │       └── ddr4
+│   │   ├── imx8mq_evk
+│   │   │   └── ddr
+│   │   ├── imx8qm_arm2
+│   │   ├── imx8qm_mek
+│   │   ├── imx8qxp_arm2
+│   │   ├── imx8qxp_mek
+│   │   ├── ls1012afrdm
+│   │   ├── ls1012aqds
+│   │   ├── ls1012ardb
+│   │   ├── ls1021aiot
+│   │   ├── ls1021aqds
+│   │   ├── ls1021atwr
+│   │   ├── ls1043aqds
+│   │   ├── ls1043ardb
+│   │   ├── ls1046aqds
+│   │   ├── ls1046ardb
+│   │   ├── ls2080a
+│   │   ├── ls2080aqds
+│   │   ├── ls2080ardb
+│   │   ├── m5208evbe
+│   │   ├── m52277evb
+│   │   ├── m5235evb
+│   │   ├── m5249evb
+│   │   ├── m5253demo
+│   │   ├── m5253evbe
+│   │   ├── m5272c3
+│   │   ├── m5275evb
+│   │   ├── m5282evb
+│   │   ├── m53017evb
+│   │   ├── m5329evb
+│   │   ├── m5373evb
+│   │   ├── m54418twr
+│   │   ├── m54451evb
+│   │   ├── m54455evb
+│   │   ├── m547xevb
+│   │   ├── m548xevb
+│   │   ├── mpc5121ads
+│   │   ├── mpc8308rdb
+│   │   ├── mpc8313erdb
+│   │   ├── mpc8315erdb
+│   │   ├── mpc8323erdb
+│   │   ├── mpc832xemds
+│   │   ├── mpc8349emds
+│   │   ├── mpc8349itx
+│   │   ├── mpc837xemds
+│   │   ├── mpc837xerdb
+│   │   ├── mpc8536ds
+│   │   ├── mpc8540ads
+│   │   ├── mpc8541cds
+│   │   ├── mpc8544ds
+│   │   ├── mpc8548cds
+│   │   ├── mpc8555cds
+│   │   ├── mpc8560ads
+│   │   ├── mpc8568mds
+│   │   ├── mpc8569mds
+│   │   ├── mpc8572ds
+│   │   ├── mpc8610hpcd
+│   │   ├── mpc8641hpcn
+│   │   ├── multa-imx7d
+│   │   ├── mx23evk
+│   │   ├── mx25pdk
+│   │   ├── mx28evk
+│   │   ├── mx31ads
+│   │   ├── mx31pdk
+│   │   ├── mx35pdk
+│   │   ├── mx51evk
+│   │   ├── mx53ard
+│   │   ├── mx53evk
+│   │   ├── mx53loco
+│   │   ├── mx53smd
+│   │   ├── mx6dqscm
+│   │   ├── mx6qarm2
+│   │   ├── mx6qsabreauto
+│   │   ├── mx6sabresd
+│   │   ├── mx6slevk
+│   │   ├── mx6sll_arm2
+│   │   ├── mx6sllevk
+│   │   ├── mx6sx_17x17_arm2
+│   │   ├── mx6sx_19x19_arm2
+│   │   ├── mx6sxsabreauto
+│   │   ├── mx6sxsabresd
+│   │   ├── mx6sxscm
+│   │   ├── mx6ul_14x14_ddr3_arm2
+│   │   ├── mx6ul_14x14_evk
+│   │   ├── mx6ul_14x14_lpddr2_arm2
+│   │   ├── mx6ull_ddr3_arm2
+│   │   ├── mx6ullevk
+│   │   ├── mx6ul_nxpu_iopb
+│   │   ├── mx6ul_spriot
+│   │   ├── mx7d_12x12_ddr3_arm2
+│   │   ├── mx7d_12x12_lpddr3_arm2
+│   │   ├── mx7d_19x19_ddr3_arm2
+│   │   ├── mx7d_19x19_lpddr3_arm2
+│   │   ├── mx7dsabresd
+│   │   ├── mx7ulp_arm2
+│   │   ├── mx7ulp_evk
+│   │   ├── p1010rdb
+│   │   ├── p1022ds
+│   │   ├── p1023rdb
+│   │   ├── p1_p2_rdb_pc
+│   │   ├── p1_twr
+│   │   ├── p2041rdb
+│   │   ├── pico-imx6dl
+│   │   ├── pico-imx7d
+│   │   ├── picosom-imx6ul
+│   │   ├── qemu-ppce500
+│   │   ├── s32v234evb
+│   │   ├── t102xqds
+│   │   ├── t102xrdb
+│   │   ├── t1040qds
+│   │   ├── t104xrdb
+│   │   ├── t208xqds
+│   │   ├── t208xrdb
+│   │   ├── t4qds
+│   │   ├── t4rdb
+│   │   └── vf610twr
+│   ├── gaisler
+│   │   ├── gr_cpci_ax2000
+│   │   ├── gr_ep2s60
+│   │   ├── grsim
+│   │   ├── grsim_leon2
+│   │   └── gr_xc3s_1500
+│   ├── gateworks
+│   │   └── gw_ventana
+│   ├── gdsys
+│   │   ├── 405ep
+│   │   ├── 405ex
+│   │   ├── common
+│   │   ├── dlvision
+│   │   ├── gdppc440etx
+│   │   ├── intip
+│   │   ├── mpc8308
+│   │   └── p1022
+│   ├── ge
+│   │   └── bx50v3
+│   ├── google
+│   │   ├── chromebook_link
+│   │   ├── chromebook_samus
+│   │   ├── chromebox_panther
+│   │   ├── common
+│   │   └── veyron
+│   ├── grinn
+│   │   ├── chiliboard
+│   │   └── liteboard
+│   ├── gumstix
+│   │   ├── duovero
+│   │   └── pepper
+│   ├── h2200
+│   ├── highbank
+│   ├── hisilicon
+│   │   └── hikey
+│   ├── htkw
+│   │   └── mcx
+│   ├── ibf-dsp561
+│   ├── ids
+│   │   └── ids8313
+│   ├── ifm
+│   │   ├── ac14xx
+│   │   └── o2dnt2
+│   ├── imgtec
+│   │   ├── boston
+│   │   ├── malta
+│   │   └── xilfpga
+│   ├── imx31_phycore
+│   ├── in-circuit
+│   │   └── grasshopper
+│   ├── inka4x0
+│   ├── intel
+│   │   ├── bayleybay
+│   │   │   └── acpi
+│   │   ├── cougarcanyon2
+│   │   ├── crownbay
+│   │   ├── galileo
+│   │   │   └── acpi
+│   │   └── minnowmax
+│   │       └── acpi
+│   ├── intercontrol
+│   │   └── digsy_mtc
+│   ├── inversepath
+│   │   └── usbarmory
+│   ├── iomega
+│   │   └── iconnect
+│   ├── ip04
+│   ├── ipek01
+│   ├── is1
+│   │   └── qts
+│   ├── isee
+│   │   ├── igep0033
+│   │   └── igep00x0
+│   ├── jupiter
+│   ├── keymile
+│   │   ├── common
+│   │   ├── km82xx
+│   │   ├── km83xx
+│   │   ├── km_arm
+│   │   ├── kmp204x
+│   │   └── scripts
+│   ├── kmc
+│   │   └── kzm9g
+│   ├── kosagi
+│   │   └── novena
+│   ├── LaCie
+│   │   ├── common
+│   │   ├── edminiv2
+│   │   ├── net2big_v2
+│   │   └── netspace_v2
+│   ├── lego
+│   │   └── ev3
+│   ├── lg
+│   │   └── sniper
+│   ├── l+g
+│   │   └── vinco
+│   ├── liebherr
+│   │   ├── lwmon5
+│   │   └── mccmon6
+│   ├── logicpd
+│   │   ├── am3517evm
+│   │   ├── omap3som
+│   │   └── zoom1
+│   ├── Marvell
+│   │   ├── aspenite
+│   │   ├── db-88f6720
+│   │   ├── db-88f6820-amc
+│   │   ├── db-88f6820-gp
+│   │   ├── db-mv784mp-gp
+│   │   ├── dreamplug
+│   │   ├── gplugd
+│   │   ├── guruplug
+│   │   ├── mvebu_armada-8k
+│   │   ├── mvebu_db-88f3720
+│   │   ├── openrd
+│   │   └── sheevaplug
+│   ├── maxbcm
+│   ├── microchip
+│   │   └── pic32mzda
+│   ├── micronas
+│   │   └── vct
+│   │       ├── vcth
+│   │       ├── vcth2
+│   │       └── vctv
+│   ├── mini-box
+│   │   └── picosam9g45
+│   ├── mosaixtech
+│   │   └── icon
+│   ├── motionpro
+│   ├── mpc8308_p1m
+│   ├── mpl
+│   │   ├── common
+│   │   ├── mip405
+│   │   ├── pati
+│   │   └── pip405
+│   ├── mpr2
+│   ├── ms7720se
+│   ├── ms7722se
+│   ├── ms7750se
+│   ├── munices
+│   ├── nokia
+│   │   └── rx51
+│   ├── nvidia
+│   │   ├── beaver
+│   │   ├── cardhu
+│   │   ├── dalmore
+│   │   ├── e2220-1170
+│   │   ├── harmony
+│   │   ├── jetson-tk1
+│   │   ├── nyan-big
+│   │   ├── p2371-0000
+│   │   ├── p2371-2180
+│   │   ├── p2571
+│   │   ├── p2771-0000
+│   │   ├── seaboard
+│   │   ├── venice2
+│   │   ├── ventana
+│   │   └── whistler
+│   ├── olimex
+│   │   └── mx23_olinuxino
+│   ├── omicron
+│   │   └── calimain
+│   ├── openrisc
+│   │   └── openrisc-generic
+│   ├── overo
+│   ├── pandora
+│   ├── pb1x00
+│   ├── pdm360ng
+│   ├── phytec
+│   │   ├── pcm030
+│   │   ├── pcm051
+│   │   ├── pcm052
+│   │   └── pcm058
+│   ├── ppcag
+│   │   └── bg0900
+│   ├── pr1
+│   ├── qca
+│   │   ├── ap121
+│   │   └── ap143
+│   ├── qemu-mips
+│   ├── qualcomm
+│   │   └── dragonboard410c
+│   ├── quipos
+│   │   └── cairo
+│   ├── radxa
+│   │   └── rock2
+│   ├── raidsonic
+│   │   └── ib62x0
+│   ├── raspberrypi
+│   │   └── rpi
+│   ├── renesas
+│   │   ├── alt
+│   │   ├── ap325rxa
+│   │   ├── blanche
+│   │   ├── ecovec
+│   │   ├── gose
+│   │   ├── koelsch
+│   │   ├── lager
+│   │   ├── MigoR
+│   │   ├── porter
+│   │   ├── r0p7734
+│   │   ├── r2dplus
+│   │   ├── r7780mp
+│   │   ├── rcar-common
+│   │   ├── rsk7203
+│   │   ├── rsk7264
+│   │   ├── rsk7269
+│   │   ├── salvator-x
+│   │   ├── sh7752evb
+│   │   ├── sh7753evb
+│   │   ├── sh7757lcr
+│   │   ├── sh7763rdp
+│   │   ├── sh7785lcr
+│   │   ├── silk
+│   │   └── stout
+│   ├── rockchip
+│   │   ├── evb_rk3036
+│   │   ├── evb_rk3288
+│   │   ├── evb_rk3399
+│   │   ├── fennec_rk3288
+│   │   ├── kylin_rk3036
+│   │   └── tinker_rk3288
+│   ├── ronetix
+│   │   ├── pm9261
+│   │   ├── pm9263
+│   │   └── pm9g45
+│   ├── samsung
+│   │   ├── arndale
+│   │   ├── common
+│   │   │   └── bootscripts
+│   │   ├── espresso7420
+│   │   ├── goni
+│   │   ├── odroid
+│   │   ├── origen
+│   │   │   └── tools
+│   │   ├── smdk5250
+│   │   ├── smdk5420
+│   │   ├── smdkc100
+│   │   ├── smdkv310
+│   │   │   └── tools
+│   │   ├── trats
+│   │   ├── trats2
+│   │   └── universal_c210
+│   ├── samtec
+│   │   ├── vining_2000
+│   │   └── vining_fpga
+│   │       └── qts
+│   ├── sandbox
+│   ├── sandisk
+│   │   └── sansa_fuze_plus
+│   ├── sbc8349
+│   ├── sbc8548
+│   ├── sbc8641d
+│   ├── schulercontrol
+│   │   └── sc_sps_1
+│   ├── Seagate
+│   │   ├── dockstar
+│   │   ├── goflexhome
+│   │   └── nas220
+│   ├── seco
+│   │   ├── common
+│   │   └── mx6quq7
+│   ├── shmin
+│   ├── siemens
+│   │   ├── common
+│   │   ├── corvus
+│   │   ├── draco
+│   │   ├── pxm2
+│   │   ├── rut
+│   │   ├── smartweb
+│   │   └── taurus
+│   ├── silica
+│   │   └── pengwyn
+│   ├── socrates
+│   ├── solidrun
+│   │   ├── clearfog
+│   │   └── mx6cuboxi
+│   ├── spear
+│   │   ├── common
+│   │   ├── spear300
+│   │   ├── spear310
+│   │   ├── spear320
+│   │   ├── spear600
+│   │   └── x600
+│   ├── sr1500
+│   │   └── qts
+│   ├── st
+│   │   ├── stm32f429-discovery
+│   │   ├── stm32f746-disco
+│   │   └── stv0991
+│   ├── sunxi
+│   ├── Synology
+│   │   ├── ds109
+│   │   └── ds414
+│   ├── synopsys
+│   │   └── axs10x
+│   ├── sysam
+│   │   └── amcore
+│   ├── syteco
+│   │   └── zmx25
+│   ├── t3corp
+│   ├── tbs
+│   │   └── tbs2910
+│   ├── tcl
+│   │   └── sl50
+│   ├── tcm-bf518
+│   ├── tcm-bf537
+│   ├── technexion
+│   │   ├── pico-imx6ul
+│   │   ├── tao3530
+│   │   └── twister
+│   ├── technologic
+│   │   ├── ts4600
+│   │   └── ts4800
+│   ├── teejet
+│   │   └── mt_ventoux
+│   ├── terasic
+│   │   ├── de0-nano-soc
+│   │   │   └── qts
+│   │   ├── de1-soc
+│   │   │   └── qts
+│   │   └── sockit
+│   │       └── qts
+│   ├── theadorable
+│   ├── ti
+│   │   ├── am335x
+│   │   ├── am3517crane
+│   │   ├── am43xx
+│   │   ├── am57xx
+│   │   ├── beagle
+│   │   ├── common
+│   │   ├── dra7xx
+│   │   ├── evm
+│   │   ├── ks2_evm
+│   │   ├── omap5_uevm
+│   │   ├── panda
+│   │   ├── sdp4430
+│   │   ├── ti814x
+│   │   └── ti816x
+│   ├── timll
+│   │   ├── devkit3250
+│   │   └── devkit8000
+│   ├── topic
+│   │   └── zynq
+│   │       ├── zynq-topic-miami
+│   │       └── zynq-topic-miamiplus
+│   ├── toradex
+│   │   ├── apalis_imx6
+│   │   ├── apalis_t30
+│   │   ├── colibri_imx6
+│   │   ├── colibri_imx7
+│   │   ├── colibri_pxa270
+│   │   ├── colibri_t20
+│   │   ├── colibri_t30
+│   │   ├── colibri_vf
+│   │   └── common
+│   ├── tplink
+│   │   └── wdr4300
+│   ├── tqc
+│   │   ├── tqm5200
+│   │   ├── tqm834x
+│   │   ├── tqm8xx
+│   │   └── tqma6
+│   ├── udoo
+│   │   └── neo
+│   ├── v38b
+│   ├── varisys
+│   │   ├── common
+│   │   └── cyrus
+│   ├── ve8313
+│   ├── vscom
+│   │   └── baltos
+│   ├── wandboard
+│   ├── warp
+│   ├── warp7
+│   ├── woodburn
+│   ├── work-microwave
+│   │   └── work_92105
+│   ├── xes
+│   │   ├── common
+│   │   ├── xpedite1000
+│   │   ├── xpedite517x
+│   │   ├── xpedite520x
+│   │   ├── xpedite537x
+│   │   └── xpedite550x
+│   ├── xilinx
+│   │   ├── microblaze-generic
+│   │   ├── ppc405-generic
+│   │   ├── ppc440-generic
+│   │   ├── zynq
+│   │   │   ├── zynq-microzed
+│   │   │   ├── zynq-zc702
+│   │   │   ├── zynq-zc706
+│   │   │   ├── zynq-zed
+│   │   │   └── zynq-zybo
+│   │   └── zynqmp
+│   ├── zipitz2
+│   └── zyxel
+│       └── nsa310s
+├── cmd
+│   ├── fastboot
+│   └── mvebu
+├── common
+│   ├── eeprom
+│   ├── init
+│   └── spl
+├── configs
+├── disk
+├── doc
+│   ├── device-tree-bindings
+│   │   ├── adc
+│   │   ├── ata
+│   │   ├── clock
+│   │   ├── cpu
+│   │   ├── exynos
+│   │   ├── firmware
+│   │   ├── gpio
+│   │   ├── gpu
+│   │   ├── i2c
+│   │   ├── input
+│   │   ├── leds
+│   │   ├── mailbox
+│   │   ├── misc
+│   │   ├── mmc
+│   │   ├── mtd
+│   │   │   └── spi
+│   │   ├── nand
+│   │   ├── net
+│   │   ├── pinctrl
+│   │   ├── pmic
+│   │   ├── power
+│   │   ├── pwm
+│   │   ├── regulator
+│   │   ├── remoteproc
+│   │   ├── reset
+│   │   ├── serial
+│   │   ├── spi
+│   │   ├── spmi
+│   │   ├── thermal
+│   │   ├── timer
+│   │   ├── usb
+│   │   └── video
+│   │       └── bridge
+│   ├── DocBook
+│   ├── driver-model
+│   ├── mvebu
+│   │   └── cmd
+│   ├── SPI
+│   ├── SPL
+│   └── uImage.FIT
+├── drivers
+│   ├── adc
+│   ├── bios_emulator
+│   │   ├── include
+│   │   │   └── x86emu
+│   │   └── x86emu
+│   ├── block
+│   ├── bootcount
+│   ├── clk
+│   │   ├── aspeed
+│   │   ├── at91
+│   │   ├── exynos
+│   │   ├── rockchip
+│   │   ├── tegra
+│   │   └── uniphier
+│   ├── core
+│   ├── cpu
+│   ├── crypto
+│   │   ├── fsl
+│   │   └── rsa_mod_exp
+│   ├── ddr
+│   │   ├── altera
+│   │   ├── fsl
+│   │   ├── marvell
+│   │   │   ├── a38x
+│   │   │   └── axp
+│   │   └── microchip
+│   ├── demo
+│   ├── dfu
+│   ├── dma
+│   ├── fpga
+│   ├── gpio
+│   ├── hwmon
+│   ├── i2c
+│   │   └── muxes
+│   ├── input
+│   ├── led
+│   ├── mailbox
+│   ├── memory
+│   ├── misc
+│   ├── mmc
+│   ├── mtd
+│   │   ├── nand
+│   │   ├── onenand
+│   │   ├── spi
+│   │   ├── ubi
+│   │   └── ubispl
+│   ├── net
+│   │   ├── fm
+│   │   ├── fsl-mc
+│   │   │   └── dpio
+│   │   ├── ldpaa_eth
+│   │   └── phy
+│   ├── pch
+│   ├── pci
+│   ├── pcmcia
+│   ├── phy
+│   │   └── marvell
+│   ├── pinctrl
+│   │   ├── ath79
+│   │   ├── exynos
+│   │   ├── meson
+│   │   ├── mvebu
+│   │   ├── nxp
+│   │   ├── rockchip
+│   │   └── uniphier
+│   ├── power
+│   │   ├── battery
+│   │   ├── domain
+│   │   ├── fuel_gauge
+│   │   ├── mfd
+│   │   ├── pmic
+│   │   └── regulator
+│   ├── pwm
+│   ├── qe
+│   ├── ram
+│   ├── remoteproc
+│   ├── reset
+│   ├── rtc
+│   ├── serial
+│   ├── soc
+│   │   └── keystone
+│   ├── sound
+│   ├── spi
+│   ├── spmi
+│   ├── sysreset
+│   ├── thermal
+│   ├── timer
+│   ├── tpm
+│   ├── twserial
+│   ├── usb
+│   │   ├── cdns3
+│   │   ├── common
+│   │   ├── dwc3
+│   │   ├── emul
+│   │   ├── eth
+│   │   ├── gadget
+│   │   │   └── udc
+│   │   ├── host
+│   │   ├── musb
+│   │   ├── musb-new
+│   │   ├── phy
+│   │   └── ulpi
+│   ├── video
+│   │   ├── bridge
+│   │   ├── exynos
+│   │   ├── fonts
+│   │   ├── imx
+│   │   │   └── hdp
+│   │   ├── rockchip
+│   │   └── tegra124
+│   └── watchdog
+├── dts
+├── examples
+│   ├── api
+│   └── standalone
+├── fs
+│   ├── cbfs
+│   ├── cramfs
+│   ├── ext4
+│   ├── fat
+│   ├── jffs2
+│   ├── reiserfs
+│   ├── sandbox
+│   ├── ubifs
+│   ├── yaffs2
+│   └── zfs
+├── include
+│   ├── andestech
+│   ├── asm-generic
+│   │   └── bitops
+│   ├── bedbug
+│   ├── cavium
+│   ├── configs
+│   │   ├── km
+│   │   └── manroland
+│   ├── cramfs
+│   ├── dm
+│   │   └── platform_data
+│   ├── dt-bindings
+│   │   ├── clk
+│   │   ├── clock
+│   │   ├── comphy
+│   │   ├── dma
+│   │   ├── gpio
+│   │   ├── input
+│   │   ├── interrupt-controller
+│   │   ├── interrupt-router
+│   │   ├── mailbox
+│   │   ├── memory
+│   │   ├── mrc
+│   │   ├── net
+│   │   ├── phy
+│   │   ├── pinctrl
+│   │   ├── pmic
+│   │   ├── power
+│   │   ├── power-domain
+│   │   ├── pwm
+│   │   ├── regulator
+│   │   ├── reset
+│   │   ├── soc
+│   │   ├── sound
+│   │   ├── thermal
+│   │   └── video
+│   ├── environment
+│   │   └── ti
+│   ├── faraday
+│   ├── fsl-mc
+│   ├── grlib
+│   ├── interface
+│   │   ├── avb
+│   │   ├── keymaster
+│   │   └── storage
+│   ├── jffs2
+│   ├── linux
+│   │   ├── byteorder
+│   │   ├── mtd
+│   │   ├── unaligned
+│   │   └── usb
+│   ├── lzma
+│   ├── mtd
+│   ├── net
+│   ├── pcmcia
+│   ├── power
+│   ├── samsung
+│   ├── spmi
+│   ├── synopsys
+│   ├── tee
+│   ├── test
+│   ├── trusty
+│   ├── u-boot
+│   ├── usb
+│   └── zfs
+├── lib
+│   ├── avb
+│   │   ├── fsl
+│   │   ├── libavb
+│   │   ├── libavb_ab
+│   │   └── libavb_atx
+│   ├── bzip2
+│   ├── dhry
+│   ├── efi
+│   ├── efi_loader
+│   ├── libfdt
+│   ├── lzma
+│   ├── lzo
+│   ├── rsa
+│   ├── tizen
+│   ├── trusty
+│   │   └── ql-tipc
+│   │       ├── arch
+│   │       │   └── arm
+│   │       └── sysdeps
+│   └── zlib
+├── Licenses
+├── net
+├── post
+│   ├── board
+│   │   ├── lwmon5
+│   │   └── pdm360ng
+│   ├── cpu
+│   │   ├── mpc83xx
+│   │   ├── mpc8xx
+│   │   └── ppc4xx
+│   ├── drivers
+│   └── lib_powerpc
+│       └── fpu
+├── scripts
+│   ├── basic
+│   ├── coccinelle
+│   │   └── net
+│   └── kconfig
+│       └── lxdialog
+├── test
+│   ├── dm
+│   ├── env
+│   ├── fs
+│   ├── image
+│   ├── overlay
+│   ├── py
+│   │   └── tests
+│   │       └── vboot
+│   ├── stdint
+│   └── trace
+└── tools
+    ├── binman
+    │   ├── etype
+    │   └── test
+    ├── buildman
+    ├── dtoc
+    ├── easylogo
+    ├── env
+    ├── gdb
+    ├── kermit
+    ├── logos
+    ├── omap
+    ├── patman
+    ├── scripts
+    └── tbot
+
+1494 directories

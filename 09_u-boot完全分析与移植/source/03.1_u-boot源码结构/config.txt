@@ -1,0 +1,2071 @@
+
+
+
+cc-cross-prefix = $(word 1, $(foreach c,$(1), $(shell set -e; if (which $(strip $(c))$(CC)) > /dev/null 2>&1 ; then echo $(c); fi)))
+quiet = quiet_
+?F = $(notdir $?)
+<D = $(patsubst %/,%,$(dir $<))
+cmd_lzma = (cat $(filter-out FORCE,$^) | lzma -9 && $(call size_append, $(filter-out FORCE,$^))) > $@ || (rm -f $@ ; false)
+.SHELLFLAGS := -c
+SPL_ := 
+quiet_modtag := $(subst ,,   )
+PATCHLEVEL = 03
+lib-y := 
+filechk = 	$(Q)set -e; $(kecho) '  CHK     $@'; mkdir -p $(dir $@); $(filechk_$(1)) < $< > $@.tmp; if [ -r $@ ] && cmp -s $@ $@.tmp; then rm -f $@.tmp; else $(kecho) '  UPD     $@'; mv -f $@.tmp $@; fi
+quiet_cmd_cc_symtypes_c = SYM $(quiet_modtag) $@
+subdir-obj-y := 
+quiet_cmd_host-cxxmulti = HOSTLD  $@
+OBJCOPY = arm-buildroot-linux-gnueabihf-objcopy
+obj-y := 
+cmd_cc_o_c = $(CC) $(c_flags) -c -o $@ $<
+MKIMAGE := ./scripts/mkuboot.sh
+subdir-ccflags-y := 
+@D = $(patsubst %/,%,$(dir $@))
+@F = $(notdir $@)
+MAKE_VERSION := 4.1
+UBOOTINCLUDE = 
+CURDIR := /home/book/100ask_imx6ull-sdk/Uboot-2017.03
+SHELL = /bin/sh
+NM = arm-buildroot-linux-gnueabihf-nm
+Q = @
+ld-version = $(shell $(LD) --version | $(srctree)/scripts/ld-version.sh)
+cmd_xzkern = (cat $(filter-out FORCE,$^) | sh $(srctree)/scripts/xz_wrap.sh && $(call size_append, $(filter-out FORCE,$^))) > $@ || (rm -f $@ ; false)
+quiet_kecho := echo
+PHONY := __build  FORCE
+MODVERDIR = .tmp_versions
+cmd_S_ttf = ( echo '.section .rodata.ttf.init,"a"'; echo '.balign 16'; echo '.global __ttf_$(*F)_begin'; echo '__ttf_$(*F)_begin:'; echo '.incbin "$<" '; echo '__ttf_$(*F)_end:'; echo '.global __ttf_$(*F)_end'; echo '.balign 16'; ) > $@
+_ = /usr/bin/make
+quiet_cmd_link_multi-m = LD [M]  $@
+subdir-m := $(subst ,, )
+a_flags = -Wp,-MD,$(depfile) $(NOSTDINC_FLAGS) $(UBOOTINCLUDE) $(__a_flags) $(modkern_aflags)
+subdir-asflags-y := 
+?D = $(patsubst %/,%,$(dir $?))
+cc-fullversion = $(shell $(CONFIG_SHELL) $(srctree)/scripts/gcc-version.sh -p $(CC))
+quiet_cmd_efi_objcopy = OBJCOPY $@
+UIMAGE_ENTRYADDR = $(UIMAGE_LOADADDR)
+size_append = printf $(shell dec_size=0; for F in $1; do fsize=$$(stat -c "%s" $$F); dec_size=$$(expr $$dec_size + $$fsize); done; printf "%08x\n" $$dec_size | sed 's/\(..\)/\1 /g' | { read ch0 ch1 ch2 ch3; for ch in $$ch3 $$ch2 $$ch1 $$ch0; do printf '%s%03o' '\\' $$((0x$$ch)); done; } )
+BOARDDIR = 
+multi_depend = $(foreach m, $(notdir $1), $(eval $(obj)/$m: $(addprefix $(obj)/, $(foreach s, $3, $($(m:%$(strip $2)=%$(s)))))))
+quiet_cmd_ld = LD      $@
+real-objs-m := 
+MAKEFILE_LIST :=  scripts/Makefile.build scripts/Makefile.uncmd_spl scripts/Kbuild.include scripts/basic/Makefile scripts/Makefile.lib scripts/Makefile.host scripts/basic/.fixdep.cmd
+UIMAGE_TYPE = kernel
+CHECKFLAGS = -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ -Wbitwise -Wno-return-void -D__CHECK_ENDIAN__ 
+_cpp_flags = $(KBUILD_CPPFLAGS) $(cppflags-y) $(CPPFLAGS_$(@F))
+host-cxxobjs := 
+host-objdirs := 
+GNUMAKEFLAGS := 
+srctree = .
+HOSTCC = cc
+host-cobjs := 
+XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
+cc-version = $(shell $(CONFIG_SHELL) $(srctree)/scripts/gcc-version.sh $(CC))
+quiet_cmd_acpi_c_asl = ASL     $<
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1001/bus
+VERSION = 2017
+CC = arm-buildroot-linux-gnueabihf-gcc
+dtc_cpp_flags = -Wp,-MD,$(depfile).pre.tmp -nostdinc -I$(srctree)/arch/$(ARCH)/dts -I$(srctree)/arch/$(ARCH)/dts/include -Iinclude -I$(srctree)/include -I$(srctree)/arch/$(ARCH)/include -include $(srctree)/include/linux/kconfig.h -D__ASSEMBLY__ -undef -D__DTS__
+c_flags = -Wp,-MD,$(depfile) $(NOSTDINC_FLAGS) $(UBOOTINCLUDE) $(__c_flags) $(modkern_cflags) -D"KBUILD_STR(s)=#s" $(basename_flags) $(modname_flags)
+cmd_objcopy = $(OBJCOPY) $(OBJCOPYFLAGS) $(OBJCOPYFLAGS_$(@F)) $< $@
+LC_COLLATE = C
+host-cmulti := 
+AWK = awk
+KBUILD_AFLAGS = -D__ASSEMBLY__
+quiet_cmd_as_o_S = AS $(quiet_modtag)  $@
+dot-target = $(dir $@).$(notdir $@)
+multi-used-y := 
+__hostc_flags = $(_hostc_flags)
+if_changed_rule = $(if $(strip $(any-prereq) $(arg-check) ), @set -e; $(rule_$(1)))
+squote := '
+LESSOPEN = | /usr/bin/lesspipe %s
+CPP = arm-buildroot-linux-gnueabihf-gcc -E
+single-used-m := 
+quiet_cmd_host-cxxobjs = HOSTCXX $@
+_dummy := 
+cc-option-yn = $(call try-run, $(CC) -Werror $(KBUILD_CPPFLAGS) $(KBUILD_CFLAGS) $(1) -c -x c /dev/null -o "$$TMP",y,n)
+SSH_CONNECTION = 192.168.37.1 57533 192.168.37.134 22
+PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/book/100ask_imx6ull-sdk/ToolChain/arm-buildroot-linux-gnueabihf_sdk-buildroot/bin
+flags = $(foreach o,$($(1)),$(if $(filter -I%,$(o)),$(call addtree,$(o)),$(o)))
+LD = arm-buildroot-linux-gnueabihf-ld.bfd
+CPUDIR = 
+clean := -f ./scripts/Makefile.clean obj
+HOSTLDFLAGS = 
+EXTRA_AFLAGS := 
+space := $(subst ,, )
+SSH_TTY = /dev/pts/1
+XDG_RUNTIME_DIR = /run/user/1001
+hdr-inst := -f ./scripts/Makefile.headersinst obj
+always := scripts/basic/fixdep
+rule_cc_o_c = 	$(call echo-cmd,checksrc) $(cmd_checksrc) $(call echo-cmd,cc_o_c) $(cmd_cc_o_c); $(cmd_modversions) $(call echo-cmd,record_mcount) $(cmd_record_mcount) scripts/basic/fixdep $(depfile) $@ '$(call make-cmd,cc_o_c)' > $(dot-target).tmp; rm -f $(depfile); mv -f $(dot-target).tmp $(dot-target).cmd
+quiet_cmd_lz4 = LZ4     $@
+VENDOR = 
+quiet_cmd_bzip2 = BZIP2   $@
+quiet_cmd_host-cmulti = HOSTLD  $@
+try-run = $(shell set -e; TMP="$(TMPOUT).$$$$.tmp"; TMPO="$(TMPOUT).$$$$.o"; TMPSU="$(TMPOUT).$$$$.su"; if ($(1)) >/dev/null 2>&1; then echo "$(2)"; else echo "$(3)"; fi; rm -f "$$TMP" "$$TMPO" "$$TMPSU")
+quiet_cmd_link_multi-y = LD      $@
+comma := ,
+any-prereq = $(filter-out $(PHONY),$?) $(filter-out $(PHONY) $(wildcard $^),$^)
+KBUILD_BUILTIN = 1
+VPATH = .
+quiet_cmd_cc_lst_c = MKLST   $@
+AR = arm-buildroot-linux-gnueabihf-ar
+cmd_scripts/basic/fixdep := cc -Wp,-MD,scripts/basic/.fixdep.d -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer      -o scripts/basic/fixdep scripts/basic/fixdep.c  
+cmd_cpp_lds_S = $(CPP) $(cpp_flags) -P -C -U$(ARCH) -D__ASSEMBLY__ -DLINKER_SCRIPT -o $@ $<
+LC_NUMERIC = C
+ar-option = $(call try-run, $(AR) rc$(1) "$$TMP",$(1),$(2))
+__a_flags = $(_a_flags)
+LDFLAGS = 
+build := -f ./scripts/Makefile.build obj
+cmd_cc_lst_c = $(CC) $(c_flags) -g -c -o $*.o $< && $(CONFIG_SHELL) $(srctree)/scripts/makelst $*.o System.map $(OBJDUMP) > $@
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+basename_flags = -D"KBUILD_BASENAME=KBUILD_STR($(call name-fix,$(basetarget)))"
+objtree = .
+cc-disable-warning = $(call try-run, $(CC) $(KBUILD_CPPFLAGS) $(KBUILD_CFLAGS) -W$(strip $(1)) -c -x c /dev/null -o "$$TMP",-Wno-$(strip $(1)))
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+SUBLEVEL = 
+_a_flags = $(filter-out $(AFLAGS_REMOVE_$(basetarget).o), $(orig_a_flags))
+cmd_gensymtypes = $(CPP) -D__GENKSYMS__ $(c_flags) $< | $(GENKSYMS) $(if $(1), -T $(2)) $(patsubst y,-s _,$(CONFIG_HAVE_UNDERSCORE_SYMBOL_PREFIX)) $(if $(KBUILD_PRESERVE),-p) -r $(firstword $(wildcard $(2:.symtypes=.symref) /dev/null))
+%F = $(notdir $%)
+quiet_cmd_dtc = DTC     $@
+DISPLAY = localhost:10.0
+dtc-tmp = $(subst $(comma),_,$(dot-target).dts.tmp)
+u_boot_dtsi_options = $(wildcard $(dts_dir)/$(basename $(notdir $<))-u-boot.dtsi) $(wildcard $(dts_dir)/$(subst $\",,$(CONFIG_SYS_SOC))-u-boot.dtsi) $(wildcard $(dts_dir)/$(subst $\",,$(CONFIG_SYS_CPU))-u-boot.dtsi) $(wildcard $(dts_dir)/$(subst $\",,$(CONFIG_SYS_VENDOR))-u-boot.dtsi) $(wildcard $(dts_dir)/u-boot.dtsi)
+KBUILD_SUBDIR_CCFLAGS := $(subst ,, )
+cpp_flags = -Wp,-MD,$(depfile) $(NOSTDINC_FLAGS) $(UBOOTINCLUDE) $(__cpp_flags)
+KBUILD_MODULES = 
+quiet_cmd_xzmisc = XZMISC  $@
+quiet_cmd_efi_ld = LD      $@
+HOSTCXX = c++
+quiet_cmd_asn1_compiler = ASN.1   $@
+cmd_cc_symtypes_c = set -e; $(call cmd_gensymtypes,true,$@) >/dev/null; test -s $@ || rm -f $@
+prefix := .
+cmd_host-cxxmulti = $(HOSTCXX) $(HOSTLDFLAGS) -o $@ $(foreach o,objs cxxobjs, $(addprefix $(obj)/,$($(@F)-$(o)))) $(HOST_LOADLIBES) $(HOSTLOADLIBES_$(@F))
+modorder-cmds = $(foreach m, $(modorder), $(if $(filter %/modules.order, $m), cat $m;, echo kernel/$m;))
+extra-y := 
+quiet_cmd_gzip = GZIP    $@
+PWD = /home/book/100ask_imx6ull-sdk/Uboot-2017.03
+cc-ldoption = $(call try-run, $(CC) $(1) -nostdlib -x c /dev/null -o "$$TMP",$(1),$(2))
+quiet_cmd_cc_s_c = CC $(quiet_modtag)  $@
+dtc-option = $(call try-run, echo '/dts-v1/; / {};' | $(DTC) $(1),$(1),$(2))
+OBJCOPYFLAGS = 
+src := scripts/basic
+quiet_cmd_lzo = LZO     $@
+*D = $(patsubst %/,%,$(dir $*))
+UIMAGE_COMPRESSION = $(if $(2),$(2),none)
+modname = $(basetarget)
+hostprogs-y := fixdep
+EXTRA_LDFLAGS := 
+multi-objs-m := 
+PYTHON = python
+multi-objs := $(subst ,, )
+cmd_as_o_S = $(CC) $(a_flags) -c -o $@ $<
+cmd_efi_objcopy = $(OBJCOPY) -j .header -j .text -j .sdata -j .data -j .dynamic -j .dynsym  -j .rel* -j .rela* -j .reloc $(if $(EFI_TARGET),$(EFI_TARGET),-O binary) $^ $@
+HOME = /home/book
+UBOOTRELEASE = 
+quiet_cmd_host-cobjs = HOSTCC  $@
+as-instr = $(call try-run, printf "%b\n" "$(1)" | $(CC) $(KBUILD_AFLAGS) -c -x assembler -o "$$TMP" -,$(2),$(3))
+modbuiltin := -f ./scripts/Makefile.modbuiltin obj
+__c_flags = $(_c_flags)
+cmd_ld = $(LD) $(LDFLAGS) $(ldflags-y) $(LDFLAGS_$(@F)) $(filter-out FORCE,$^) -o $@
+LESSCLOSE = /usr/bin/lesspipe %s %s
+orig_c_flags = $(KBUILD_CPPFLAGS) $(KBUILD_CFLAGS) $(KBUILD_SUBDIR_CCFLAGS) $(ccflags-y) $(CFLAGS_$(basetarget).o)
+cc-name = $(shell $(CC) -v 2>&1 | grep -q "clang version" && echo clang || echo gcc)
+-*-command-variables-*- := obj=scripts/basic
+LOGNAME = book
+binutils-version = $(shell $(CONFIG_SHELL) $(srctree)/scripts/binutils-version.sh $(AS))
+_hostc_flags = $(HOSTCFLAGS)   $(HOST_EXTRACFLAGS) $(HOSTCFLAGS_$(basetarget).o)
++F = $(notdir $+)
+cc-option-align = $(subst -functions=0,, $(call cc-option,-falign-functions=0,-malign-functions=0))
+lib-m := 
+dts_dir = $(srctree)/arch/$(ARCH)/dts
+kbuild-file := ./scripts/basic/Makefile
+LDR = arm-buildroot-linux-gnueabihf-ldr
+cmd_acpi_c_asl = $(CPP) -x assembler-with-cpp -D__ASSEMBLY__ -P $(UBOOTINCLUDE) -o $<.tmp $<; iasl -p $< -tc $<.tmp $(if $(KBUILD_VERBOSE:1=), >/dev/null); mv $(patsubst %.asl,%.hex,$<) $@
+^D = $(patsubst %/,%,$(dir $^))
+KBUILD_VERBOSE = 0
+obj = scripts/basic
+obj-m := 
+source_scripts/basic/fixdep := scripts/basic/fixdep.c
+modname_flags = $(if $(filter 1,$(words $(modname))), -D"KBUILD_MODNAME=KBUILD_STR($(call name-fix,$(modname)))")
+host-csingle := scripts/basic/fixdep
+obj-dirs := $(subst ,, )
+MAKELEVEL := 1
+cmd_cc_i_c = $(CPP) $(c_flags)   -o $@ $<
+MAKE = make
+modorder-target := scripts/basic/modules.order
+DTC_FLAGS = 
+KCONFIG_CONFIG = .config
+UIMAGE_IN = $<
+SHLVL = 1
+quiet_cmd_cpp_lds_S = LDS     $@
+modorder := 
+KBUILD_DEFCONFIG = sandbox_defconfig
+cmd_shipped = cat $< > $@
+silent_kecho := :
+host-shared := scripts/basic/)
+quiet_cmd_cc_i_c = CPP $(quiet_modtag) $@
+AS = arm-buildroot-linux-gnueabihf-as
+cmd_asn1_compiler = $(objtree)/scripts/asn1_compiler $< $(subst .h,.c,$@) $(subst .c,.h,$@)
+cmd_host-cxxobjs = $(HOSTCXX) $(hostcxx_flags) -c -o $@ $<
+MAKEOVERRIDES = ${-*-command-variables-*-}
+UIMAGE_OPTS-y = 
+subdir-ym := 
+XDG_SESSION_ID = 64
+USER = book
+subdir-y := $(subst ,, )
+CHECK = sparse
+.DEFAULT_GOAL := __build
+UIMAGE_NAME = 'Linux-$(KERNELRELEASE)'
+if_changed_dep = $(if $(strip $(any-prereq) $(arg-check) ), @set -e; $(echo-cmd) $(cmd_$(1)); scripts/basic/fixdep $(depfile) $@ '$(make-cmd)' > $(dot-target).tmp; rm -f $(depfile); mv -f $(dot-target).tmp $(dot-target).cmd)
+modname-multi = $(sort $(foreach m,$(multi-used), $(if $(filter $(subst $(obj)/,,$*.o), $($(m:.o=-objs)) $($(m:.o=-y))),$(m:.o=))))
+RCS_TAR_IGNORE = --exclude SCCS --exclude BitKeeper --exclude .svn --exclude CVS --exclude .pc --exclude .hg --exclude .git
+real-objs-y := 
+quiet_cmd_lzma = LZMA    $@
+%D = $(patsubst %/,%,$(dir $%))
+cmd_dt_S_dtb = ( echo '.section .dtb.init.rodata,"a"'; echo '.balign 16'; echo '.global __dtb_$(subst -,_,$(*F))_begin'; echo '__dtb_$(subst -,_,$(*F))_begin:'; echo '.incbin "$<" '; echo '__dtb_$(subst -,_,$(*F))_end:'; echo '.global __dtb_$(subst -,_,$(*F))_end'; echo '.balign 16'; ) > $@
+quiet_cmd_S_ttf = TTF     $@
+CPU = 
+hostcxx_flags = -Wp,-MD,$(depfile) $(__hostcxx_flags)
+ld-option = $(call try-run, $(CC) -x c /dev/null -c -o "$$TMPO" ; $(LD) $(1) "$$TMPO" -o "$$TMP",$(1),$(2))
+modkern_cflags = $(if $(part-of-module), $(KBUILD_CFLAGS_MODULE) $(CFLAGS_MODULE), $(KBUILD_CFLAGS_KERNEL) $(CFLAGS_KERNEL))
+cmd_lz4 = (cat $(filter-out FORCE,$^) | lz4c -l -c1 stdin stdout && $(call size_append, $(filter-out FORCE,$^))) > $@ || (rm -f $@ ; false)
+u_boot_dtsi = $(firstword $(u_boot_dtsi_options))
+cmd_bzip2 = (cat $(filter-out FORCE,$^) | bzip2 -9 && $(call size_append, $(filter-out FORCE,$^))) > $@ || (rm -f $@ ; false)
+cmd_host-cmulti = $(HOSTCC) $(HOSTLDFLAGS) -o $@ $(addprefix $(obj)/,$($(@F)-objs)) $(HOST_LOADLIBES) $(HOSTLOADLIBES_$(@F))
+HOSTCFLAGS = -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer 
+targets := scripts/basic/fixdep
+MAKE_COMMAND := make
+OLDPWD = /home/book/100ask_imx6ull-sdk/test_make
+NOSTDINC_FLAGS = 
+multi-used := $(subst ,, )
+.VARIABLES := 
+quiet_cmd_cc_o_c = CC $(quiet_modtag)  $@
+echo-cmd = $(if $($(quiet)cmd_$(1)), echo '  $(call escsq,$($(quiet)cmd_$(1)))$(echo-why)';)
+multi-used-m := 
+*F = $(notdir $*)
+ldflags-y := $(subst ,, )
+depfile = $(subst $(comma),_,$(dot-target).d)
+KBUILD_KCONFIG = 
+asflags-y := $(subst ,,  )
+ld-ifversion = $(shell [ $(ld-version) $(1) $(2) ] && echo $(3) || echo $(4))
+make-cmd = $(call escsq,$(subst #,\#,$(subst $$,$$$$,$(cmd_$(1)))))
+ARCH = arm
+MAKEFLAGS = prR -I/home/book/100ask_imx6ull-sdk/Uboot-2017.03 --no-print-directory -- $(MAKEOVERRIDES)
+ccflags-y := $(subst ,,  )
+quiet_cmd_dt_S_dtb = DTB     $@
+MFLAGS = -prR -I/home/book/100ask_imx6ull-sdk/Uboot-2017.03 --no-print-directory
+SSH_CLIENT = 192.168.37.1 57533 22
+as-option = $(call try-run, $(CC) $(KBUILD_CFLAGS) $(1) -c -x assembler /dev/null -o "$$TMP",$(1),$(2))
+MAIL = /var/mail/book
+HOSTCXXFLAGS = -O2
+deps_scripts/basic/fixdep :=       /usr/include/stdc-predef.h /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h /usr/include/x86_64-linux-gnu/bits/wordsize.h /usr/include/x86_64-linux-gnu/bits/long-double.h /usr/include/x86_64-linux-gnu/gnu/stubs.h /usr/include/x86_64-linux-gnu/gnu/stubs-64.h /usr/include/x86_64-linux-gnu/bits/types.h /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/x86_64-linux-gnu/bits/types/clock_t.h /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h /usr/include/x86_64-linux-gnu/bits/types/time_t.h /usr/include/x86_64-linux-gnu/bits/types/timer_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h /usr/include/x86_64-linux-gnu/bits/stdint-intn.h /usr/include/endian.h /usr/include/x86_64-linux-gnu/bits/endian.h /usr/include/x86_64-linux-gnu/bits/byteswap.h /usr/include/x86_64-linux-gnu/bits/byteswap-16.h /usr/include/x86_64-linux-gnu/bits/uintn-identity.h /usr/include/x86_64-linux-gnu/sys/select.h /usr/include/x86_64-linux-gnu/bits/select.h /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h /usr/include/x86_64-linux-gnu/bits/select2.h /usr/include/x86_64-linux-gnu/sys/sysmacros.h /usr/include/x86_64-linux-gnu/bits/sysmacros.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h /usr/include/x86_64-linux-gnu/sys/stat.h /usr/include/x86_64-linux-gnu/bits/stat.h /usr/include/x86_64-linux-gnu/sys/mman.h /usr/include/x86_64-linux-gnu/bits/mman.h /usr/include/x86_64-linux-gnu/bits/mman-linux.h /usr/include/x86_64-linux-gnu/bits/mman-shared.h /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h /usr/include/x86_64-linux-gnu/bits/environments.h /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/x86_64-linux-gnu/bits/getopt_posix.h /usr/include/x86_64-linux-gnu/bits/getopt_core.h /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h /usr/include/x86_64-linux-gnu/bits/fcntl2.h /usr/include/string.h /usr/include/x86_64-linux-gnu/bits/libc-header-start.h /usr/include/x86_64-linux-gnu/bits/types/locale_t.h /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h /usr/include/strings.h /usr/include/x86_64-linux-gnu/bits/strings_fortified.h /usr/include/x86_64-linux-gnu/bits/string_fortified.h /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/x86_64-linux-gnu/bits/floatn.h /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__FILE.h /usr/include/x86_64-linux-gnu/bits/types/FILE.h /usr/include/x86_64-linux-gnu/bits/libio.h /usr/include/x86_64-linux-gnu/bits/_G_config.h  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/x86_64-linux-gnu/bits/sys_errlist.h /usr/include/x86_64-linux-gnu/bits/stdio.h /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h /usr/include/x86_64-linux-gnu/bits/local_lim.h /usr/include/linux/limits.h /usr/include/x86_64-linux-gnu/bits/posix2_lim.h /usr/include/ctype.h /usr/include/arpa/inet.h /usr/include/netinet/in.h /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/include/x86_64-linux-gnu/sys/socket.h /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h /usr/include/x86_64-linux-gnu/bits/socket.h /usr/include/x86_64-linux-gnu/bits/socket_type.h /usr/include/x86_64-linux-gnu/bits/sockaddr.h /usr/include/x86_64-linux-gnu/asm/socket.h /usr/include/asm-generic/socket.h /usr/include/x86_64-linux-gnu/asm/sockios.h /usr/include/asm-generic/sockios.h /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h /usr/include/x86_64-linux-gnu/bits/socket2.h /usr/include/x86_64-linux-gnu/bits/in.h 
++D = $(patsubst %/,%,$(dir $+))
+cc-option = $(call try-run, $(CC) -Werror $(KBUILD_CPPFLAGS) $(KBUILD_CFLAGS) $(1) -c -x c /dev/null -o "$$TMP",$(1),$(2))
+SOC = 
+OBJDUMP = arm-buildroot-linux-gnueabihf-objdump
+__cpp_flags = $(_cpp_flags)
+quiet_cmd_uimage = UIMAGE  $(UIMAGE_OUT)
+cmd_dtc = mkdir -p $(dir ${dtc-tmp}) ; cat $< $(if $(u_boot_dtsi), | sed '/^\/ {$$/{x;s%$$%#include \"$(u_boot_dtsi)\"%;G;}') | $(CPP) $(dtc_cpp_flags) -x assembler-with-cpp -o $(dtc-tmp) - ; $(DTC) -O dtb -o $@ -b 0 -i $(dir $<) $(DTC_FLAGS) -d $(depfile).dtc.tmp $(dtc-tmp) ; cat $(depfile).pre.tmp $(depfile).dtc.tmp > $(depfile)
+BOARD = 
+__hostprogs := scripts/basic/fixdep
+hostc_flags = -Wp,-MD,$(depfile) $(__hostc_flags)
+objectify = $(foreach o,$(1),$(if $(filter /%,$(o)),$(o),$(obj)/$(o)))
+save-cflags := 
+cmd_as_s_S = $(CPP) $(a_flags)   -o $@ $<
+cmd_xzmisc = (cat $(filter-out FORCE,$^) | xz --check=crc32 --lzma2=dict=1MiB) > $@ || (rm -f $@ ; false)
+cmd_efi_ld = $(LD) -nostdlib -znocombreloc -T $(EFI_LDS_PATH) -shared -Bsymbolic $^ -o $@
+STRIP = arm-buildroot-linux-gnueabihf-strip
+MKIMAGEOUTPUT = /dev/null
+DTC = dtc
+dtbinst := -f scripts/Makefile.dtbinst obj
+CROSS_COMPILE = arm-buildroot-linux-gnueabihf-
+link_multi_deps = $(filter $(addprefix $(obj)/, $($(subst $(obj)/,,$(@:.o=-objs))) $($(subst $(obj)/,,$(@:.o=-y)))), $^)
+cmd_gzip = (cat $(filter-out FORCE,$^) | gzip -n -f -9 > $@) || (rm -f $@ ; false)
+cc-ifversion = $(shell [ $(cc-version) $(1) $(2) ] && echo $(3) || echo $(4))
+HOSTARCH = x86_64
+escsq = $(subst $(squote),'\$(squote)',$1)
+__hostcxx_flags = $(_hostcxx_flags)
+cmd_cc_s_c = $(CC) $(c_flags) $(DISABLE_LTO) -fverbose-asm -S -o $@ $<
+cmd = @$(echo-cmd) $(cmd_$(1))
+MAKEFILES := 
+cmd_link_multi-y = $(LD) $(ld_flags) -r -o $@ $(link_multi_deps) $(cmd_secanalysis)
+cmd_lzo = (cat $(filter-out FORCE,$^) | lzop -9 && $(call size_append, $(filter-out FORCE,$^))) > $@ || (rm -f $@ ; false)
+KBUILD_SRC = 
+CONFIG_SHELL = /bin/bash
+KBUILD_SUBDIR_ASFLAGS := $(subst ,, )
+<F = $(notdir $<)
+quiet_cmd_shipped = SHIPPED $@
+modkern_aflags := $(subst ,, )
+quiet_cmd_objcopy = OBJCOPY $@
+cmd_uimage = $(CONFIG_SHELL) $(MKIMAGE) -A $(UIMAGE_ARCH) -O linux -C $(UIMAGE_COMPRESSION) $(UIMAGE_OPTS-y) -T $(UIMAGE_TYPE) -a $(UIMAGE_LOADADDR) -e $(UIMAGE_ENTRYADDR) -n $(UIMAGE_NAME) -d $(UIMAGE_IN) $(UIMAGE_OUT)
+cmd_S_efi = ( echo '.section .rodata.efi.init,"a"'; echo '.balign 16'; echo '.global __efi_hello_world_begin'; echo '__efi_hello_world_begin:'; echo '.incbin "$<" '; echo '__efi_hello_world_end:'; echo '.global __efi_hello_world_end'; echo '.balign 16'; ) > $@
+HOSTOS = linux
+KBUILD_CPPFLAGS = -D__KERNEL__ -D__UBOOT__
+__subdir-m := 
+cmd_host-cobjs = $(HOSTCC) $(hostc_flags) -c -o $@ $<
+PERL = perl
+quiet_cmd_as_s_S = CPP $(quiet_modtag) $@
+cmd_mkimage = $(objtree)/tools/mkimage $(MKIMAGEFLAGS_$(@F)) -d $< $@ $(if $(KBUILD_VERBOSE:1=), >$(MKIMAGEOUTPUT))
+dtc-version = $(shell $(CONFIG_SHELL) $(srctree)/scripts/dtc-version.sh $(DTC))
+quiet_cmd_mkimage = MKIMAGE $@
+UIMAGE_OUT = $@
+arg-check = $(strip $(filter-out $(cmd_$(1)), $(cmd_$@)) $(filter-out $(cmd_$@),   $(cmd_$(1))) )
+ld_flags = $(LDFLAGS) $(ldflags-y)
+name-fix = $(subst $(comma),_,$(subst -,_,$1))
+KBUILD_CFLAGS = -Wall -Wstrict-prototypes -Wno-format-security -fno-builtin -ffreestanding
+RCS_FIND_IGNORE = \( -name SCCS -o -name BitKeeper -o -name .svn -o -name CVS -o -name .pc -o -name .hg -o -name .git \) -prune -o
+quiet_cmd_host-csingle = HOSTCC  $@
+basetarget = $(basename $(notdir $@))
+^F = $(notdir $^)
+kbuild-dir := ./scripts/basic
+UIMAGE_ARCH = $(SRCARCH)
+SUFFIXES := 
+if_changed = $(if $(strip $(any-prereq) $(arg-check)), @set -e; $(echo-cmd) $(cmd_$(1)); printf '%s\n' 'cmd_$@ := $(make-cmd)' > $(dot-target).cmd)
+cmd_link_multi-m = $(cmd_link_multi-y)
+baseprereq = $(basename $(notdir $<))
+EXTRA_CPPFLAGS := 
+addtree = $(if $(patsubst -I%,%,$(1)), $(if $(filter-out -I/%,$(1)),$(patsubst -I%,-I$(srctree)/%,$(1))) $(1))
+cmd_files := scripts/basic/.fixdep.cmd
+_hostcxx_flags = $(HOSTCXXFLAGS) $(HOST_EXTRACXXFLAGS) $(HOSTCXXFLAGS_$(basetarget).o)
+__subdir-y := 
+.INCLUDE_DIRS = /home/book/100ask_imx6ull-sdk/Uboot-2017.03 /usr/include /usr/local/include /usr/include
+quiet_cmd_xzkern = XZKERN  $@
+_c_flags = $(filter-out $(CFLAGS_REMOVE_$(basetarget).o), $(orig_c_flags))
+orig_a_flags = $(KBUILD_CPPFLAGS) $(KBUILD_AFLAGS) $(KBUILD_SUBDIR_ASFLAGS) $(asflags-y) $(AFLAGS_$(basetarget).o)
+EFI_LDS_PATH = $(srctree)/arch/$(ARCH)/lib/$(EFI_LDS)
+KBUILD_EXTMOD = 
+KBUILD_CHECKSRC = 0
+.RECIPEPREFIX := 
+MAKE_TERMERR = /dev/pts/1
+EXTRA_CFLAGS := 
+TMPOUT := 
+MAKE_HOST := x86_64-pc-linux-gnu
+host-cxxmulti := 
+cppflags-y := $(subst ,,  )
+cmd_host-csingle = $(HOSTCC) $(hostc_flags) -o $@ $< $(HOST_LOADLIBES) $(HOSTLOADLIBES_$(@F))
+LANG = en_US.UTF-8
+TERM = xterm
+multi-objs-y := 
+empty := 
+quote := "
+UBOOTVERSION = 2017.03
+kecho := echo
+UIMAGE_LOADADDR = arch_must_set_this
+
+
+
+
+
+
+
+scripts/basic/%: scripts/basic/%_shipped
+	$(call cmd,shipped)
+
+scripts/basic/%.dtb.S: scripts/basic/%.dtb
+	$(call cmd,dt_S_dtb)
+
+scripts/basic/%.dtb: scripts/basic/%.dts FORCE
+	$(call if_changed_dep,dtc)
+
+scripts/basic/%.S: scripts/basic/%.ttf
+	$(call cmd,S_ttf)
+
+scripts/basic/%_efi.S: scripts/basic/%.efi
+	$(call cmd,S_efi)
+
+scripts/basic/%.efi: scripts/basic/%.so
+	$(call cmd,efi_objcopy)
+
+scripts/basic/%.s: scripts/basic/%.c FORCE
+	$(call if_changed_dep,cc_s_c)
+
+scripts/basic/%.i: scripts/basic/%.c FORCE
+	$(call if_changed_dep,cc_i_c)
+
+scripts/basic/%.symtypes: scripts/basic/%.c FORCE
+	$(call cmd,cc_symtypes_c)
+
+scripts/basic/%.o: scripts/basic/%.c FORCE
+	$(call cmd,force_checksrc)
+	$(call if_changed_rule,cc_o_c)
+
+scripts/basic/%.lst: scripts/basic/%.c FORCE
+	$(call if_changed_dep,cc_lst_c)
+
+scripts/basic/%.s: scripts/basic/%.S FORCE
+	$(call if_changed_dep,as_s_S)
+
+scripts/basic/%.o: scripts/basic/%.S FORCE
+	$(call if_changed_dep,as_o_S)
+
+scripts/basic/%.lds: scripts/basic/%.lds.S FORCE
+	$(call if_changed_dep,cpp_lds_S)
+
+scripts/basic/%-asn1.c scripts/basic/%-asn1.h: scripts/basic/%.asn1 scripts/asn1_compiler
+	$(call cmd,asn1_compiler)
+
+
+
+/usr/include/unistd.h:
+
+/usr/include/x86_64-linux-gnu/bits/endian.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/x86_64-linux-gnu/bits/libio.h:
+
+/usr/include/asm-generic/sockios.h:
+
+/usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
+
+/usr/include/x86_64-linux-gnu/bits/fcntl.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
+
+/usr/include/stdio.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio.h:
+
+FORCE:
+
+.PHONY: __build FORCE
+
+/usr/include/x86_64-linux-gnu/bits/in.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:
+
+/usr/include/limits.h:
+
+.PRECIOUS: scripts/basic/%-asn1.c scripts/basic/%-asn1.h
+
+scripts/Makefile.uncmd_spl:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
+
+scripts/basic/fixdep.c:
+
+/usr/include/x86_64-linux-gnu/bits/socket2.h:
+
+/usr/include/x86_64-linux-gnu/bits/_G_config.h:
+
+.SUFFIXES:
+
+/usr/include/x86_64-linux-gnu/bits/waitflags.h:
+
+/usr/include/alloca.h:
+
+/usr/include/strings.h:
+
+/usr/include/x86_64-linux-gnu/bits/floatn.h:
+
+/usr/include/x86_64-linux-gnu/sys/socket.h:
+
+/usr/include/x86_64-linux-gnu/bits/select.h:
+
+scripts/basic/dsdt.asl:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h:
+
+/usr/include/x86_64-linux-gnu/asm/sockios.h:
+
+scripts/basic/modules.order: FORCE
+	$(Q)(cat /dev/null; $(modorder-cmds)) > $@
+
+/usr/include/x86_64-linux-gnu/bits/strings_fortified.h:
+
+/usr/include/x86_64-linux-gnu/bits/long-double.h:
+
+/usr/include/features.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/time_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/environments.h:
+
+/usr/include/arpa/inet.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h:
+
+/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
+
+scripts/basic/%-asn1.c:
+
+/usr/include/string.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
+
+scripts/Makefile.host:
+
+/usr/include/x86_64-linux-gnu/bits/fcntl2.h:
+
+/usr/include/endian.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/unistd.h:
+
+/usr/include/x86_64-linux-gnu/bits/mman-linux.h:
+
+/usr/include/x86_64-linux-gnu/bits/stat.h:
+
+/usr/include/x86_64-linux-gnu/bits/sockaddr.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib.h:
+
+/usr/include/fcntl.h:
+
+.DEFAULT:
+
+scripts/basic/helloworld.o:
+
+/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h:
+
+/usr/include/x86_64-linux-gnu/sys/stat.h:
+
+/usr/include/asm-generic/socket.h:
+
+scripts/basic/%-asn1.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
+
+/usr/include/netinet/in.h:
+
+/usr/include/x86_64-linux-gnu/bits/confname.h:
+
+/usr/include/x86_64-linux-gnu/bits/floatn-common.h:
+
+/usr/include/x86_64-linux-gnu/bits/sysmacros.h:
+
+/usr/include/x86_64-linux-gnu/bits/local_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
+
+__build: scripts/basic/fixdep
+	@:
+
+scripts/Makefile.lib:
+
+/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
+
+/usr/include/x86_64-linux-gnu/sys/sysmacros.h:
+
+scripts/Makefile.build:
+
+/usr/include/x86_64-linux-gnu/bits/select2.h:
+
+/usr/include/x86_64-linux-gnu/sys/select.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
+
+/usr/include/x86_64-linux-gnu/bits/fcntl-linux.h:
+
+/usr/include/x86_64-linux-gnu/bits/types.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
+
+scripts/basic/Makefile:
+
+/usr/include/x86_64-linux-gnu/bits/socket.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/wordsize.h:
+
+/usr/include/x86_64-linux-gnu/bits/byteswap.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h:
+
+scripts/basic/dsdt.c: scripts/basic/dsdt.asl
+	$(call cmd,acpi_c_asl)
+
+include/config/auto.conf:
+
+/usr/include/x86_64-linux-gnu/bits/mman.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
+
+/usr/include/linux/limits.h:
+
+/usr/include/x86_64-linux-gnu/sys/types.h:
+
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:
+
+/usr/include/x86_64-linux-gnu/bits/string_fortified.h:
+
+/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
+
+/usr/include/x86_64-linux-gnu/bits/sys_errlist.h:
+
+scripts/Kbuild.include:
+
+/usr/include/x86_64-linux-gnu/bits/typesizes.h:
+
+scripts/basic/.fixdep.cmd:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h:
+
+/usr/include/x86_64-linux-gnu/bits/socket_type.h:
+
+scripts/basic/fixdep: scripts/basic/fixdep.c FORCE /usr/include/stdc-predef.h /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h /usr/include/x86_64-linux-gnu/bits/wordsize.h /usr/include/x86_64-linux-gnu/bits/long-double.h /usr/include/x86_64-linux-gnu/gnu/stubs.h /usr/include/x86_64-linux-gnu/gnu/stubs-64.h /usr/include/x86_64-linux-gnu/bits/types.h /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/x86_64-linux-gnu/bits/types/clock_t.h /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h /usr/include/x86_64-linux-gnu/bits/types/time_t.h /usr/include/x86_64-linux-gnu/bits/types/timer_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h /usr/include/x86_64-linux-gnu/bits/stdint-intn.h /usr/include/endian.h /usr/include/x86_64-linux-gnu/bits/endian.h /usr/include/x86_64-linux-gnu/bits/byteswap.h /usr/include/x86_64-linux-gnu/bits/byteswap-16.h /usr/include/x86_64-linux-gnu/bits/uintn-identity.h /usr/include/x86_64-linux-gnu/sys/select.h /usr/include/x86_64-linux-gnu/bits/select.h /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h /usr/include/x86_64-linux-gnu/bits/select2.h /usr/include/x86_64-linux-gnu/sys/sysmacros.h /usr/include/x86_64-linux-gnu/bits/sysmacros.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h /usr/include/x86_64-linux-gnu/sys/stat.h /usr/include/x86_64-linux-gnu/bits/stat.h /usr/include/x86_64-linux-gnu/sys/mman.h /usr/include/x86_64-linux-gnu/bits/mman.h /usr/include/x86_64-linux-gnu/bits/mman-linux.h /usr/include/x86_64-linux-gnu/bits/mman-shared.h /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h /usr/include/x86_64-linux-gnu/bits/environments.h /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/x86_64-linux-gnu/bits/getopt_posix.h /usr/include/x86_64-linux-gnu/bits/getopt_core.h /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h /usr/include/x86_64-linux-gnu/bits/fcntl2.h /usr/include/string.h /usr/include/x86_64-linux-gnu/bits/libc-header-start.h /usr/include/x86_64-linux-gnu/bits/types/locale_t.h /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h /usr/include/strings.h /usr/include/x86_64-linux-gnu/bits/strings_fortified.h /usr/include/x86_64-linux-gnu/bits/string_fortified.h /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/x86_64-linux-gnu/bits/floatn.h /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__FILE.h /usr/include/x86_64-linux-gnu/bits/types/FILE.h /usr/include/x86_64-linux-gnu/bits/libio.h /usr/include/x86_64-linux-gnu/bits/_G_config.h /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/x86_64-linux-gnu/bits/sys_errlist.h /usr/include/x86_64-linux-gnu/bits/stdio.h /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h /usr/include/x86_64-linux-gnu/bits/local_lim.h /usr/include/linux/limits.h /usr/include/x86_64-linux-gnu/bits/posix2_lim.h /usr/include/ctype.h /usr/include/arpa/inet.h /usr/include/netinet/in.h /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/include/x86_64-linux-gnu/sys/socket.h /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h /usr/include/x86_64-linux-gnu/bits/socket.h /usr/include/x86_64-linux-gnu/bits/socket_type.h /usr/include/x86_64-linux-gnu/bits/sockaddr.h /usr/include/x86_64-linux-gnu/asm/socket.h /usr/include/asm-generic/socket.h /usr/include/x86_64-linux-gnu/asm/sockios.h /usr/include/asm-generic/sockios.h /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h /usr/include/x86_64-linux-gnu/bits/socket2.h /usr/include/x86_64-linux-gnu/bits/in.h
+	$(call if_changed_dep,host-csingle)
+
+/usr/include/x86_64-linux-gnu/bits/getopt_core.h:
+
+/usr/include/x86_64-linux-gnu/asm/socket.h:
+
+/usr/include/x86_64-linux-gnu/sys/mman.h:
+
+/usr/include/stdc-predef.h:
+
+/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+
+arch/arm/lib/:
+
+/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
+
+/usr/include/x86_64-linux-gnu/bits/mman-shared.h:
+
+scripts/basic/helloworld.so: scripts/basic/helloworld.o arch/arm/lib/ arch/arm/lib/ arch/arm/lib/
+	$(call cmd,efi_ld)
+
+/usr/include/ctype.h:
+
+/usr/include/x86_64-linux-gnu/bits/byteswap-16.h:
+
+/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
+
+include/autoconf.mk:
+
+/usr/include/x86_64-linux-gnu/bits/types/FILE.h:
+
+
+
+
+
+
+  HOSTCC  scripts/kconfig/conf.o
+  HOSTLD  scripts/kconfig/conf
+
+
+
+cc-cross-prefix = $(word 1, $(foreach c,$(1), $(shell set -e; if (which $(strip $(c))$(CC)) > /dev/null 2>&1 ; then echo $(c); fi)))
+quiet = quiet_
+?F = $(notdir $?)
+<D = $(patsubst %/,%,$(dir $<))
+cmd_lzma = (cat $(filter-out FORCE,$^) | lzma -9 && $(call size_append, $(filter-out FORCE,$^))) > $@ || (rm -f $@ ; false)
+HOSTLOADLIBES_qconf = $(KC_QT_LIBS)
+.SHELLFLAGS := -c
+SPL_ := 
+quiet_modtag := $(subst ,,   )
+PATCHLEVEL = 03
+lib-y := 
+filechk = 	$(Q)set -e; $(kecho) '  CHK     $@'; mkdir -p $(dir $@); $(filechk_$(1)) < $< > $@.tmp; if [ -r $@ ] && cmp -s $@ $@.tmp; then rm -f $@.tmp; else $(kecho) '  UPD     $@'; mv -f $@.tmp $@; fi
+quiet_cmd_cc_symtypes_c = SYM $(quiet_modtag) $@
+subdir-obj-y := 
+quiet_cmd_host-cxxmulti = HOSTLD  $@
+OBJCOPY = arm-buildroot-linux-gnueabihf-objcopy
+obj-y := 
+gconf-objs := gconf.o zconf.tab.o
+lxdialog := lxdialog/checklist.o lxdialog/util.o lxdialog/inputbox.o lxdialog/textbox.o lxdialog/yesno.o lxdialog/menubox.o
+cmd_cc_o_c = $(CC) $(c_flags) -c -o $@ $<
+MKIMAGE := ./scripts/mkuboot.sh
+subdir-ccflags-y := 
+@D = $(patsubst %/,%,$(dir $@))
+@F = $(notdir $@)
+MAKE_VERSION := 4.1
+UBOOTINCLUDE = 
+CURDIR := /home/book/100ask_imx6ull-sdk/Uboot-2017.03
+SHELL = /bin/sh
+NM = arm-buildroot-linux-gnueabihf-nm
+cmd_scripts/kconfig/lxdialog/textbox.o := cc -Wp,-MD,scripts/kconfig/lxdialog/.textbox.o.d -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer    -D_GNU_SOURCE -D_DEFAULT_SOURCE -I/usr/include/ncursesw -DCURSES_LOC="<ncurses.h>" -DNCURSES_WIDECHAR=1 -DLOCALE   -c -o scripts/kconfig/lxdialog/textbox.o scripts/kconfig/lxdialog/textbox.c
+Q = @
+ld-version = $(shell $(LD) --version | $(srctree)/scripts/ld-version.sh)
+cmd_xzkern = (cat $(filter-out FORCE,$^) | sh $(srctree)/scripts/xz_wrap.sh && $(call size_append, $(filter-out FORCE,$^))) > $@ || (rm -f $@ ; false)
+quiet_kecho := echo
+LEX_PREFIX_zconf := zconf
+PHONY := __build xconfig gconfig menuconfig config silentoldconfig update-po-config localmodconfig localyesconfig oldconfig allnoconfig allyesconfig allmodconfig alldefconfig randconfig listnewconfig olddefconfig oldnoconfig savedefconfig defconfig kvmconfig xenconfig tinyconfig scripts/kconfig/dochecklxdialog  FORCE
+MODVERDIR = .tmp_versions
+source_scripts/kconfig/lxdialog/textbox.o := scripts/kconfig/lxdialog/textbox.c
+cmd_S_ttf = ( echo '.section .rodata.ttf.init,"a"'; echo '.balign 16'; echo '.global __ttf_$(*F)_begin'; echo '__ttf_$(*F)_begin:'; echo '.incbin "$<" '; echo '__ttf_$(*F)_end:'; echo '.global __ttf_$(*F)_end'; echo '.balign 16'; ) > $@
+_ = /usr/bin/make
+quiet_cmd_link_multi-m = LD [M]  $@
+subdir-m := $(subst ,, )
+a_flags = -Wp,-MD,$(depfile) $(NOSTDINC_FLAGS) $(UBOOTINCLUDE) $(__a_flags) $(modkern_aflags)
+mconf-objs := mconf.o zconf.tab.o lxdialog/checklist.o lxdialog/util.o lxdialog/inputbox.o lxdialog/textbox.o lxdialog/yesno.o lxdialog/menubox.o
+subdir-asflags-y := 
+?D = $(patsubst %/,%,$(dir $?))
+cc-fullversion = $(shell $(CONFIG_SHELL) $(srctree)/scripts/gcc-version.sh -p $(CC))
+quiet_cmd_efi_objcopy = OBJCOPY $@
+UIMAGE_ENTRYADDR = $(UIMAGE_LOADADDR)
+nconf-objs := nconf.o zconf.tab.o nconf.gui.o
+size_append = printf $(shell dec_size=0; for F in $1; do fsize=$$(stat -c "%s" $$F); dec_size=$$(expr $$dec_size + $$fsize); done; printf "%08x\n" $$dec_size | sed 's/\(..\)/\1 /g' | { read ch0 ch1 ch2 ch3; for ch in $$ch3 $$ch2 $$ch1 $$ch0; do printf '%s%03o' '\\' $$((0x$$ch)); done; } )
+BOARDDIR = 
+multi_depend = $(foreach m, $(notdir $1), $(eval $(obj)/$m: $(addprefix $(obj)/, $(foreach s, $3, $($(m:%$(strip $2)=%$(s)))))))
+quiet_cmd_ld = LD      $@
+real-objs-m := 
+MAKEFILE_LIST :=  scripts/Makefile.build scripts/Makefile.uncmd_spl scripts/Kbuild.include scripts/kconfig/Makefile scripts/Makefile.lib scripts/Makefile.host scripts/kconfig/lxdialog/.checklist.o.cmd scripts/kconfig/lxdialog/.inputbox.o.cmd scripts/kconfig/lxdialog/.menubox.o.cmd scripts/kconfig/lxdialog/.textbox.o.cmd scripts/kconfig/lxdialog/.util.o.cmd scripts/kconfig/lxdialog/.yesno.o.cmd scripts/kconfig/.mconf.cmd scripts/kconfig/.mconf.o.cmd scripts/kconfig/.zconf.tab.o.cmd
+qconf-objs := zconf.tab.o
+UIMAGE_TYPE = kernel
+CHECKFLAGS = -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ -Wbitwise -Wno-return-void -D__CHECK_ENDIAN__ 
+_cpp_flags = $(KBUILD_CPPFLAGS) $(cppflags-y) $(CPPFLAGS_$(@F))
+host-cxxobjs := scripts/kconfig/qconf.o
+HOSTCFLAGS_zconf.lex.o := -Iscripts/kconfig
+cmd_scripts/kconfig/mconf := cc  -o scripts/kconfig/mconf scripts/kconfig/mconf.o scripts/kconfig/zconf.tab.o scripts/kconfig/lxdialog/checklist.o scripts/kconfig/lxdialog/util.o scripts/kconfig/lxdialog/inputbox.o scripts/kconfig/lxdialog/textbox.o scripts/kconfig/lxdialog/yesno.o scripts/kconfig/lxdialog/menubox.o  -lncursesw -ltinfo
+host-objdirs := scripts/kconfig/lxdialog/
+GNUMAKEFLAGS := 
+srctree = .
+HOSTCC = cc
+cmd_scripts/kconfig/mconf.o := cc -Wp,-MD,scripts/kconfig/.mconf.o.d -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer    -D_GNU_SOURCE -D_DEFAULT_SOURCE -I/usr/include/ncursesw -DCURSES_LOC="<ncurses.h>" -DNCURSES_WIDECHAR=1 -DLOCALE   -c -o scripts/kconfig/mconf.o scripts/kconfig/mconf.c
+host-cobjs := scripts/kconfig/conf.o scripts/kconfig/gconf.o scripts/kconfig/kxgettext.o scripts/kconfig/lxdialog/checklist.o scripts/kconfig/lxdialog/inputbox.o scripts/kconfig/lxdialog/menubox.o scripts/kconfig/lxdialog/textbox.o scripts/kconfig/lxdialog/util.o scripts/kconfig/lxdialog/yesno.o scripts/kconfig/mconf.o scripts/kconfig/nconf.gui.o scripts/kconfig/nconf.o scripts/kconfig/zconf.tab.o
+XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
+cc-version = $(shell $(CONFIG_SHELL) $(srctree)/scripts/gcc-version.sh $(CC))
+quiet_cmd_acpi_c_asl = ASL     $<
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1001/bus
+VERSION = 2017
+CC = arm-buildroot-linux-gnueabihf-gcc
+deps_scripts/kconfig/lxdialog/util.o :=  /usr/include/stdc-predef.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h scripts/kconfig/lxdialog/dialog.h /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h /usr/include/x86_64-linux-gnu/bits/wordsize.h /usr/include/x86_64-linux-gnu/bits/long-double.h /usr/include/x86_64-linux-gnu/gnu/stubs.h /usr/include/x86_64-linux-gnu/gnu/stubs-64.h /usr/include/x86_64-linux-gnu/bits/types.h /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/x86_64-linux-gnu/bits/types/clock_t.h /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h /usr/include/x86_64-linux-gnu/bits/types/time_t.h /usr/include/x86_64-linux-gnu/bits/types/timer_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h /usr/include/x86_64-linux-gnu/bits/stdint-intn.h /usr/include/endian.h /usr/include/x86_64-linux-gnu/bits/endian.h /usr/include/x86_64-linux-gnu/bits/byteswap.h /usr/include/x86_64-linux-gnu/bits/byteswap-16.h /usr/include/x86_64-linux-gnu/bits/uintn-identity.h /usr/include/x86_64-linux-gnu/sys/select.h /usr/include/x86_64-linux-gnu/bits/select.h /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h /usr/include/x86_64-linux-gnu/bits/select2.h /usr/include/x86_64-linux-gnu/sys/sysmacros.h /usr/include/x86_64-linux-gnu/bits/sysmacros.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h /usr/include/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/stat.h /usr/include/x86_64-linux-gnu/bits/fcntl2.h /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h /usr/include/x86_64-linux-gnu/bits/environments.h /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/x86_64-linux-gnu/bits/getopt_posix.h /usr/include/x86_64-linux-gnu/bits/getopt_core.h /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/ctype.h /usr/include/x86_64-linux-gnu/bits/types/locale_t.h /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/libc-header-start.h /usr/include/x86_64-linux-gnu/bits/waitflags.h /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/x86_64-linux-gnu/bits/floatn.h /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/string.h /usr/include/strings.h /usr/include/x86_64-linux-gnu/bits/strings_fortified.h /usr/include/x86_64-linux-gnu/bits/string_fortified.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdbool.h /usr/include/libintl.h /usr/include/locale.h /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/ncursesw/ncurses.h /usr/include/ncursesw/ncurses_dll.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__FILE.h /usr/include/x86_64-linux-gnu/bits/types/FILE.h /usr/include/x86_64-linux-gnu/bits/libio.h /usr/include/x86_64-linux-gnu/bits/_G_config.h  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/x86_64-linux-gnu/bits/sys_errlist.h /usr/include/x86_64-linux-gnu/bits/stdio.h /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/include/wchar.h /usr/include/x86_64-linux-gnu/bits/types/wint_t.h /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h /usr/include/x86_64-linux-gnu/bits/wchar2.h /usr/include/ncursesw/unctrl.h /usr/include/ncursesw/curses.h 
+dtc_cpp_flags = -Wp,-MD,$(depfile).pre.tmp -nostdinc -I$(srctree)/arch/$(ARCH)/dts -I$(srctree)/arch/$(ARCH)/dts/include -Iinclude -I$(srctree)/include -I$(srctree)/arch/$(ARCH)/include -include $(srctree)/include/linux/kconfig.h -D__ASSEMBLY__ -undef -D__DTS__
+c_flags = -Wp,-MD,$(depfile) $(NOSTDINC_FLAGS) $(UBOOTINCLUDE) $(__c_flags) $(modkern_cflags) -D"KBUILD_STR(s)=#s" $(basename_flags) $(modname_flags)
+cmd_objcopy = $(OBJCOPY) $(OBJCOPYFLAGS) $(OBJCOPYFLAGS_$(@F)) $< $@
+LC_COLLATE = C
+host-cmulti := scripts/kconfig/conf scripts/kconfig/gconf scripts/kconfig/kxgettext scripts/kconfig/mconf scripts/kconfig/nconf
+AWK = awk
+KBUILD_AFLAGS = -D__ASSEMBLY__
+quiet_cmd_as_o_S = AS $(quiet_modtag)  $@
+dot-target = $(dir $@).$(notdir $@)
+multi-used-y := 
+__hostc_flags = $(_hostc_flags)
+if_changed_rule = $(if $(strip $(any-prereq) $(arg-check) ), @set -e; $(rule_$(1)))
+squote := '
+LESSOPEN = | /usr/bin/lesspipe %s
+CPP = arm-buildroot-linux-gnueabihf-gcc -E
+single-used-m := 
+quiet_cmd_host-cxxobjs = HOSTCXX $@
+_dummy := $(subst ,, )
+qconf-cxxobjs := qconf.o
+cmd_scripts/kconfig/lxdialog/checklist.o := cc -Wp,-MD,scripts/kconfig/lxdialog/.checklist.o.d -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer    -D_GNU_SOURCE -D_DEFAULT_SOURCE -I/usr/include/ncursesw -DCURSES_LOC="<ncurses.h>" -DNCURSES_WIDECHAR=1 -DLOCALE   -c -o scripts/kconfig/lxdialog/checklist.o scripts/kconfig/lxdialog/checklist.c
+cc-option-yn = $(call try-run, $(CC) -Werror $(KBUILD_CPPFLAGS) $(KBUILD_CFLAGS) $(1) -c -x c /dev/null -o "$$TMP",y,n)
+SSH_CONNECTION = 192.168.37.1 57533 192.168.37.134 22
+PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/book/100ask_imx6ull-sdk/ToolChain/arm-buildroot-linux-gnueabihf_sdk-buildroot/bin
+conf-objs := conf.o  zconf.tab.o
+flags = $(foreach o,$($(1)),$(if $(filter -I%,$(o)),$(call addtree,$(o)),$(o)))
+LD = arm-buildroot-linux-gnueabihf-ld.bfd
+CPUDIR = 
+clean := -f ./scripts/Makefile.clean obj
+HOSTLDFLAGS = 
+quiet_cmd_as_s_S = CPP $(quiet_modtag) $@
+EXTRA_AFLAGS := 
+space := $(subst ,, )
+SSH_TTY = /dev/pts/1
+XDG_RUNTIME_DIR = /run/user/1001
+hdr-inst := -f ./scripts/Makefile.headersinst obj
+always := scripts/kconfig/dochecklxdialog
+rule_cc_o_c = 	$(call echo-cmd,checksrc) $(cmd_checksrc) $(call echo-cmd,cc_o_c) $(cmd_cc_o_c); $(cmd_modversions) $(call echo-cmd,record_mcount) $(cmd_record_mcount) scripts/basic/fixdep $(depfile) $@ '$(call make-cmd,cc_o_c)' > $(dot-target).tmp; rm -f $(depfile); mv -f $(dot-target).tmp $(dot-target).cmd
+quiet_cmd_lz4 = LZ4     $@
+VENDOR = 
+quiet_cmd_bzip2 = BZIP2   $@
+u_boot_dtsi = $(firstword $(u_boot_dtsi_options))
+quiet_cmd_host-cmulti = HOSTLD  $@
+try-run = $(shell set -e; TMP="$(TMPOUT).$$$$.tmp"; TMPO="$(TMPOUT).$$$$.o"; TMPSU="$(TMPOUT).$$$$.su"; if ($(1)) >/dev/null 2>&1; then echo "$(2)"; else echo "$(3)"; fi; rm -f "$$TMP" "$$TMPO" "$$TMPSU")
+quiet_cmd_moc = MOC     $@
+quiet_cmd_link_multi-y = LD      $@
+comma := ,
+any-prereq = $(filter-out $(PHONY),$?) $(filter-out $(PHONY) $(wildcard $^),$^)
+KBUILD_BUILTIN = 1
+VPATH = .
+quiet_cmd_cc_lst_c = MKLST   $@
+__hostcxx_flags = $(_hostcxx_flags)
+AR = arm-buildroot-linux-gnueabihf-ar
+cmd_cpp_lds_S = $(CPP) $(cpp_flags) -P -C -U$(ARCH) -D__ASSEMBLY__ -DLINKER_SCRIPT -o $@ $<
+LC_NUMERIC = C
+ar-option = $(call try-run, $(AR) rc$(1) "$$TMP",$(1),$(2))
+__a_flags = $(_a_flags)
+LDFLAGS = 
+build := -f ./scripts/Makefile.build obj
+cmd_cc_lst_c = $(CC) $(c_flags) -g -c -o $*.o $< && $(CONFIG_SHELL) $(srctree)/scripts/makelst $*.o System.map $(OBJDUMP) > $@
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+basename_flags = -D"KBUILD_BASENAME=KBUILD_STR($(call name-fix,$(basetarget)))"
+simple-targets := oldconfig allnoconfig allyesconfig allmodconfig alldefconfig randconfig listnewconfig olddefconfig
+objtree = .
+cc-disable-warning = $(call try-run, $(CC) $(KBUILD_CPPFLAGS) $(KBUILD_CFLAGS) -W$(strip $(1)) -c -x c /dev/null -o "$$TMP",-Wno-$(strip $(1)))
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+source_scripts/kconfig/mconf.o := scripts/kconfig/mconf.c
+source_scripts/kconfig/lxdialog/checklist.o := scripts/kconfig/lxdialog/checklist.c
+SUBLEVEL = 
+_a_flags = $(filter-out $(AFLAGS_REMOVE_$(basetarget).o), $(orig_a_flags))
+cmd_gensymtypes = $(CPP) -D__GENKSYMS__ $(c_flags) $< | $(GENKSYMS) $(if $(1), -T $(2)) $(patsubst y,-s _,$(CONFIG_HAVE_UNDERSCORE_SYMBOL_PREFIX)) $(if $(KBUILD_PRESERVE),-p) -r $(firstword $(wildcard $(2:.symtypes=.symref) /dev/null))
+%F = $(notdir $%)
+quiet_cmd_dtc = DTC     $@
+DISPLAY = localhost:10.0
+dtc-tmp = $(subst $(comma),_,$(dot-target).dts.tmp)
+u_boot_dtsi_options = $(wildcard $(dts_dir)/$(basename $(notdir $<))-u-boot.dtsi) $(wildcard $(dts_dir)/$(subst $\",,$(CONFIG_SYS_SOC))-u-boot.dtsi) $(wildcard $(dts_dir)/$(subst $\",,$(CONFIG_SYS_CPU))-u-boot.dtsi) $(wildcard $(dts_dir)/$(subst $\",,$(CONFIG_SYS_VENDOR))-u-boot.dtsi) $(wildcard $(dts_dir)/u-boot.dtsi)
+KBUILD_SUBDIR_CCFLAGS := $(subst ,, )
+cpp_flags = -Wp,-MD,$(depfile) $(NOSTDINC_FLAGS) $(UBOOTINCLUDE) $(__cpp_flags)
+KBUILD_MODULES = 
+quiet_cmd_xzmisc = XZMISC  $@
+quiet_cmd_efi_ld = LD      $@
+HOSTCFLAGS_gconf.o = `pkg-config --cflags gtk+-2.0 gmodule-2.0 libglade-2.0` -Wno-missing-prototypes
+HOSTCXX = c++
+quiet_cmd_asn1_compiler = ASN.1   $@
+cmd_cc_symtypes_c = set -e; $(call cmd_gensymtypes,true,$@) >/dev/null; test -s $@ || rm -f $@
+prefix := .
+cmd_host-cxxmulti = $(HOSTCXX) $(HOSTLDFLAGS) -o $@ $(foreach o,objs cxxobjs, $(addprefix $(obj)/,$($(@F)-$(o)))) $(HOST_LOADLIBES) $(HOSTLOADLIBES_$(@F))
+modorder-cmds = $(foreach m, $(modorder), $(if $(filter %/modules.order, $m), cat $m;, echo kernel/$m;))
+extra-y := 
+quiet_cmd_gzip = GZIP    $@
+PWD = /home/book/100ask_imx6ull-sdk/Uboot-2017.03
+cc-ldoption = $(call try-run, $(CC) $(1) -nostdlib -x c /dev/null -o "$$TMP",$(1),$(2))
+source_scripts/kconfig/lxdialog/util.o := scripts/kconfig/lxdialog/util.c
+quiet_cmd_cc_s_c = CC $(quiet_modtag)  $@
+dtc-option = $(call try-run, echo '/dts-v1/; / {};' | $(DTC) $(1),$(1),$(2))
+OBJCOPYFLAGS = 
+src := scripts/kconfig
+cmd_scripts/kconfig/lxdialog/menubox.o := cc -Wp,-MD,scripts/kconfig/lxdialog/.menubox.o.d -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer    -D_GNU_SOURCE -D_DEFAULT_SOURCE -I/usr/include/ncursesw -DCURSES_LOC="<ncurses.h>" -DNCURSES_WIDECHAR=1 -DLOCALE   -c -o scripts/kconfig/lxdialog/menubox.o scripts/kconfig/lxdialog/menubox.c
+quiet_cmd_lzo = LZO     $@
+*D = $(patsubst %/,%,$(dir $*))
+UIMAGE_COMPRESSION = $(if $(2),$(2),none)
+modname = $(basetarget)
+hostprogs-y := conf nconf mconf kxgettext qconf gconf
+cmd_scripts/kconfig/lxdialog/yesno.o := cc -Wp,-MD,scripts/kconfig/lxdialog/.yesno.o.d -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer    -D_GNU_SOURCE -D_DEFAULT_SOURCE -I/usr/include/ncursesw -DCURSES_LOC="<ncurses.h>" -DNCURSES_WIDECHAR=1 -DLOCALE   -c -o scripts/kconfig/lxdialog/yesno.o scripts/kconfig/lxdialog/yesno.c
+EXTRA_LDFLAGS := 
+multi-objs-m := 
+PYTHON = python
+multi-objs := $(subst ,, )
+cmd_as_o_S = $(CC) $(a_flags) -c -o $@ $<
+deps_scripts/kconfig/lxdialog/textbox.o := /usr/include/stdc-predef.h scripts/kconfig/lxdialog/dialog.h /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h /usr/include/x86_64-linux-gnu/bits/wordsize.h /usr/include/x86_64-linux-gnu/bits/long-double.h /usr/include/x86_64-linux-gnu/gnu/stubs.h /usr/include/x86_64-linux-gnu/gnu/stubs-64.h /usr/include/x86_64-linux-gnu/bits/types.h /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/x86_64-linux-gnu/bits/types/clock_t.h /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h /usr/include/x86_64-linux-gnu/bits/types/time_t.h /usr/include/x86_64-linux-gnu/bits/types/timer_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h /usr/include/x86_64-linux-gnu/bits/stdint-intn.h /usr/include/endian.h /usr/include/x86_64-linux-gnu/bits/endian.h /usr/include/x86_64-linux-gnu/bits/byteswap.h /usr/include/x86_64-linux-gnu/bits/byteswap-16.h /usr/include/x86_64-linux-gnu/bits/uintn-identity.h /usr/include/x86_64-linux-gnu/sys/select.h /usr/include/x86_64-linux-gnu/bits/select.h /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h /usr/include/x86_64-linux-gnu/bits/select2.h /usr/include/x86_64-linux-gnu/sys/sysmacros.h /usr/include/x86_64-linux-gnu/bits/sysmacros.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h /usr/include/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/stat.h /usr/include/x86_64-linux-gnu/bits/fcntl2.h /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h /usr/include/x86_64-linux-gnu/bits/environments.h /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/x86_64-linux-gnu/bits/getopt_posix.h /usr/include/x86_64-linux-gnu/bits/getopt_core.h /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/ctype.h /usr/include/x86_64-linux-gnu/bits/types/locale_t.h /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/libc-header-start.h /usr/include/x86_64-linux-gnu/bits/waitflags.h /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/x86_64-linux-gnu/bits/floatn.h /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/string.h /usr/include/strings.h /usr/include/x86_64-linux-gnu/bits/strings_fortified.h /usr/include/x86_64-linux-gnu/bits/string_fortified.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdbool.h /usr/include/libintl.h /usr/include/locale.h /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/ncursesw/ncurses.h /usr/include/ncursesw/ncurses_dll.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__FILE.h /usr/include/x86_64-linux-gnu/bits/types/FILE.h /usr/include/x86_64-linux-gnu/bits/libio.h /usr/include/x86_64-linux-gnu/bits/_G_config.h  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/x86_64-linux-gnu/bits/sys_errlist.h /usr/include/x86_64-linux-gnu/bits/stdio.h /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/include/wchar.h /usr/include/x86_64-linux-gnu/bits/types/wint_t.h /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h /usr/include/x86_64-linux-gnu/bits/wchar2.h /usr/include/ncursesw/unctrl.h /usr/include/ncursesw/curses.h 
+cmd_efi_objcopy = $(OBJCOPY) -j .header -j .text -j .sdata -j .data -j .dynamic -j .dynsym  -j .rel* -j .rela* -j .reloc $(if $(EFI_TARGET),$(EFI_TARGET),-O binary) $^ $@
+HOME = /home/book
+UBOOTRELEASE = 
+quiet_cmd_host-cobjs = HOSTCC  $@
+as-instr = $(call try-run, printf "%b\n" "$(1)" | $(CC) $(KBUILD_AFLAGS) -c -x assembler -o "$$TMP" -,$(2),$(3))
+modbuiltin := -f ./scripts/Makefile.modbuiltin obj
+kxgettext-objs := kxgettext.o zconf.tab.o
+__c_flags = $(_c_flags)
+cmd_ld = $(LD) $(LDFLAGS) $(ldflags-y) $(LDFLAGS_$(@F)) $(filter-out FORCE,$^) -o $@
+LESSCLOSE = /usr/bin/lesspipe %s %s
+orig_c_flags = $(KBUILD_CPPFLAGS) $(KBUILD_CFLAGS) $(KBUILD_SUBDIR_CCFLAGS) $(ccflags-y) $(CFLAGS_$(basetarget).o)
+cc-name = $(shell $(CC) -v 2>&1 | grep -q "clang version" && echo clang || echo gcc)
+-*-command-variables-*- := obj=scripts/kconfig
+LOGNAME = book
+binutils-version = $(shell $(CONFIG_SHELL) $(srctree)/scripts/binutils-version.sh $(AS))
+CONFIG_ := 
+_hostc_flags = $(HOSTCFLAGS)   $(HOST_EXTRACFLAGS) $(HOSTCFLAGS_$(basetarget).o)
++F = $(notdir $+)
+cc-option-align = $(subst -functions=0,, $(call cc-option,-falign-functions=0,-malign-functions=0))
+lib-m := 
+dts_dir = $(srctree)/arch/$(ARCH)/dts
+cmd_moc = $(KC_QT_MOC) -i $< -o $@
+cmd_scripts/kconfig/lxdialog/inputbox.o := cc -Wp,-MD,scripts/kconfig/lxdialog/.inputbox.o.d -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer    -D_GNU_SOURCE -D_DEFAULT_SOURCE -I/usr/include/ncursesw -DCURSES_LOC="<ncurses.h>" -DNCURSES_WIDECHAR=1 -DLOCALE   -c -o scripts/kconfig/lxdialog/inputbox.o scripts/kconfig/lxdialog/inputbox.c
+kbuild-file := ./scripts/kconfig/Makefile
+LDR = arm-buildroot-linux-gnueabihf-ldr
+cmd_acpi_c_asl = $(CPP) -x assembler-with-cpp -D__ASSEMBLY__ -P $(UBOOTINCLUDE) -o $<.tmp $<; iasl -p $< -tc $<.tmp $(if $(KBUILD_VERBOSE:1=), >/dev/null); mv $(patsubst %.asl,%.hex,$<) $@
+^D = $(patsubst %/,%,$(dir $^))
+KBUILD_VERBOSE = 0
+obj = scripts/kconfig
+obj-m := 
+cmd_bzip2 = (cat $(filter-out FORCE,$^) | bzip2 -9 && $(call size_append, $(filter-out FORCE,$^))) > $@ || (rm -f $@ ; false)
+modname_flags = $(if $(filter 1,$(words $(modname))), -D"KBUILD_MODNAME=KBUILD_STR($(call name-fix,$(modname)))")
+host-csingle := 
+obj-dirs :=  scripts/kconfig/lxdialog/
+MAKELEVEL := 1
+deps_scripts/kconfig/mconf.o :=    /usr/include/stdc-predef.h /usr/include/ctype.h /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h /usr/include/x86_64-linux-gnu/bits/wordsize.h /usr/include/x86_64-linux-gnu/bits/long-double.h /usr/include/x86_64-linux-gnu/gnu/stubs.h /usr/include/x86_64-linux-gnu/gnu/stubs-64.h /usr/include/x86_64-linux-gnu/bits/types.h /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/endian.h /usr/include/x86_64-linux-gnu/bits/endian.h /usr/include/x86_64-linux-gnu/bits/byteswap.h /usr/include/x86_64-linux-gnu/bits/byteswap-16.h /usr/include/x86_64-linux-gnu/bits/uintn-identity.h /usr/include/x86_64-linux-gnu/bits/types/locale_t.h /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h /usr/include/errno.h /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h /usr/include/x86_64-linux-gnu/asm/errno.h /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h /usr/include/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h /usr/include/x86_64-linux-gnu/bits/stat.h /usr/include/x86_64-linux-gnu/bits/fcntl2.h /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/libc-header-start.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h /usr/include/x86_64-linux-gnu/bits/local_lim.h /usr/include/linux/limits.h /usr/include/x86_64-linux-gnu/bits/posix2_lim.h /usr/include/x86_64-linux-gnu/bits/xopen_lim.h /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/x86_64-linux-gnu/bits/floatn.h /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/x86_64-linux-gnu/bits/types/clock_t.h /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h /usr/include/x86_64-linux-gnu/bits/types/time_t.h /usr/include/x86_64-linux-gnu/bits/types/timer_t.h /usr/include/x86_64-linux-gnu/bits/stdint-intn.h /usr/include/x86_64-linux-gnu/sys/select.h /usr/include/x86_64-linux-gnu/bits/select.h /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h /usr/include/x86_64-linux-gnu/bits/select2.h /usr/include/x86_64-linux-gnu/sys/sysmacros.h /usr/include/x86_64-linux-gnu/bits/sysmacros.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/string.h /usr/include/strings.h /usr/include/x86_64-linux-gnu/bits/strings_fortified.h /usr/include/x86_64-linux-gnu/bits/string_fortified.h /usr/include/signal.h /usr/include/x86_64-linux-gnu/bits/signum.h /usr/include/x86_64-linux-gnu/bits/signum-generic.h /usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h /usr/include/x86_64-linux-gnu/bits/types/siginfo_t.h /usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h /usr/include/x86_64-linux-gnu/bits/siginfo-arch.h /usr/include/x86_64-linux-gnu/bits/siginfo-consts.h /usr/include/x86_64-linux-gnu/bits/siginfo-consts-arch.h /usr/include/x86_64-linux-gnu/bits/types/sigval_t.h /usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h /usr/include/x86_64-linux-gnu/bits/sigevent-consts.h /usr/include/x86_64-linux-gnu/bits/sigaction.h /usr/include/x86_64-linux-gnu/bits/sigcontext.h /usr/include/x86_64-linux-gnu/bits/types/stack_t.h /usr/include/x86_64-linux-gnu/sys/ucontext.h /usr/include/x86_64-linux-gnu/bits/sigstack.h /usr/include/x86_64-linux-gnu/bits/ss_flags.h /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h /usr/include/x86_64-linux-gnu/bits/sigthread.h /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h /usr/include/x86_64-linux-gnu/bits/environments.h /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/x86_64-linux-gnu/bits/getopt_posix.h /usr/include/x86_64-linux-gnu/bits/getopt_core.h /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/locale.h /usr/include/x86_64-linux-gnu/bits/locale.h scripts/kconfig/lkc.h    scripts/kconfig/expr.h  /usr/include/assert.h /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__FILE.h /usr/include/x86_64-linux-gnu/bits/types/FILE.h /usr/include/x86_64-linux-gnu/bits/libio.h /usr/include/x86_64-linux-gnu/bits/_G_config.h  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/x86_64-linux-gnu/bits/sys_errlist.h /usr/include/x86_64-linux-gnu/bits/stdio.h /usr/include/x86_64-linux-gnu/bits/stdio2.h scripts/kconfig/list.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdbool.h /usr/include/libintl.h scripts/kconfig/lkc_proto.h scripts/kconfig/lxdialog/dialog.h /usr/include/ncursesw/ncurses.h /usr/include/ncursesw/ncurses_dll.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/include/wchar.h /usr/include/x86_64-linux-gnu/bits/types/wint_t.h /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h /usr/include/x86_64-linux-gnu/bits/wchar2.h /usr/include/ncursesw/unctrl.h /usr/include/ncursesw/curses.h 
+cmd_cc_i_c = $(CPP) $(c_flags)   -o $@ $<
+MAKE = make
+modorder-target := scripts/kconfig/modules.order
+DTC_FLAGS = 
+KCONFIG_CONFIG = .config
+UIMAGE_IN = $<
+SHLVL = 1
+quiet_cmd_cpp_lds_S = LDS     $@
+modorder := 
+KBUILD_DEFCONFIG = sandbox_defconfig
+cmd_shipped = cat $< > $@
+silent_kecho := :
+host-shared := scripts/kconfig/)
+quiet_cmd_cc_i_c = CPP $(quiet_modtag) $@
+AS = arm-buildroot-linux-gnueabihf-as
+cmd_asn1_compiler = $(objtree)/scripts/asn1_compiler $< $(subst .h,.c,$@) $(subst .c,.h,$@)
+cmd_host-cxxobjs = $(HOSTCXX) $(hostcxx_flags) -c -o $@ $<
+MAKEOVERRIDES = ${-*-command-variables-*-}
+UIMAGE_OPTS-y = 
+subdir-ym := 
+HOST_EXTRACFLAGS = $(shell $(CONFIG_SHELL) $(check-lxdialog) -ccflags) -DLOCALE $(shell $(CONFIG_SHELL) $(srctree)/$(src)/check.sh $(HOSTCC) $(HOSTCFLAGS))
+XDG_SESSION_ID = 64
+USER = book
+subdir-y := $(subst ,, )
+CHECK = sparse
+.DEFAULT_GOAL := __build
+UIMAGE_NAME = 'Linux-$(KERNELRELEASE)'
+if_changed_dep = $(if $(strip $(any-prereq) $(arg-check) ), @set -e; $(echo-cmd) $(cmd_$(1)); scripts/basic/fixdep $(depfile) $@ '$(make-cmd)' > $(dot-target).tmp; rm -f $(depfile); mv -f $(dot-target).tmp $(dot-target).cmd)
+MAKECMDGOALS := mx6ull_14x14_evk_defconfig
+HOSTLOADLIBES_gconf = `pkg-config --libs gtk+-2.0 gmodule-2.0 libglade-2.0`
+modname-multi = $(sort $(foreach m,$(multi-used), $(if $(filter $(subst $(obj)/,,$*.o), $($(m:.o=-objs)) $($(m:.o=-y))),$(m:.o=))))
+RCS_TAR_IGNORE = --exclude SCCS --exclude BitKeeper --exclude .svn --exclude CVS --exclude .pc --exclude .hg --exclude .git
+real-objs-y := 
+quiet_cmd_lzma = LZMA    $@
+%D = $(patsubst %/,%,$(dir $%))
+cmd_dt_S_dtb = ( echo '.section .dtb.init.rodata,"a"'; echo '.balign 16'; echo '.global __dtb_$(subst -,_,$(*F))_begin'; echo '__dtb_$(subst -,_,$(*F))_begin:'; echo '.incbin "$<" '; echo '__dtb_$(subst -,_,$(*F))_end:'; echo '.global __dtb_$(subst -,_,$(*F))_end'; echo '.balign 16'; ) > $@
+source_scripts/kconfig/lxdialog/menubox.o := scripts/kconfig/lxdialog/menubox.c
+quiet_cmd_S_ttf = TTF     $@
+CPU = 
+hostcxx_flags = -Wp,-MD,$(depfile) $(__hostcxx_flags)
+ld-option = $(call try-run, $(CC) -x c /dev/null -c -o "$$TMPO" ; $(LD) $(1) "$$TMPO" -o "$$TMP",$(1),$(2))
+modkern_cflags = $(if $(part-of-module), $(KBUILD_CFLAGS_MODULE) $(CFLAGS_MODULE), $(KBUILD_CFLAGS_KERNEL) $(CFLAGS_KERNEL))
+cmd_lz4 = (cat $(filter-out FORCE,$^) | lz4c -l -c1 stdin stdout && $(call size_append, $(filter-out FORCE,$^))) > $@ || (rm -f $@ ; false)
+clean-files := qconf.moc .tmp_qtcheck .tmp_gtkcheck zconf.tab.c zconf.lex.c zconf.hash.c gconf.glade.h config.pot linux.pot
+YACC_PREFIX_zconf := zconf
+cmd_host-cmulti = $(HOSTCC) $(HOSTLDFLAGS) -o $@ $(addprefix $(obj)/,$($(@F)-objs)) $(HOST_LOADLIBES) $(HOSTLOADLIBES_$(@F))
+source_scripts/kconfig/lxdialog/yesno.o := scripts/kconfig/lxdialog/yesno.c
+HOSTCFLAGS = -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer 
+targets := scripts/kconfig/lxdialog/checklist.o scripts/kconfig/lxdialog/inputbox.o scripts/kconfig/lxdialog/menubox.o scripts/kconfig/lxdialog/textbox.o scripts/kconfig/lxdialog/util.o scripts/kconfig/lxdialog/yesno.o scripts/kconfig/mconf scripts/kconfig/mconf.o scripts/kconfig/zconf.tab.o
+MAKE_COMMAND := make
+OLDPWD = /home/book/100ask_imx6ull-sdk/test_make
+NOSTDINC_FLAGS = 
+multi-used := $(subst ,, )
+source_scripts/kconfig/zconf.tab.o := scripts/kconfig/zconf.tab.c
+cmd_scripts/kconfig/lxdialog/util.o := cc -Wp,-MD,scripts/kconfig/lxdialog/.util.o.d -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer    -D_GNU_SOURCE -D_DEFAULT_SOURCE -I/usr/include/ncursesw -DCURSES_LOC="<ncurses.h>" -DNCURSES_WIDECHAR=1 -DLOCALE   -c -o scripts/kconfig/lxdialog/util.o scripts/kconfig/lxdialog/util.c
+Kconfig := Kconfig
+.VARIABLES := 
+quiet_cmd_cc_o_c = CC $(quiet_modtag)  $@
+echo-cmd = $(if $($(quiet)cmd_$(1)), echo '  $(call escsq,$($(quiet)cmd_$(1)))$(echo-why)';)
+multi-used-m := 
+*F = $(notdir $*)
+ldflags-y := $(subst ,, )
+depfile = $(subst $(comma),_,$(dot-target).d)
+KBUILD_KCONFIG = 
+HOSTCXXFLAGS_qconf.o = $(KC_QT_CFLAGS)
+asflags-y := $(subst ,,  )
+ld-ifversion = $(shell [ $(ld-version) $(1) $(2) ] && echo $(3) || echo $(4))
+make-cmd = $(call escsq,$(subst #,\#,$(subst $$,$$$$,$(cmd_$(1)))))
+configfiles = $(wildcard $(srctree)/kernel/configs/$@ $(srctree)/arch/$(SRCARCH)/configs/$@)
+ARCH = arm
+MAKEFLAGS = prR -I/home/book/100ask_imx6ull-sdk/Uboot-2017.03 --no-print-directory -- $(MAKEOVERRIDES)
+ccflags-y := $(subst ,,  )
+quiet_cmd_dt_S_dtb = DTB     $@
+MFLAGS = -prR -I/home/book/100ask_imx6ull-sdk/Uboot-2017.03 --no-print-directory
+SSH_CLIENT = 192.168.37.1 57533 22
+as-option = $(call try-run, $(CC) $(KBUILD_CFLAGS) $(1) -c -x assembler /dev/null -o "$$TMP",$(1),$(2))
+MAIL = /var/mail/book
+HOSTCXXFLAGS = -O2
+source_scripts/kconfig/lxdialog/inputbox.o := scripts/kconfig/lxdialog/inputbox.c
++D = $(patsubst %/,%,$(dir $+))
+cc-option = $(call try-run, $(CC) -Werror $(KBUILD_CPPFLAGS) $(KBUILD_CFLAGS) $(1) -c -x c /dev/null -o "$$TMP",$(1),$(2))
+SOC = 
+OBJDUMP = arm-buildroot-linux-gnueabihf-objdump
+__cpp_flags = $(_cpp_flags)
+quiet_cmd_uimage = UIMAGE  $(UIMAGE_OUT)
+cmd_dtc = mkdir -p $(dir ${dtc-tmp}) ; cat $< $(if $(u_boot_dtsi), | sed '/^\/ {$$/{x;s%$$%#include \"$(u_boot_dtsi)\"%;G;}') | $(CPP) $(dtc_cpp_flags) -x assembler-with-cpp -o $(dtc-tmp) - ; $(DTC) -O dtb -o $@ -b 0 -i $(dir $<) $(DTC_FLAGS) -d $(depfile).dtc.tmp $(dtc-tmp) ; cat $(depfile).pre.tmp $(depfile).dtc.tmp > $(depfile)
+BOARD = 
+__hostprogs := scripts/kconfig/conf scripts/kconfig/gconf scripts/kconfig/kxgettext scripts/kconfig/mconf scripts/kconfig/nconf scripts/kconfig/qconf
+hostc_flags = -Wp,-MD,$(depfile) $(__hostc_flags)
+objectify = $(foreach o,$(1),$(if $(filter /%,$(o)),$(o),$(obj)/$(o)))
+save-cflags := 
+cmd_as_s_S = $(CPP) $(a_flags)   -o $@ $<
+cmd_xzmisc = (cat $(filter-out FORCE,$^) | xz --check=crc32 --lzma2=dict=1MiB) > $@ || (rm -f $@ ; false)
+cmd_efi_ld = $(LD) -nostdlib -znocombreloc -T $(EFI_LDS_PATH) -shared -Bsymbolic $^ -o $@
+deps_scripts/kconfig/lxdialog/checklist.o := /usr/include/stdc-predef.h scripts/kconfig/lxdialog/dialog.h /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h /usr/include/x86_64-linux-gnu/bits/wordsize.h /usr/include/x86_64-linux-gnu/bits/long-double.h /usr/include/x86_64-linux-gnu/gnu/stubs.h /usr/include/x86_64-linux-gnu/gnu/stubs-64.h /usr/include/x86_64-linux-gnu/bits/types.h /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/x86_64-linux-gnu/bits/types/clock_t.h /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h /usr/include/x86_64-linux-gnu/bits/types/time_t.h /usr/include/x86_64-linux-gnu/bits/types/timer_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h /usr/include/x86_64-linux-gnu/bits/stdint-intn.h /usr/include/endian.h /usr/include/x86_64-linux-gnu/bits/endian.h /usr/include/x86_64-linux-gnu/bits/byteswap.h /usr/include/x86_64-linux-gnu/bits/byteswap-16.h /usr/include/x86_64-linux-gnu/bits/uintn-identity.h /usr/include/x86_64-linux-gnu/sys/select.h /usr/include/x86_64-linux-gnu/bits/select.h /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h /usr/include/x86_64-linux-gnu/bits/select2.h /usr/include/x86_64-linux-gnu/sys/sysmacros.h /usr/include/x86_64-linux-gnu/bits/sysmacros.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h /usr/include/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/stat.h /usr/include/x86_64-linux-gnu/bits/fcntl2.h /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h /usr/include/x86_64-linux-gnu/bits/environments.h /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/x86_64-linux-gnu/bits/getopt_posix.h /usr/include/x86_64-linux-gnu/bits/getopt_core.h /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/ctype.h /usr/include/x86_64-linux-gnu/bits/types/locale_t.h /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/libc-header-start.h /usr/include/x86_64-linux-gnu/bits/waitflags.h /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/x86_64-linux-gnu/bits/floatn.h /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/string.h /usr/include/strings.h /usr/include/x86_64-linux-gnu/bits/strings_fortified.h /usr/include/x86_64-linux-gnu/bits/string_fortified.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdbool.h /usr/include/libintl.h /usr/include/locale.h /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/ncursesw/ncurses.h /usr/include/ncursesw/ncurses_dll.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__FILE.h /usr/include/x86_64-linux-gnu/bits/types/FILE.h /usr/include/x86_64-linux-gnu/bits/libio.h /usr/include/x86_64-linux-gnu/bits/_G_config.h  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/x86_64-linux-gnu/bits/sys_errlist.h /usr/include/x86_64-linux-gnu/bits/stdio.h /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/include/wchar.h /usr/include/x86_64-linux-gnu/bits/types/wint_t.h /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h /usr/include/x86_64-linux-gnu/bits/wchar2.h /usr/include/ncursesw/unctrl.h /usr/include/ncursesw/curses.h 
+STRIP = arm-buildroot-linux-gnueabihf-strip
+MKIMAGEOUTPUT = /dev/null
+DTC = dtc
+dtbinst := -f scripts/Makefile.dtbinst obj
+CROSS_COMPILE = arm-buildroot-linux-gnueabihf-
+link_multi_deps = $(filter $(addprefix $(obj)/, $($(subst $(obj)/,,$(@:.o=-objs))) $($(subst $(obj)/,,$(@:.o=-y)))), $^)
+cmd_gzip = (cat $(filter-out FORCE,$^) | gzip -n -f -9 > $@) || (rm -f $@ ; false)
+cc-ifversion = $(shell [ $(cc-version) $(1) $(2) ] && echo $(3) || echo $(4))
+HOSTARCH = x86_64
+escsq = $(subst $(squote),'\$(squote)',$1)
+HOSTLOADLIBES_mconf = $(shell $(CONFIG_SHELL) $(check-lxdialog) -ldflags $(HOSTCC))
+cmd_cc_s_c = $(CC) $(c_flags) $(DISABLE_LTO) -fverbose-asm -S -o $@ $<
+cmd = @$(echo-cmd) $(cmd_$(1))
+MAKEFILES := 
+HOSTLOADLIBES_nconf = $(shell pkg-config --libs menuw panelw ncursesw 2>/dev/null || pkg-config --libs menu panel ncurses 2>/dev/null || echo "-lmenu -lpanel -lncurses"  )
+cmd_link_multi-y = $(LD) $(ld_flags) -r -o $@ $(link_multi_deps) $(cmd_secanalysis)
+SRCARCH := ..
+cmd_lzo = (cat $(filter-out FORCE,$^) | lzop -9 && $(call size_append, $(filter-out FORCE,$^))) > $@ || (rm -f $@ ; false)
+KBUILD_SRC = 
+CONFIG_SHELL = /bin/bash
+KBUILD_SUBDIR_ASFLAGS := $(subst ,, )
+<F = $(notdir $<)
+quiet_cmd_shipped = SHIPPED $@
+modkern_aflags := $(subst ,, )
+quiet_cmd_objcopy = OBJCOPY $@
+cmd_uimage = $(CONFIG_SHELL) $(MKIMAGE) -A $(UIMAGE_ARCH) -O linux -C $(UIMAGE_COMPRESSION) $(UIMAGE_OPTS-y) -T $(UIMAGE_TYPE) -a $(UIMAGE_LOADADDR) -e $(UIMAGE_ENTRYADDR) -n $(UIMAGE_NAME) -d $(UIMAGE_IN) $(UIMAGE_OUT)
+cmd_S_efi = ( echo '.section .rodata.efi.init,"a"'; echo '.balign 16'; echo '.global __efi_hello_world_begin'; echo '__efi_hello_world_begin:'; echo '.incbin "$<" '; echo '__efi_hello_world_end:'; echo '.global __efi_hello_world_end'; echo '.balign 16'; ) > $@
+deps_scripts/kconfig/lxdialog/menubox.o := /usr/include/stdc-predef.h scripts/kconfig/lxdialog/dialog.h /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h /usr/include/x86_64-linux-gnu/bits/wordsize.h /usr/include/x86_64-linux-gnu/bits/long-double.h /usr/include/x86_64-linux-gnu/gnu/stubs.h /usr/include/x86_64-linux-gnu/gnu/stubs-64.h /usr/include/x86_64-linux-gnu/bits/types.h /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/x86_64-linux-gnu/bits/types/clock_t.h /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h /usr/include/x86_64-linux-gnu/bits/types/time_t.h /usr/include/x86_64-linux-gnu/bits/types/timer_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h /usr/include/x86_64-linux-gnu/bits/stdint-intn.h /usr/include/endian.h /usr/include/x86_64-linux-gnu/bits/endian.h /usr/include/x86_64-linux-gnu/bits/byteswap.h /usr/include/x86_64-linux-gnu/bits/byteswap-16.h /usr/include/x86_64-linux-gnu/bits/uintn-identity.h /usr/include/x86_64-linux-gnu/sys/select.h /usr/include/x86_64-linux-gnu/bits/select.h /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h /usr/include/x86_64-linux-gnu/bits/select2.h /usr/include/x86_64-linux-gnu/sys/sysmacros.h /usr/include/x86_64-linux-gnu/bits/sysmacros.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h /usr/include/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/stat.h /usr/include/x86_64-linux-gnu/bits/fcntl2.h /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h /usr/include/x86_64-linux-gnu/bits/environments.h /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/x86_64-linux-gnu/bits/getopt_posix.h /usr/include/x86_64-linux-gnu/bits/getopt_core.h /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/ctype.h /usr/include/x86_64-linux-gnu/bits/types/locale_t.h /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/libc-header-start.h /usr/include/x86_64-linux-gnu/bits/waitflags.h /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/x86_64-linux-gnu/bits/floatn.h /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/string.h /usr/include/strings.h /usr/include/x86_64-linux-gnu/bits/strings_fortified.h /usr/include/x86_64-linux-gnu/bits/string_fortified.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdbool.h /usr/include/libintl.h /usr/include/locale.h /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/ncursesw/ncurses.h /usr/include/ncursesw/ncurses_dll.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__FILE.h /usr/include/x86_64-linux-gnu/bits/types/FILE.h /usr/include/x86_64-linux-gnu/bits/libio.h /usr/include/x86_64-linux-gnu/bits/_G_config.h  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/x86_64-linux-gnu/bits/sys_errlist.h /usr/include/x86_64-linux-gnu/bits/stdio.h /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/include/wchar.h /usr/include/x86_64-linux-gnu/bits/types/wint_t.h /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h /usr/include/x86_64-linux-gnu/bits/wchar2.h /usr/include/ncursesw/unctrl.h /usr/include/ncursesw/curses.h 
+HOSTOS = linux
+KBUILD_CPPFLAGS = -D__KERNEL__ -D__UBOOT__
+__subdir-m := 
+cmd_host-cobjs = $(HOSTCC) $(hostc_flags) -c -o $@ $<
+PERL = perl
+check-lxdialog := ./scripts/kconfig/lxdialog/check-lxdialog.sh
+HOSTCFLAGS_zconf.tab.o := -Iscripts/kconfig
+deps_scripts/kconfig/lxdialog/yesno.o := /usr/include/stdc-predef.h scripts/kconfig/lxdialog/dialog.h /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h /usr/include/x86_64-linux-gnu/bits/wordsize.h /usr/include/x86_64-linux-gnu/bits/long-double.h /usr/include/x86_64-linux-gnu/gnu/stubs.h /usr/include/x86_64-linux-gnu/gnu/stubs-64.h /usr/include/x86_64-linux-gnu/bits/types.h /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/x86_64-linux-gnu/bits/types/clock_t.h /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h /usr/include/x86_64-linux-gnu/bits/types/time_t.h /usr/include/x86_64-linux-gnu/bits/types/timer_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h /usr/include/x86_64-linux-gnu/bits/stdint-intn.h /usr/include/endian.h /usr/include/x86_64-linux-gnu/bits/endian.h /usr/include/x86_64-linux-gnu/bits/byteswap.h /usr/include/x86_64-linux-gnu/bits/byteswap-16.h /usr/include/x86_64-linux-gnu/bits/uintn-identity.h /usr/include/x86_64-linux-gnu/sys/select.h /usr/include/x86_64-linux-gnu/bits/select.h /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h /usr/include/x86_64-linux-gnu/bits/select2.h /usr/include/x86_64-linux-gnu/sys/sysmacros.h /usr/include/x86_64-linux-gnu/bits/sysmacros.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h /usr/include/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/stat.h /usr/include/x86_64-linux-gnu/bits/fcntl2.h /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h /usr/include/x86_64-linux-gnu/bits/environments.h /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/x86_64-linux-gnu/bits/getopt_posix.h /usr/include/x86_64-linux-gnu/bits/getopt_core.h /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/ctype.h /usr/include/x86_64-linux-gnu/bits/types/locale_t.h /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/libc-header-start.h /usr/include/x86_64-linux-gnu/bits/waitflags.h /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/x86_64-linux-gnu/bits/floatn.h /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/string.h /usr/include/strings.h /usr/include/x86_64-linux-gnu/bits/strings_fortified.h /usr/include/x86_64-linux-gnu/bits/string_fortified.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdbool.h /usr/include/libintl.h /usr/include/locale.h /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/ncursesw/ncurses.h /usr/include/ncursesw/ncurses_dll.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__FILE.h /usr/include/x86_64-linux-gnu/bits/types/FILE.h /usr/include/x86_64-linux-gnu/bits/libio.h /usr/include/x86_64-linux-gnu/bits/_G_config.h  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/x86_64-linux-gnu/bits/sys_errlist.h /usr/include/x86_64-linux-gnu/bits/stdio.h /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/include/wchar.h /usr/include/x86_64-linux-gnu/bits/types/wint_t.h /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h /usr/include/x86_64-linux-gnu/bits/wchar2.h /usr/include/ncursesw/unctrl.h /usr/include/ncursesw/curses.h 
+cmd_mkimage = $(objtree)/tools/mkimage $(MKIMAGEFLAGS_$(@F)) -d $< $@ $(if $(KBUILD_VERBOSE:1=), >$(MKIMAGEOUTPUT))
+dtc-version = $(shell $(CONFIG_SHELL) $(srctree)/scripts/dtc-version.sh $(DTC))
+quiet_cmd_mkimage = MKIMAGE $@
+cmd_scripts/kconfig/zconf.tab.o := cc -Wp,-MD,scripts/kconfig/.zconf.tab.o.d -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer    -D_GNU_SOURCE -D_DEFAULT_SOURCE -I/usr/include/ncursesw -DCURSES_LOC="<ncurses.h>" -DNCURSES_WIDECHAR=1 -DLOCALE  -Iscripts/kconfig -c -o scripts/kconfig/zconf.tab.o scripts/kconfig/zconf.tab.c
+UIMAGE_OUT = $@
+arg-check = $(strip $(filter-out $(cmd_$(1)), $(cmd_$@)) $(filter-out $(cmd_$@),   $(cmd_$(1))) )
+ld_flags = $(LDFLAGS) $(ldflags-y)
+name-fix = $(subst $(comma),_,$(subst -,_,$1))
+KBUILD_CFLAGS = -Wall -Wstrict-prototypes -Wno-format-security -fno-builtin -ffreestanding
+RCS_FIND_IGNORE = \( -name SCCS -o -name BitKeeper -o -name .svn -o -name CVS -o -name .pc -o -name .hg -o -name .git \) -prune -o
+quiet_cmd_host-csingle = HOSTCC  $@
+basetarget = $(basename $(notdir $@))
+^F = $(notdir $^)
+kbuild-dir := ./scripts/kconfig
+UIMAGE_ARCH = $(SRCARCH)
+SUFFIXES := 
+if_changed = $(if $(strip $(any-prereq) $(arg-check)), @set -e; $(echo-cmd) $(cmd_$(1)); printf '%s\n' 'cmd_$@ := $(make-cmd)' > $(dot-target).cmd)
+cmd_link_multi-m = $(cmd_link_multi-y)
+baseprereq = $(basename $(notdir $<))
+EXTRA_CPPFLAGS := 
+addtree = $(if $(patsubst -I%,%,$(1)), $(if $(filter-out -I/%,$(1)),$(patsubst -I%,-I$(srctree)/%,$(1))) $(1))
+cmd_files := scripts/kconfig/lxdialog/.checklist.o.cmd scripts/kconfig/lxdialog/.inputbox.o.cmd scripts/kconfig/lxdialog/.menubox.o.cmd scripts/kconfig/lxdialog/.textbox.o.cmd scripts/kconfig/lxdialog/.util.o.cmd scripts/kconfig/lxdialog/.yesno.o.cmd scripts/kconfig/.mconf.cmd scripts/kconfig/.mconf.o.cmd scripts/kconfig/.zconf.tab.o.cmd
+_hostcxx_flags = $(HOSTCXXFLAGS) $(HOST_EXTRACXXFLAGS) $(HOSTCXXFLAGS_$(basetarget).o)
+deps_scripts/kconfig/lxdialog/inputbox.o := /usr/include/stdc-predef.h scripts/kconfig/lxdialog/dialog.h /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h /usr/include/x86_64-linux-gnu/bits/wordsize.h /usr/include/x86_64-linux-gnu/bits/long-double.h /usr/include/x86_64-linux-gnu/gnu/stubs.h /usr/include/x86_64-linux-gnu/gnu/stubs-64.h /usr/include/x86_64-linux-gnu/bits/types.h /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/x86_64-linux-gnu/bits/types/clock_t.h /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h /usr/include/x86_64-linux-gnu/bits/types/time_t.h /usr/include/x86_64-linux-gnu/bits/types/timer_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h /usr/include/x86_64-linux-gnu/bits/stdint-intn.h /usr/include/endian.h /usr/include/x86_64-linux-gnu/bits/endian.h /usr/include/x86_64-linux-gnu/bits/byteswap.h /usr/include/x86_64-linux-gnu/bits/byteswap-16.h /usr/include/x86_64-linux-gnu/bits/uintn-identity.h /usr/include/x86_64-linux-gnu/sys/select.h /usr/include/x86_64-linux-gnu/bits/select.h /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h /usr/include/x86_64-linux-gnu/bits/select2.h /usr/include/x86_64-linux-gnu/sys/sysmacros.h /usr/include/x86_64-linux-gnu/bits/sysmacros.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h /usr/include/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/stat.h /usr/include/x86_64-linux-gnu/bits/fcntl2.h /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h /usr/include/x86_64-linux-gnu/bits/environments.h /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/x86_64-linux-gnu/bits/getopt_posix.h /usr/include/x86_64-linux-gnu/bits/getopt_core.h /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/ctype.h /usr/include/x86_64-linux-gnu/bits/types/locale_t.h /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/libc-header-start.h /usr/include/x86_64-linux-gnu/bits/waitflags.h /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/x86_64-linux-gnu/bits/floatn.h /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/string.h /usr/include/strings.h /usr/include/x86_64-linux-gnu/bits/strings_fortified.h /usr/include/x86_64-linux-gnu/bits/string_fortified.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdbool.h /usr/include/libintl.h /usr/include/locale.h /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/ncursesw/ncurses.h /usr/include/ncursesw/ncurses_dll.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__FILE.h /usr/include/x86_64-linux-gnu/bits/types/FILE.h /usr/include/x86_64-linux-gnu/bits/libio.h /usr/include/x86_64-linux-gnu/bits/_G_config.h  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/x86_64-linux-gnu/bits/sys_errlist.h /usr/include/x86_64-linux-gnu/bits/stdio.h /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/include/wchar.h /usr/include/x86_64-linux-gnu/bits/types/wint_t.h /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h /usr/include/x86_64-linux-gnu/bits/wchar2.h /usr/include/ncursesw/unctrl.h /usr/include/ncursesw/curses.h 
+__subdir-y := 
+.INCLUDE_DIRS = /home/book/100ask_imx6ull-sdk/Uboot-2017.03 /usr/include /usr/local/include /usr/include
+quiet_cmd_xzkern = XZKERN  $@
+_c_flags = $(filter-out $(CFLAGS_REMOVE_$(basetarget).o), $(orig_c_flags))
+orig_a_flags = $(KBUILD_CPPFLAGS) $(KBUILD_AFLAGS) $(KBUILD_SUBDIR_ASFLAGS) $(asflags-y) $(AFLAGS_$(basetarget).o)
+EFI_LDS_PATH = $(srctree)/arch/$(ARCH)/lib/$(EFI_LDS)
+KBUILD_EXTMOD = 
+KBUILD_CHECKSRC = 0
+.RECIPEPREFIX := 
+MAKE_TERMERR = /dev/pts/1
+EXTRA_CFLAGS := 
+TMPOUT := 
+MAKE_HOST := x86_64-pc-linux-gnu
+host-cxxmulti := scripts/kconfig/qconf
+cppflags-y := $(subst ,,  )
+cmd_host-csingle = $(HOSTCC) $(hostc_flags) -o $@ $< $(HOST_LOADLIBES) $(HOSTLOADLIBES_$(@F))
+LANG = en_US.UTF-8
+TERM = xterm
+multi-objs-y := 
+empty := 
+deps_scripts/kconfig/zconf.tab.o := /usr/include/stdc-predef.h /usr/include/ctype.h /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h /usr/include/x86_64-linux-gnu/bits/wordsize.h /usr/include/x86_64-linux-gnu/bits/long-double.h /usr/include/x86_64-linux-gnu/gnu/stubs.h /usr/include/x86_64-linux-gnu/gnu/stubs-64.h /usr/include/x86_64-linux-gnu/bits/types.h /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/endian.h /usr/include/x86_64-linux-gnu/bits/endian.h /usr/include/x86_64-linux-gnu/bits/byteswap.h /usr/include/x86_64-linux-gnu/bits/byteswap-16.h /usr/include/x86_64-linux-gnu/bits/uintn-identity.h /usr/include/x86_64-linux-gnu/bits/types/locale_t.h /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/libc-header-start.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h /usr/include/x86_64-linux-gnu/bits/types/__FILE.h /usr/include/x86_64-linux-gnu/bits/types/FILE.h /usr/include/x86_64-linux-gnu/bits/libio.h /usr/include/x86_64-linux-gnu/bits/_G_config.h  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/x86_64-linux-gnu/bits/sys_errlist.h /usr/include/x86_64-linux-gnu/bits/stdio.h /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/x86_64-linux-gnu/bits/floatn.h /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/x86_64-linux-gnu/bits/types/clock_t.h /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h /usr/include/x86_64-linux-gnu/bits/types/time_t.h /usr/include/x86_64-linux-gnu/bits/types/timer_t.h /usr/include/x86_64-linux-gnu/bits/stdint-intn.h /usr/include/x86_64-linux-gnu/sys/select.h /usr/include/x86_64-linux-gnu/bits/select.h /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h /usr/include/x86_64-linux-gnu/bits/select2.h /usr/include/x86_64-linux-gnu/sys/sysmacros.h /usr/include/x86_64-linux-gnu/bits/sysmacros.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/string.h /usr/include/strings.h /usr/include/x86_64-linux-gnu/bits/strings_fortified.h /usr/include/x86_64-linux-gnu/bits/string_fortified.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdbool.h scripts/kconfig/lkc.h     scripts/kconfig/expr.h  /usr/include/assert.h scripts/kconfig/list.h /usr/include/libintl.h /usr/include/locale.h /usr/include/x86_64-linux-gnu/bits/locale.h scripts/kconfig/lkc_proto.h scripts/kconfig/zconf.hash.c scripts/kconfig/zconf.lex.c /usr/include/errno.h /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h /usr/include/x86_64-linux-gnu/asm/errno.h /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h /usr/include/inttypes.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h /usr/include/x86_64-linux-gnu/bits/local_lim.h /usr/include/linux/limits.h /usr/include/x86_64-linux-gnu/bits/posix2_lim.h /usr/include/x86_64-linux-gnu/bits/xopen_lim.h /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h /usr/include/x86_64-linux-gnu/bits/environments.h /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/x86_64-linux-gnu/bits/getopt_posix.h /usr/include/x86_64-linux-gnu/bits/getopt_core.h /usr/include/x86_64-linux-gnu/bits/unistd.h scripts/kconfig/util.c scripts/kconfig/confdata.c      /usr/include/x86_64-linux-gnu/sys/stat.h /usr/include/x86_64-linux-gnu/bits/stat.h /usr/include/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/fcntl2.h /usr/include/time.h /usr/include/x86_64-linux-gnu/bits/time.h /usr/include/x86_64-linux-gnu/bits/timex.h /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h scripts/kconfig/expr.c scripts/kconfig/symbol.c /usr/include/regex.h /usr/include/x86_64-linux-gnu/sys/utsname.h /usr/include/x86_64-linux-gnu/bits/utsname.h scripts/kconfig/menu.c 
+quote := "
+UBOOTVERSION = 2017.03
+kecho := echo
+UIMAGE_LOADADDR = arch_must_set_this
+
+
+
+
+
+
+
+%_defconfig: scripts/kconfig/conf
+	$(Q)$< $(silent) --defconfig=arch/$(SRCARCH)/configs/$@ $(Kconfig)
+
+%_config: %_defconfig
+	@:
+
+%.config: scripts/kconfig/conf
+	$(if $(call configfiles),, $(error No configuration exists for this target on this architecture))
+	$(Q)$(CONFIG_SHELL) $(srctree)/scripts/kconfig/merge_config.sh -m .config $(configfiles)
+	+$(Q)yes "" | $(MAKE) -f $(srctree)/Makefile oldconfig
+
+scripts/kconfig/%.moc: scripts/kconfig/%.h scripts/kconfig/.tmp_qtcheck
+	$(call cmd,moc)
+
+scripts/kconfig/%: scripts/kconfig/%_shipped
+	$(call cmd,shipped)
+
+scripts/kconfig/%.dtb.S: scripts/kconfig/%.dtb
+	$(call cmd,dt_S_dtb)
+
+scripts/kconfig/%.dtb: scripts/kconfig/%.dts FORCE
+	$(call if_changed_dep,dtc)
+
+scripts/kconfig/%.S: scripts/kconfig/%.ttf
+	$(call cmd,S_ttf)
+
+scripts/kconfig/%_efi.S: scripts/kconfig/%.efi
+	$(call cmd,S_efi)
+
+scripts/kconfig/%.efi: scripts/kconfig/%.so
+	$(call cmd,efi_objcopy)
+
+scripts/kconfig/%.s: scripts/kconfig/%.c FORCE
+	$(call if_changed_dep,cc_s_c)
+
+scripts/kconfig/%.i: scripts/kconfig/%.c FORCE
+	$(call if_changed_dep,cc_i_c)
+
+scripts/kconfig/%.symtypes: scripts/kconfig/%.c FORCE
+	$(call cmd,cc_symtypes_c)
+
+scripts/kconfig/%.o: scripts/kconfig/%.c FORCE
+	$(call cmd,force_checksrc)
+	$(call if_changed_rule,cc_o_c)
+
+scripts/kconfig/%.lst: scripts/kconfig/%.c FORCE
+	$(call if_changed_dep,cc_lst_c)
+
+scripts/kconfig/%.s: scripts/kconfig/%.S FORCE
+	$(call if_changed_dep,as_s_S)
+
+scripts/kconfig/%.o: scripts/kconfig/%.S FORCE
+	$(call if_changed_dep,as_o_S)
+
+scripts/kconfig/%.lds: scripts/kconfig/%.lds.S FORCE
+	$(call if_changed_dep,cpp_lds_S)
+
+scripts/kconfig/%-asn1.c scripts/kconfig/%-asn1.h: scripts/kconfig/%.asn1 scripts/asn1_compiler
+	$(call cmd,asn1_compiler)
+
+
+
+/usr/lib/gcc/x86_64-linux-gnu/7/include/stdbool.h:
+
+scripts/kconfig/lxdialog/.util.o.cmd:
+
+scripts/kconfig/%-asn1.h:
+
+scripts/kconfig/lxdialog/yesno.o: scripts/kconfig/lxdialog/yesno.c FORCE scripts/kconfig/dochecklxdialog /usr/include/stdc-predef.h scripts/kconfig/lxdialog/dialog.h /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h /usr/include/x86_64-linux-gnu/bits/wordsize.h /usr/include/x86_64-linux-gnu/bits/long-double.h /usr/include/x86_64-linux-gnu/gnu/stubs.h /usr/include/x86_64-linux-gnu/gnu/stubs-64.h /usr/include/x86_64-linux-gnu/bits/types.h /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/x86_64-linux-gnu/bits/types/clock_t.h /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h /usr/include/x86_64-linux-gnu/bits/types/time_t.h /usr/include/x86_64-linux-gnu/bits/types/timer_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h /usr/include/x86_64-linux-gnu/bits/stdint-intn.h /usr/include/endian.h /usr/include/x86_64-linux-gnu/bits/endian.h /usr/include/x86_64-linux-gnu/bits/byteswap.h /usr/include/x86_64-linux-gnu/bits/byteswap-16.h /usr/include/x86_64-linux-gnu/bits/uintn-identity.h /usr/include/x86_64-linux-gnu/sys/select.h /usr/include/x86_64-linux-gnu/bits/select.h /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h /usr/include/x86_64-linux-gnu/bits/select2.h /usr/include/x86_64-linux-gnu/sys/sysmacros.h /usr/include/x86_64-linux-gnu/bits/sysmacros.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h /usr/include/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/stat.h /usr/include/x86_64-linux-gnu/bits/fcntl2.h /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h /usr/include/x86_64-linux-gnu/bits/environments.h /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/x86_64-linux-gnu/bits/getopt_posix.h /usr/include/x86_64-linux-gnu/bits/getopt_core.h /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/ctype.h /usr/include/x86_64-linux-gnu/bits/types/locale_t.h /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/libc-header-start.h /usr/include/x86_64-linux-gnu/bits/waitflags.h /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/x86_64-linux-gnu/bits/floatn.h /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/string.h /usr/include/strings.h /usr/include/x86_64-linux-gnu/bits/strings_fortified.h /usr/include/x86_64-linux-gnu/bits/string_fortified.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdbool.h /usr/include/libintl.h /usr/include/locale.h /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/ncursesw/ncurses.h /usr/include/ncursesw/ncurses_dll.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__FILE.h /usr/include/x86_64-linux-gnu/bits/types/FILE.h /usr/include/x86_64-linux-gnu/bits/libio.h /usr/include/x86_64-linux-gnu/bits/_G_config.h /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/x86_64-linux-gnu/bits/sys_errlist.h /usr/include/x86_64-linux-gnu/bits/stdio.h /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/include/wchar.h /usr/include/x86_64-linux-gnu/bits/types/wint_t.h /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h /usr/include/x86_64-linux-gnu/bits/wchar2.h /usr/include/ncursesw/unctrl.h /usr/include/ncursesw/curses.h
+	$(call if_changed_dep,host-cobjs)
+
+/usr/include/unistd.h:
+
+/usr/include/x86_64-linux-gnu/bits/siginfo-consts-arch.h:
+
+alldefconfig: scripts/kconfig/conf
+	$< $(silent) --$@ $(Kconfig)
+
+/usr/include/x86_64-linux-gnu/bits/timex.h:
+
+/usr/include/x86_64-linux-gnu/bits/endian.h:
+
+/usr/include/stdlib.h:
+
+xconfig: scripts/kconfig/qconf
+	$< $(silent) $(Kconfig)
+
+/usr/include/x86_64-linux-gnu/bits/libio.h:
+
+tinyconfig:
+	$(Q)$(MAKE) -f $(srctree)/Makefile allnoconfig tiny.config
+
+/usr/include/x86_64-linux-gnu/bits/local_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/sigval_t.h:
+
+/usr/include/x86_64-linux-gnu/asm/errno.h:
+
+scripts/kconfig/mconf.c:
+
+allyesconfig: scripts/kconfig/conf
+	$< $(silent) --$@ $(Kconfig)
+
+/usr/include/x86_64-linux-gnu/bits/locale.h:
+
+scripts/kconfig/nconf.c:
+
+/usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
+
+scripts/kconfig/lxdialog/inputbox.o: scripts/kconfig/lxdialog/inputbox.c FORCE scripts/kconfig/dochecklxdialog /usr/include/stdc-predef.h scripts/kconfig/lxdialog/dialog.h /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h /usr/include/x86_64-linux-gnu/bits/wordsize.h /usr/include/x86_64-linux-gnu/bits/long-double.h /usr/include/x86_64-linux-gnu/gnu/stubs.h /usr/include/x86_64-linux-gnu/gnu/stubs-64.h /usr/include/x86_64-linux-gnu/bits/types.h /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/x86_64-linux-gnu/bits/types/clock_t.h /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h /usr/include/x86_64-linux-gnu/bits/types/time_t.h /usr/include/x86_64-linux-gnu/bits/types/timer_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h /usr/include/x86_64-linux-gnu/bits/stdint-intn.h /usr/include/endian.h /usr/include/x86_64-linux-gnu/bits/endian.h /usr/include/x86_64-linux-gnu/bits/byteswap.h /usr/include/x86_64-linux-gnu/bits/byteswap-16.h /usr/include/x86_64-linux-gnu/bits/uintn-identity.h /usr/include/x86_64-linux-gnu/sys/select.h /usr/include/x86_64-linux-gnu/bits/select.h /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h /usr/include/x86_64-linux-gnu/bits/select2.h /usr/include/x86_64-linux-gnu/sys/sysmacros.h /usr/include/x86_64-linux-gnu/bits/sysmacros.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h /usr/include/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/stat.h /usr/include/x86_64-linux-gnu/bits/fcntl2.h /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h /usr/include/x86_64-linux-gnu/bits/environments.h /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/x86_64-linux-gnu/bits/getopt_posix.h /usr/include/x86_64-linux-gnu/bits/getopt_core.h /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/ctype.h /usr/include/x86_64-linux-gnu/bits/types/locale_t.h /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/libc-header-start.h /usr/include/x86_64-linux-gnu/bits/waitflags.h /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/x86_64-linux-gnu/bits/floatn.h /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/string.h /usr/include/strings.h /usr/include/x86_64-linux-gnu/bits/strings_fortified.h /usr/include/x86_64-linux-gnu/bits/string_fortified.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdbool.h /usr/include/libintl.h /usr/include/locale.h /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/ncursesw/ncurses.h /usr/include/ncursesw/ncurses_dll.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__FILE.h /usr/include/x86_64-linux-gnu/bits/types/FILE.h /usr/include/x86_64-linux-gnu/bits/libio.h /usr/include/x86_64-linux-gnu/bits/_G_config.h /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/x86_64-linux-gnu/bits/sys_errlist.h /usr/include/x86_64-linux-gnu/bits/stdio.h /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/include/wchar.h /usr/include/x86_64-linux-gnu/bits/types/wint_t.h /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h /usr/include/x86_64-linux-gnu/bits/wchar2.h /usr/include/ncursesw/unctrl.h /usr/include/ncursesw/curses.h
+	$(call if_changed_dep,host-cobjs)
+
+/usr/include/x86_64-linux-gnu/bits/fcntl.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
+
+scripts/kconfig/kxgettext.o: scripts/kconfig/kxgettext.c FORCE
+	$(call if_changed_dep,host-cobjs)
+
+scripts/kconfig/list.h:
+
+config: scripts/kconfig/conf
+	$< $(silent) --oldaskconfig $(Kconfig)
+
+scripts/kconfig/kxgettext: FORCE scripts/kconfig/kxgettext.o scripts/kconfig/zconf.tab.o
+	$(call if_changed,host-cmulti)
+
+/usr/include/x86_64-linux-gnu/bits/stdio.h:
+
+/usr/include/x86_64-linux-gnu/bits/siginfo-arch.h:
+
+scripts/kconfig/confdata.c:
+
+FORCE:
+
+/usr/include/linux/errno.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigaction.h:
+
+.PHONY: __build xconfig gconfig menuconfig config silentoldconfig update-po-config localmodconfig localyesconfig oldconfig allnoconfig allyesconfig allmodconfig alldefconfig randconfig listnewconfig olddefconfig oldnoconfig savedefconfig defconfig kvmconfig xenconfig tinyconfig scripts/kconfig/dochecklxdialog FORCE
+
+scripts/kconfig/gconf.glade:
+
+scripts/kconfig/zconf.tab.o: scripts/kconfig/zconf.tab.c FORCE scripts/kconfig/zconf.lex.c scripts/kconfig/zconf.hash.c /usr/include/stdc-predef.h /usr/include/ctype.h /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h /usr/include/x86_64-linux-gnu/bits/wordsize.h /usr/include/x86_64-linux-gnu/bits/long-double.h /usr/include/x86_64-linux-gnu/gnu/stubs.h /usr/include/x86_64-linux-gnu/gnu/stubs-64.h /usr/include/x86_64-linux-gnu/bits/types.h /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/endian.h /usr/include/x86_64-linux-gnu/bits/endian.h /usr/include/x86_64-linux-gnu/bits/byteswap.h /usr/include/x86_64-linux-gnu/bits/byteswap-16.h /usr/include/x86_64-linux-gnu/bits/uintn-identity.h /usr/include/x86_64-linux-gnu/bits/types/locale_t.h /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/libc-header-start.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h /usr/include/x86_64-linux-gnu/bits/types/__FILE.h /usr/include/x86_64-linux-gnu/bits/types/FILE.h /usr/include/x86_64-linux-gnu/bits/libio.h /usr/include/x86_64-linux-gnu/bits/_G_config.h /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/x86_64-linux-gnu/bits/sys_errlist.h /usr/include/x86_64-linux-gnu/bits/stdio.h /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/x86_64-linux-gnu/bits/floatn.h /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/x86_64-linux-gnu/bits/types/clock_t.h /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h /usr/include/x86_64-linux-gnu/bits/types/time_t.h /usr/include/x86_64-linux-gnu/bits/types/timer_t.h /usr/include/x86_64-linux-gnu/bits/stdint-intn.h /usr/include/x86_64-linux-gnu/sys/select.h /usr/include/x86_64-linux-gnu/bits/select.h /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h /usr/include/x86_64-linux-gnu/bits/select2.h /usr/include/x86_64-linux-gnu/sys/sysmacros.h /usr/include/x86_64-linux-gnu/bits/sysmacros.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/string.h /usr/include/strings.h /usr/include/x86_64-linux-gnu/bits/strings_fortified.h /usr/include/x86_64-linux-gnu/bits/string_fortified.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdbool.h scripts/kconfig/lkc.h scripts/kconfig/expr.h /usr/include/assert.h scripts/kconfig/list.h /usr/include/libintl.h /usr/include/locale.h /usr/include/x86_64-linux-gnu/bits/locale.h scripts/kconfig/lkc_proto.h scripts/kconfig/zconf.hash.c scripts/kconfig/zconf.lex.c /usr/include/errno.h /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h /usr/include/x86_64-linux-gnu/asm/errno.h /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h /usr/include/inttypes.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h /usr/include/x86_64-linux-gnu/bits/local_lim.h /usr/include/linux/limits.h /usr/include/x86_64-linux-gnu/bits/posix2_lim.h /usr/include/x86_64-linux-gnu/bits/xopen_lim.h /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h /usr/include/x86_64-linux-gnu/bits/environments.h /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/x86_64-linux-gnu/bits/getopt_posix.h /usr/include/x86_64-linux-gnu/bits/getopt_core.h /usr/include/x86_64-linux-gnu/bits/unistd.h scripts/kconfig/util.c scripts/kconfig/confdata.c /usr/include/x86_64-linux-gnu/sys/stat.h /usr/include/x86_64-linux-gnu/bits/stat.h /usr/include/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/fcntl2.h /usr/include/time.h /usr/include/x86_64-linux-gnu/bits/time.h /usr/include/x86_64-linux-gnu/bits/timex.h /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h scripts/kconfig/expr.c scripts/kconfig/symbol.c /usr/include/regex.h /usr/include/x86_64-linux-gnu/sys/utsname.h /usr/include/x86_64-linux-gnu/bits/utsname.h scripts/kconfig/menu.c
+	$(call if_changed_dep,host-cobjs)
+
+/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
+
+/usr/include/errno.h:
+
+scripts/kconfig/Makefile:
+
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:
+
+silentoldconfig: scripts/kconfig/conf
+	$(Q)mkdir -p include/config include/generated
+	$(Q)test -e include/generated/autoksyms.h || \
+	    touch   include/generated/autoksyms.h
+	$< $(silent) --$@ $(Kconfig)
+
+/usr/include/limits.h:
+
+.PRECIOUS: scripts/kconfig/%-asn1.c scripts/kconfig/%-asn1.h
+
+scripts/kconfig/menu.c:
+
+scripts/Makefile.uncmd_spl:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h:
+
+scripts/kconfig/nconf.gui.o: scripts/kconfig/nconf.gui.c FORCE
+	$(call if_changed_dep,host-cobjs)
+
+scripts/kconfig/.zconf.tab.o.cmd:
+
+xen.config:
+
+scripts/kconfig/dsdt.c: scripts/kconfig/dsdt.asl
+	$(call cmd,acpi_c_asl)
+
+/usr/include/x86_64-linux-gnu/bits/wchar2.h:
+
+scripts/kconfig/conf: FORCE scripts/kconfig/conf.o scripts/kconfig/zconf.tab.o
+	$(call if_changed,host-cmulti)
+
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
+
+scripts/kconfig/conf.o: scripts/kconfig/conf.c FORCE
+	$(call if_changed_dep,host-cobjs)
+
+/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
+
+scripts/kconfig/lxdialog/util.o: scripts/kconfig/lxdialog/util.c FORCE scripts/kconfig/dochecklxdialog /usr/include/stdc-predef.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h scripts/kconfig/lxdialog/dialog.h /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h /usr/include/x86_64-linux-gnu/bits/wordsize.h /usr/include/x86_64-linux-gnu/bits/long-double.h /usr/include/x86_64-linux-gnu/gnu/stubs.h /usr/include/x86_64-linux-gnu/gnu/stubs-64.h /usr/include/x86_64-linux-gnu/bits/types.h /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/x86_64-linux-gnu/bits/types/clock_t.h /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h /usr/include/x86_64-linux-gnu/bits/types/time_t.h /usr/include/x86_64-linux-gnu/bits/types/timer_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h /usr/include/x86_64-linux-gnu/bits/stdint-intn.h /usr/include/endian.h /usr/include/x86_64-linux-gnu/bits/endian.h /usr/include/x86_64-linux-gnu/bits/byteswap.h /usr/include/x86_64-linux-gnu/bits/byteswap-16.h /usr/include/x86_64-linux-gnu/bits/uintn-identity.h /usr/include/x86_64-linux-gnu/sys/select.h /usr/include/x86_64-linux-gnu/bits/select.h /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h /usr/include/x86_64-linux-gnu/bits/select2.h /usr/include/x86_64-linux-gnu/sys/sysmacros.h /usr/include/x86_64-linux-gnu/bits/sysmacros.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h /usr/include/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/stat.h /usr/include/x86_64-linux-gnu/bits/fcntl2.h /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h /usr/include/x86_64-linux-gnu/bits/environments.h /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/x86_64-linux-gnu/bits/getopt_posix.h /usr/include/x86_64-linux-gnu/bits/getopt_core.h /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/ctype.h /usr/include/x86_64-linux-gnu/bits/types/locale_t.h /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/libc-header-start.h /usr/include/x86_64-linux-gnu/bits/waitflags.h /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/x86_64-linux-gnu/bits/floatn.h /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/string.h /usr/include/strings.h /usr/include/x86_64-linux-gnu/bits/strings_fortified.h /usr/include/x86_64-linux-gnu/bits/string_fortified.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdbool.h /usr/include/libintl.h /usr/include/locale.h /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/ncursesw/ncurses.h /usr/include/ncursesw/ncurses_dll.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__FILE.h /usr/include/x86_64-linux-gnu/bits/types/FILE.h /usr/include/x86_64-linux-gnu/bits/libio.h /usr/include/x86_64-linux-gnu/bits/_G_config.h /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/x86_64-linux-gnu/bits/sys_errlist.h /usr/include/x86_64-linux-gnu/bits/stdio.h /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/include/wchar.h /usr/include/x86_64-linux-gnu/bits/types/wint_t.h /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h /usr/include/x86_64-linux-gnu/bits/wchar2.h /usr/include/ncursesw/unctrl.h /usr/include/ncursesw/curses.h
+	$(call if_changed_dep,host-cobjs)
+
+xenconfig: xen.config
+	@:
+
+/usr/include/libintl.h:
+
+scripts/kconfig/lxdialog/dialog.h:
+
+/usr/include/wchar.h:
+
+.SUFFIXES:
+
+/usr/include/time.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigstack.h:
+
+/usr/include/x86_64-linux-gnu/bits/waitflags.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h:
+
+/usr/include/alloca.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h:
+
+/usr/include/strings.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/floatn.h:
+
+/usr/include/x86_64-linux-gnu/bits/select.h:
+
+scripts/kconfig/lkc.h:
+
+/usr/include/string.h:
+
+scripts/kconfig/dochecklxdialog:
+	$(Q)$(CONFIG_SHELL) $(check-lxdialog) -check $(HOSTCC) $(HOST_EXTRACFLAGS) $(HOSTLOADLIBES_mconf)
+
+/usr/include/signal.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h:
+
+defconfig: scripts/kconfig/conf
+	@$(kecho) "*** Default configuration is based on '$(KBUILD_DEFCONFIG)'"
+	$(Q)$< $(silent) --defconfig=arch/$(SRCARCH)/configs/$(KBUILD_DEFCONFIG) $(Kconfig)
+
+/usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h:
+
+scripts/kconfig/lxdialog/menubox.c:
+
+scripts/kconfig/helloworld.so: scripts/kconfig/helloworld.o arch/arm/lib/ arch/arm/lib/ arch/arm/lib/
+	$(call cmd,efi_ld)
+
+scripts/kconfig/zconf.hash.c_shipped:
+
+/usr/include/ncursesw/ncurses_dll.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
+
+scripts/kconfig/lxdialog/yesno.c:
+
+/usr/include/ncursesw/unctrl.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h:
+
+/usr/include/ncursesw/curses.h:
+
+scripts/kconfig/zconf.hash.c: scripts/kconfig/zconf.hash.c_shipped
+	$(call cmd,shipped)
+
+/usr/include/x86_64-linux-gnu/bits/strings_fortified.h:
+
+/usr/include/x86_64-linux-gnu/bits/signum.h:
+
+/usr/include/x86_64-linux-gnu/bits/long-double.h:
+
+/usr/include/features.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/time_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/stack_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/_G_config.h:
+
+scripts/kconfig/lxdialog/.inputbox.o.cmd:
+
+/usr/include/x86_64-linux-gnu/bits/environments.h:
+
+scripts/kconfig/lxdialog/inputbox.c:
+
+/usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h:
+
+scripts/kconfig/kxgettext.c:
+
+/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
+
+scripts/kconfig/.tmp_qtcheck:
+
+/usr/include/x86_64-linux-gnu/bits/utsname.h:
+
+help:
+	@echo  '  config	  - Update current config utilising a line-oriented program'
+	@echo  '  nconfig         - Update current config utilising a ncurses menu based'
+	@echo  '                    program'
+	@echo  '  menuconfig	  - Update current config utilising a menu based program'
+	@echo  '  xconfig	  - Update current config utilising a Qt based front-end'
+	@echo  '  gconfig	  - Update current config utilising a GTK+ based front-end'
+	@echo  '  oldconfig	  - Update current config utilising a provided .config as base'
+	@echo  '  localmodconfig  - Update current config disabling modules not loaded'
+	@echo  '  localyesconfig  - Update current config converting local mods to core'
+	@echo  '  silentoldconfig - Same as oldconfig, but quietly, additionally update deps'
+	@echo  '  defconfig	  - New config with default from ARCH supplied defconfig'
+	@echo  '  savedefconfig   - Save current config as ./defconfig (minimal config)'
+	@echo  '  allnoconfig	  - New config where all options are answered with no'
+	@echo  '  allyesconfig	  - New config where all options are accepted with yes'
+	@echo  '  allmodconfig	  - New config selecting modules when possible'
+	@echo  '  alldefconfig    - New config with all symbols set to default'
+	@echo  '  randconfig	  - New config with random answer to all options'
+	@echo  '  listnewconfig   - List new options'
+	@echo  '  olddefconfig	  - Same as silentoldconfig but sets new symbols to their'
+	@echo  '                    default value'
+
+/usr/include/x86_64-linux-gnu/bits/byteswap.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigevent-consts.h:
+
+kvm_guest.config:
+
+scripts/kconfig/zconf.tab.c: scripts/kconfig/zconf.tab.c_shipped
+	$(call cmd,shipped)
+
+mx6ull_14x14_evk_defconfig: scripts/kconfig/conf
+	$(Q)$< $(silent) --defconfig=arch/$(SRCARCH)/configs/$@ $(Kconfig)
+
+/usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
+
+/usr/include/asm-generic/errno-base.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
+
+scripts/Makefile.host:
+
+/usr/include/x86_64-linux-gnu/bits/fcntl2.h:
+
+/usr/include/endian.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/unistd.h:
+
+scripts/kconfig/gconf: FORCE scripts/kconfig/gconf.o scripts/kconfig/zconf.tab.o
+	$(call if_changed,host-cmulti)
+
+scripts/kconfig/nconf.gui.c:
+
+scripts/kconfig/gconf.o: scripts/kconfig/gconf.c FORCE scripts/kconfig/.tmp_gtkcheck
+	$(call if_changed_dep,host-cobjs)
+
+scripts/kconfig/expr.c:
+
+/usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
+
+/usr/include/locale.h:
+
+/usr/include/x86_64-linux-gnu/bits/signum-generic.h:
+
+/usr/include/inttypes.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
+
+scripts/kconfig/lxdialog/.yesno.o.cmd:
+
+/usr/include/x86_64-linux-gnu/sys/ucontext.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib.h:
+
+oldconfig: scripts/kconfig/conf
+	$< $(silent) --$@ $(Kconfig)
+
+scripts/kconfig/zconf.lex.c_shipped:
+
+/usr/include/fcntl.h:
+
+/usr/include/stdio.h:
+
+scripts/kconfig/conf.c:
+
+scripts/kconfig/lkc_proto.h:
+
+olddefconfig: scripts/kconfig/conf
+	$< $(silent) --$@ $(Kconfig)
+
+scripts/kconfig/streamline_config.pl:
+
+scripts/kconfig/lxdialog/util.c:
+
+.DEFAULT:
+
+/usr/include/x86_64-linux-gnu/bits/uio_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
+
+allmodconfig: scripts/kconfig/conf
+	$< $(silent) --$@ $(Kconfig)
+
+/usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h:
+
+/usr/include/x86_64-linux-gnu/sys/stat.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/siginfo_t.h:
+
+scripts/kconfig/symbol.c:
+
+localyesconfig: scripts/kconfig/streamline_config.pl scripts/kconfig/conf
+	$(Q)mkdir -p include/config include/generated
+	$(Q)perl $< --$@ $(srctree) $(Kconfig) > .tmp.config
+	$(Q)if [ -f .config ]; then 					\
+			cmp -s .tmp.config .config ||			\
+			(mv -f .config .config.old.1;			\
+			 mv -f .tmp.config .config;			\
+			 $(obj)/conf $(silent) --silentoldconfig $(Kconfig); \
+			 mv -f .config.old.1 .config.old)		\
+	else								\
+			mv -f .tmp.config .config;			\
+			$(obj)/conf $(silent) --silentoldconfig $(Kconfig); \
+	fi
+	$(Q)rm -f .tmp.config
+
+scripts/kconfig/lxdialog/textbox.o: scripts/kconfig/lxdialog/textbox.c FORCE scripts/kconfig/dochecklxdialog /usr/include/stdc-predef.h scripts/kconfig/lxdialog/dialog.h /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h /usr/include/x86_64-linux-gnu/bits/wordsize.h /usr/include/x86_64-linux-gnu/bits/long-double.h /usr/include/x86_64-linux-gnu/gnu/stubs.h /usr/include/x86_64-linux-gnu/gnu/stubs-64.h /usr/include/x86_64-linux-gnu/bits/types.h /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/x86_64-linux-gnu/bits/types/clock_t.h /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h /usr/include/x86_64-linux-gnu/bits/types/time_t.h /usr/include/x86_64-linux-gnu/bits/types/timer_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h /usr/include/x86_64-linux-gnu/bits/stdint-intn.h /usr/include/endian.h /usr/include/x86_64-linux-gnu/bits/endian.h /usr/include/x86_64-linux-gnu/bits/byteswap.h /usr/include/x86_64-linux-gnu/bits/byteswap-16.h /usr/include/x86_64-linux-gnu/bits/uintn-identity.h /usr/include/x86_64-linux-gnu/sys/select.h /usr/include/x86_64-linux-gnu/bits/select.h /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h /usr/include/x86_64-linux-gnu/bits/select2.h /usr/include/x86_64-linux-gnu/sys/sysmacros.h /usr/include/x86_64-linux-gnu/bits/sysmacros.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h /usr/include/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/stat.h /usr/include/x86_64-linux-gnu/bits/fcntl2.h /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h /usr/include/x86_64-linux-gnu/bits/environments.h /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/x86_64-linux-gnu/bits/getopt_posix.h /usr/include/x86_64-linux-gnu/bits/getopt_core.h /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/ctype.h /usr/include/x86_64-linux-gnu/bits/types/locale_t.h /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/libc-header-start.h /usr/include/x86_64-linux-gnu/bits/waitflags.h /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/x86_64-linux-gnu/bits/floatn.h /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/string.h /usr/include/strings.h /usr/include/x86_64-linux-gnu/bits/strings_fortified.h /usr/include/x86_64-linux-gnu/bits/string_fortified.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdbool.h /usr/include/libintl.h /usr/include/locale.h /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/ncursesw/ncurses.h /usr/include/ncursesw/ncurses_dll.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__FILE.h /usr/include/x86_64-linux-gnu/bits/types/FILE.h /usr/include/x86_64-linux-gnu/bits/libio.h /usr/include/x86_64-linux-gnu/bits/_G_config.h /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/x86_64-linux-gnu/bits/sys_errlist.h /usr/include/x86_64-linux-gnu/bits/stdio.h /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/include/wchar.h /usr/include/x86_64-linux-gnu/bits/types/wint_t.h /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h /usr/include/x86_64-linux-gnu/bits/wchar2.h /usr/include/ncursesw/unctrl.h /usr/include/ncursesw/curses.h
+	$(call if_changed_dep,host-cobjs)
+
+scripts/kconfig/util.c:
+
+/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
+
+scripts/kconfig/gconf.glade.h: scripts/kconfig/gconf.glade
+	$(Q)intltool-extract --type=gettext/glade --srcdir=$(srctree) \
+	$(obj)/gconf.glade
+
+/usr/include/assert.h:
+
+kvmconfig: kvm_guest.config
+	@:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
+
+/usr/include/x86_64-linux-gnu/bits/confname.h:
+
+/usr/include/x86_64-linux-gnu/bits/floatn-common.h:
+
+oldnoconfig: olddefconfig
+
+scripts/kconfig/lxdialog/checklist.c:
+
+scripts/kconfig/lxdialog/.textbox.o.cmd:
+
+/usr/include/x86_64-linux-gnu/bits/sysmacros.h:
+
+localmodconfig: scripts/kconfig/streamline_config.pl scripts/kconfig/conf
+	$(Q)mkdir -p include/config include/generated
+	$(Q)perl $< --$@ $(srctree) $(Kconfig) > .tmp.config
+	$(Q)if [ -f .config ]; then 					\
+			cmp -s .tmp.config .config ||			\
+			(mv -f .config .config.old.1;			\
+			 mv -f .tmp.config .config;			\
+			 $(obj)/conf $(silent) --silentoldconfig $(Kconfig); \
+			 mv -f .config.old.1 .config.old)		\
+	else								\
+			mv -f .tmp.config .config;			\
+			$(obj)/conf $(silent) --silentoldconfig $(Kconfig); \
+	fi
+	$(Q)rm -f .tmp.config
+
+scripts/kconfig/qconf.moc:
+
+/usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
+
+update-po-config: scripts/kconfig/kxgettext scripts/kconfig/gconf.glade.h
+	$(Q)$(kecho) "  GEN     config.pot"
+	$(Q)xgettext --default-domain=linux                         \
+	    --add-comments --keyword=_ --keyword=N_                 \
+	    --from-code=UTF-8                                       \
+	    --files-from=$(srctree)/scripts/kconfig/POTFILES.in     \
+	    --directory=$(srctree) --directory=$(objtree)           \
+	    --output $(obj)/config.pot
+	$(Q)sed -i s/CHARSET/UTF-8/ $(obj)/config.pot
+	$(Q)(for i in `ls $(srctree)/arch/*/Kconfig      \
+	    $(srctree)/arch/*/um/Kconfig`;               \
+	    do                                           \
+		$(kecho) "  GEN     $$i";                    \
+		$(obj)/kxgettext $$i                     \
+		     >> $(obj)/config.pot;               \
+	    done )
+	$(Q)$(kecho) "  GEN     linux.pot"
+	$(Q)msguniq --sort-by-file --to-code=UTF-8 $(obj)/config.pot \
+	    --output $(obj)/linux.pot
+	$(Q)rm -f $(obj)/config.pot
+
+scripts/kconfig/mconf: FORCE scripts/kconfig/mconf.o scripts/kconfig/zconf.tab.o scripts/kconfig/lxdialog/checklist.o scripts/kconfig/lxdialog/util.o scripts/kconfig/lxdialog/inputbox.o scripts/kconfig/lxdialog/textbox.o scripts/kconfig/lxdialog/yesno.o scripts/kconfig/lxdialog/menubox.o
+	$(call if_changed,host-cmulti)
+
+scripts/kconfig/dsdt.asl:
+
+listnewconfig: scripts/kconfig/conf
+	$< $(silent) --$@ $(Kconfig)
+
+scripts/kconfig/nconf: FORCE scripts/kconfig/nconf.o scripts/kconfig/zconf.tab.o scripts/kconfig/nconf.gui.o
+	$(call if_changed,host-cmulti)
+
+scripts/kconfig/mconf.o: scripts/kconfig/mconf.c FORCE /usr/include/stdc-predef.h /usr/include/ctype.h /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h /usr/include/x86_64-linux-gnu/bits/wordsize.h /usr/include/x86_64-linux-gnu/bits/long-double.h /usr/include/x86_64-linux-gnu/gnu/stubs.h /usr/include/x86_64-linux-gnu/gnu/stubs-64.h /usr/include/x86_64-linux-gnu/bits/types.h /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/endian.h /usr/include/x86_64-linux-gnu/bits/endian.h /usr/include/x86_64-linux-gnu/bits/byteswap.h /usr/include/x86_64-linux-gnu/bits/byteswap-16.h /usr/include/x86_64-linux-gnu/bits/uintn-identity.h /usr/include/x86_64-linux-gnu/bits/types/locale_t.h /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h /usr/include/errno.h /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h /usr/include/x86_64-linux-gnu/asm/errno.h /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h /usr/include/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h /usr/include/x86_64-linux-gnu/bits/stat.h /usr/include/x86_64-linux-gnu/bits/fcntl2.h /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/libc-header-start.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h /usr/include/x86_64-linux-gnu/bits/local_lim.h /usr/include/linux/limits.h /usr/include/x86_64-linux-gnu/bits/posix2_lim.h /usr/include/x86_64-linux-gnu/bits/xopen_lim.h /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/x86_64-linux-gnu/bits/floatn.h /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/x86_64-linux-gnu/bits/types/clock_t.h /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h /usr/include/x86_64-linux-gnu/bits/types/time_t.h /usr/include/x86_64-linux-gnu/bits/types/timer_t.h /usr/include/x86_64-linux-gnu/bits/stdint-intn.h /usr/include/x86_64-linux-gnu/sys/select.h /usr/include/x86_64-linux-gnu/bits/select.h /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h /usr/include/x86_64-linux-gnu/bits/select2.h /usr/include/x86_64-linux-gnu/sys/sysmacros.h /usr/include/x86_64-linux-gnu/bits/sysmacros.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/string.h /usr/include/strings.h /usr/include/x86_64-linux-gnu/bits/strings_fortified.h /usr/include/x86_64-linux-gnu/bits/string_fortified.h /usr/include/signal.h /usr/include/x86_64-linux-gnu/bits/signum.h /usr/include/x86_64-linux-gnu/bits/signum-generic.h /usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h /usr/include/x86_64-linux-gnu/bits/types/siginfo_t.h /usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h /usr/include/x86_64-linux-gnu/bits/siginfo-arch.h /usr/include/x86_64-linux-gnu/bits/siginfo-consts.h /usr/include/x86_64-linux-gnu/bits/siginfo-consts-arch.h /usr/include/x86_64-linux-gnu/bits/types/sigval_t.h /usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h /usr/include/x86_64-linux-gnu/bits/sigevent-consts.h /usr/include/x86_64-linux-gnu/bits/sigaction.h /usr/include/x86_64-linux-gnu/bits/sigcontext.h /usr/include/x86_64-linux-gnu/bits/types/stack_t.h /usr/include/x86_64-linux-gnu/sys/ucontext.h /usr/include/x86_64-linux-gnu/bits/sigstack.h /usr/include/x86_64-linux-gnu/bits/ss_flags.h /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h /usr/include/x86_64-linux-gnu/bits/sigthread.h /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h /usr/include/x86_64-linux-gnu/bits/environments.h /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/x86_64-linux-gnu/bits/getopt_posix.h /usr/include/x86_64-linux-gnu/bits/getopt_core.h /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/locale.h /usr/include/x86_64-linux-gnu/bits/locale.h scripts/kconfig/lkc.h scripts/kconfig/expr.h /usr/include/assert.h /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__FILE.h /usr/include/x86_64-linux-gnu/bits/types/FILE.h /usr/include/x86_64-linux-gnu/bits/libio.h /usr/include/x86_64-linux-gnu/bits/_G_config.h /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/x86_64-linux-gnu/bits/sys_errlist.h /usr/include/x86_64-linux-gnu/bits/stdio.h /usr/include/x86_64-linux-gnu/bits/stdio2.h scripts/kconfig/list.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdbool.h /usr/include/libintl.h scripts/kconfig/lkc_proto.h scripts/kconfig/lxdialog/dialog.h /usr/include/ncursesw/ncurses.h /usr/include/ncursesw/ncurses_dll.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/include/wchar.h /usr/include/x86_64-linux-gnu/bits/types/wint_t.h /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h /usr/include/x86_64-linux-gnu/bits/wchar2.h /usr/include/ncursesw/unctrl.h /usr/include/ncursesw/curses.h
+	$(call if_changed_dep,host-cobjs)
+
+scripts/kconfig/lxdialog/checklist.o: scripts/kconfig/lxdialog/checklist.c FORCE scripts/kconfig/dochecklxdialog /usr/include/stdc-predef.h scripts/kconfig/lxdialog/dialog.h /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h /usr/include/x86_64-linux-gnu/bits/wordsize.h /usr/include/x86_64-linux-gnu/bits/long-double.h /usr/include/x86_64-linux-gnu/gnu/stubs.h /usr/include/x86_64-linux-gnu/gnu/stubs-64.h /usr/include/x86_64-linux-gnu/bits/types.h /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/x86_64-linux-gnu/bits/types/clock_t.h /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h /usr/include/x86_64-linux-gnu/bits/types/time_t.h /usr/include/x86_64-linux-gnu/bits/types/timer_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h /usr/include/x86_64-linux-gnu/bits/stdint-intn.h /usr/include/endian.h /usr/include/x86_64-linux-gnu/bits/endian.h /usr/include/x86_64-linux-gnu/bits/byteswap.h /usr/include/x86_64-linux-gnu/bits/byteswap-16.h /usr/include/x86_64-linux-gnu/bits/uintn-identity.h /usr/include/x86_64-linux-gnu/sys/select.h /usr/include/x86_64-linux-gnu/bits/select.h /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h /usr/include/x86_64-linux-gnu/bits/select2.h /usr/include/x86_64-linux-gnu/sys/sysmacros.h /usr/include/x86_64-linux-gnu/bits/sysmacros.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h /usr/include/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/stat.h /usr/include/x86_64-linux-gnu/bits/fcntl2.h /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h /usr/include/x86_64-linux-gnu/bits/environments.h /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/x86_64-linux-gnu/bits/getopt_posix.h /usr/include/x86_64-linux-gnu/bits/getopt_core.h /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/ctype.h /usr/include/x86_64-linux-gnu/bits/types/locale_t.h /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/libc-header-start.h /usr/include/x86_64-linux-gnu/bits/waitflags.h /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/x86_64-linux-gnu/bits/floatn.h /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/string.h /usr/include/strings.h /usr/include/x86_64-linux-gnu/bits/strings_fortified.h /usr/include/x86_64-linux-gnu/bits/string_fortified.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdbool.h /usr/include/libintl.h /usr/include/locale.h /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/ncursesw/ncurses.h /usr/include/ncursesw/ncurses_dll.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__FILE.h /usr/include/x86_64-linux-gnu/bits/types/FILE.h /usr/include/x86_64-linux-gnu/bits/libio.h /usr/include/x86_64-linux-gnu/bits/_G_config.h /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/x86_64-linux-gnu/bits/sys_errlist.h /usr/include/x86_64-linux-gnu/bits/stdio.h /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/include/wchar.h /usr/include/x86_64-linux-gnu/bits/types/wint_t.h /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h /usr/include/x86_64-linux-gnu/bits/wchar2.h /usr/include/ncursesw/unctrl.h /usr/include/ncursesw/curses.h
+	$(call if_changed_dep,host-cobjs)
+
+__build: scripts/kconfig/dochecklxdialog
+	@:
+
+scripts/kconfig/nconf.o: scripts/kconfig/nconf.c FORCE
+	$(call if_changed_dep,host-cobjs)
+
+scripts/kconfig/.mconf.o.cmd:
+
+scripts/Makefile.lib:
+
+/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
+
+scripts/kconfig/modules.order: FORCE
+	$(Q)(cat /dev/null; $(modorder-cmds)) > $@
+
+/usr/include/x86_64-linux-gnu/sys/sysmacros.h:
+
+scripts/Makefile.build:
+
+scripts/kconfig/expr.h:
+
+/usr/include/x86_64-linux-gnu/bits/select2.h:
+
+scripts/kconfig/lxdialog/.checklist.o.cmd:
+
+/usr/include/stdint.h:
+
+/usr/include/x86_64-linux-gnu/sys/select.h:
+
+scripts/kconfig/.mconf.cmd:
+
+/usr/include/x86_64-linux-gnu/bits/wchar.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
+
+/usr/include/x86_64-linux-gnu/sys/utsname.h:
+
+/usr/include/x86_64-linux-gnu/bits/fcntl-linux.h:
+
+/usr/include/x86_64-linux-gnu/bits/types.h:
+
+/usr/include/asm-generic/errno.h:
+
+/usr/include/ncursesw/ncurses.h:
+
+scripts/kconfig/zconf.lex.c: scripts/kconfig/zconf.lex.c_shipped
+	$(call cmd,shipped)
+
+/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/FILE.h:
+
+/usr/include/linux/falloc.h:
+
+/usr/include/x86_64-linux-gnu/bits/wordsize.h:
+
+randconfig: scripts/kconfig/conf
+	$< $(silent) --$@ $(Kconfig)
+
+scripts/kconfig/qconf: FORCE scripts/kconfig/zconf.tab.o scripts/kconfig/qconf.o
+	$(call if_changed,host-cxxmulti)
+
+scripts/kconfig/zconf.tab.c_shipped:
+
+scripts/kconfig/qconf.o: scripts/kconfig/qconf.cc FORCE scripts/kconfig/.tmp_qtcheck scripts/kconfig/qconf.moc
+	$(call if_changed_dep,host-cxxobjs)
+
+include/config/auto.conf:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
+
+/usr/include/linux/limits.h:
+
+/usr/include/x86_64-linux-gnu/sys/types.h:
+
+menuconfig: scripts/kconfig/mconf
+	$< $(silent) $(Kconfig)
+
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:
+
+/usr/include/x86_64-linux-gnu/bits/string_fortified.h:
+
+scripts/kconfig/%-asn1.c:
+
+/usr/include/x86_64-linux-gnu/bits/sys_errlist.h:
+
+scripts/Kbuild.include:
+
+/usr/include/x86_64-linux-gnu/bits/typesizes.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+
+savedefconfig: scripts/kconfig/conf
+	$< $(silent) --$@=defconfig $(Kconfig)
+
+scripts/kconfig/gconf.c:
+
+/usr/include/x86_64-linux-gnu/bits/sigcontext.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
+
+/usr/include/x86_64-linux-gnu/bits/getopt_core.h:
+
+gconfig: scripts/kconfig/gconf
+	$< $(silent) $(Kconfig)
+
+/usr/include/x86_64-linux-gnu/bits/siginfo-consts.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigthread.h:
+
+scripts/kconfig/.tmp_gtkcheck:
+
+/usr/include/stdc-predef.h:
+
+/usr/include/x86_64-linux-gnu/bits/errno.h:
+
+/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+
+arch/arm/lib/:
+
+scripts/kconfig/lxdialog/.menubox.o.cmd:
+
+/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
+
+/usr/include/x86_64-linux-gnu/bits/stat.h:
+
+scripts/kconfig/qconf.cc:
+
+nconfig: scripts/kconfig/nconf
+	$< $(silent) $(Kconfig)
+
+/usr/include/regex.h:
+
+/usr/include/ctype.h:
+
+allnoconfig: scripts/kconfig/conf
+	$< $(silent) --$@ $(Kconfig)
+
+/usr/include/x86_64-linux-gnu/bits/byteswap-16.h:
+
+/usr/include/x86_64-linux-gnu/bits/ss_flags.h:
+
+scripts/kconfig/lxdialog/textbox.c:
+
+/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
+
+scripts/kconfig/helloworld.o:
+
+include/autoconf.mk:
+
+/usr/include/x86_64-linux-gnu/bits/xopen_lim.h:
+
+scripts/kconfig/lxdialog/menubox.o: scripts/kconfig/lxdialog/menubox.c FORCE scripts/kconfig/dochecklxdialog /usr/include/stdc-predef.h scripts/kconfig/lxdialog/dialog.h /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h /usr/include/x86_64-linux-gnu/bits/wordsize.h /usr/include/x86_64-linux-gnu/bits/long-double.h /usr/include/x86_64-linux-gnu/gnu/stubs.h /usr/include/x86_64-linux-gnu/gnu/stubs-64.h /usr/include/x86_64-linux-gnu/bits/types.h /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/x86_64-linux-gnu/bits/types/clock_t.h /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h /usr/include/x86_64-linux-gnu/bits/types/time_t.h /usr/include/x86_64-linux-gnu/bits/types/timer_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h /usr/include/x86_64-linux-gnu/bits/stdint-intn.h /usr/include/endian.h /usr/include/x86_64-linux-gnu/bits/endian.h /usr/include/x86_64-linux-gnu/bits/byteswap.h /usr/include/x86_64-linux-gnu/bits/byteswap-16.h /usr/include/x86_64-linux-gnu/bits/uintn-identity.h /usr/include/x86_64-linux-gnu/sys/select.h /usr/include/x86_64-linux-gnu/bits/select.h /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h /usr/include/x86_64-linux-gnu/bits/select2.h /usr/include/x86_64-linux-gnu/sys/sysmacros.h /usr/include/x86_64-linux-gnu/bits/sysmacros.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h /usr/include/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/stat.h /usr/include/x86_64-linux-gnu/bits/fcntl2.h /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h /usr/include/x86_64-linux-gnu/bits/environments.h /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/x86_64-linux-gnu/bits/getopt_posix.h /usr/include/x86_64-linux-gnu/bits/getopt_core.h /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/ctype.h /usr/include/x86_64-linux-gnu/bits/types/locale_t.h /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/libc-header-start.h /usr/include/x86_64-linux-gnu/bits/waitflags.h /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/x86_64-linux-gnu/bits/floatn.h /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/string.h /usr/include/strings.h /usr/include/x86_64-linux-gnu/bits/strings_fortified.h /usr/include/x86_64-linux-gnu/bits/string_fortified.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdbool.h /usr/include/libintl.h /usr/include/locale.h /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/ncursesw/ncurses.h /usr/include/ncursesw/ncurses_dll.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__FILE.h /usr/include/x86_64-linux-gnu/bits/types/FILE.h /usr/include/x86_64-linux-gnu/bits/libio.h /usr/include/x86_64-linux-gnu/bits/_G_config.h /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/x86_64-linux-gnu/bits/sys_errlist.h /usr/include/x86_64-linux-gnu/bits/stdio.h /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/include/wchar.h /usr/include/x86_64-linux-gnu/bits/types/wint_t.h /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h /usr/include/x86_64-linux-gnu/bits/wchar2.h /usr/include/ncursesw/unctrl.h /usr/include/ncursesw/curses.h
+	$(call if_changed_dep,host-cobjs)
+
+/usr/include/x86_64-linux-gnu/bits/time.h:
+
+
+
+
+
+
+
+
+
+cc-cross-prefix = $(word 1, $(foreach c,$(1), $(shell set -e; if (which $(strip $(c))$(CC)) > /dev/null 2>&1 ; then echo $(c); fi)))
+<D = $(patsubst %/,%,$(dir $<))
+?F = $(notdir $?)
+.SHELLFLAGS := -c
+KBUILD_MODULES := 
+PATCHLEVEL = 03
+filechk = 	$(Q)set -e; $(kecho) '  CHK     $@'; mkdir -p $(dir $@); $(filechk_$(1)) < $< > $@.tmp; if [ -r $@ ] && cmp -s $@ $@.tmp; then rm -f $@.tmp; else $(kecho) '  UPD     $@'; mv -f $@.tmp $@; fi
+?D = $(patsubst %/,%,$(dir $?))
+CHECK = sparse
+@D = $(patsubst %/,%,$(dir $@))
+@F = $(notdir $@)
+MAKE_VERSION := 4.1
+UBOOTINCLUDE := 
+CURDIR := /home/book/100ask_imx6ull-sdk/Uboot-2017.03
+ld-version = $(shell $(LD) --version | $(srctree)/scripts/ld-version.sh)
+SHELL = /bin/sh
+Q = @
+PHONY := _all all scripts_basic outputmakefile checkstack ubootrelease ubootversion FORCE
+MODVERDIR := .tmp_versions
+_ = /usr/bin/make
+SPL_ := 
+cc-fullversion = $(shell $(CONFIG_SHELL) $(srctree)/scripts/gcc-version.sh -p $(CC))
+BOARDDIR := 
+MAKEFILE_LIST :=  Makefile scripts/Kbuild.include
+CHECKFLAGS := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ -Wbitwise -Wno-return-void -D__CHECK_ENDIAN__ 
+GNUMAKEFLAGS := 
+srctree := .
+HOSTCC = cc
+XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
+KBUILD_CFLAGS := -Wall -Wstrict-prototypes -Wno-format-security -fno-builtin -ffreestanding
+cc-version = $(shell $(CONFIG_SHELL) $(srctree)/scripts/gcc-version.sh $(CC))
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1001/bus
+VERSION = 2017
+timestamp_h := include/generated/timestamp_autogenerated.h
+CC = $(CROSS_COMPILE)gcc
+dot-config := 1
+cmd_rmdirs = rm -rf $(rm-dirs)
+LC_COLLATE = C
+AWK = awk
+KBUILD_AFLAGS := -D__ASSEMBLY__
+dot-target = $(dir $@).$(notdir $@)
+if_changed_rule = $(if $(strip $(any-prereq) $(arg-check) ), @set -e; $(rule_$(1)))
+squote := '
+LESSOPEN = | /usr/bin/lesspipe %s
+CPP = $(CC) -E
+cc-option-yn = $(call try-run, $(CC) -Werror $(KBUILD_CPPFLAGS) $(KBUILD_CFLAGS) $(1) -c -x c /dev/null -o "$$TMP",y,n)
+SSH_CONNECTION = 192.168.37.1 57533 192.168.37.134 22
+PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/book/100ask_imx6ull-sdk/ToolChain/arm-buildroot-linux-gnueabihf_sdk-buildroot/bin
+flags = $(foreach o,$($(1)),$(if $(filter -I%,$(o)),$(call addtree,$(o)),$(o)))
+LD = $(CROSS_COMPILE)ld.bfd
+CPUDIR := 
+clean := -f ./scripts/Makefile.clean obj
+HOSTLDFLAGS := 
+NOSTDINC_FLAGS := 
+space := $(subst ,, )
+SSH_TTY = /dev/pts/1
+XDG_RUNTIME_DIR = /run/user/1001
+hdr-inst := -f ./scripts/Makefile.headersinst obj
+VENDOR := 
+try-run = $(shell set -e; TMP="$(TMPOUT).$$$$.tmp"; TMPO="$(TMPOUT).$$$$.o"; TMPSU="$(TMPOUT).$$$$.su"; if ($(1)) >/dev/null 2>&1; then echo "$(2)"; else echo "$(3)"; fi; rm -f "$$TMP" "$$TMPO" "$$TMPSU")
+comma := ,
+any-prereq = $(filter-out $(PHONY),$?) $(filter-out $(PHONY) $(wildcard $^),$^)
+KBUILD_BUILTIN := 1
+cmd_rmfiles = rm -f $(rm-files)
+version_h := include/generated/version_autogenerated.h
+VPATH := .
+empty := 
+AR = $(CROSS_COMPILE)ar
+targets := 
+LC_NUMERIC = C
+ar-option = $(call try-run, $(AR) rc$(1) "$$TMP",$(1),$(2))
+LDFLAGS := 
+build := -f ./scripts/Makefile.build obj
+EXTRAVERSION = 
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+CDPATH := 
+objtree := .
+cc-disable-warning = $(call try-run, $(CC) $(KBUILD_CPPFLAGS) $(KBUILD_CFLAGS) -W$(strip $(1)) -c -x c /dev/null -o "$$TMP",-Wno-$(strip $(1)))
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+config-targets := 1
+SUBLEVEL = 
+%F = $(notdir $%)
+DISPLAY = localhost:10.0
+KCONFIG_CONFIG = .config
+no-dot-config-targets := clean clobber mrproper distclean help %docs check% coccicheck ubootversion backup tests
+HOSTCXX = c++
+PWD = /home/book/100ask_imx6ull-sdk/Uboot-2017.03
+cc-ldoption = $(call try-run, $(CC) $(1) -nostdlib -x c /dev/null -o "$$TMP",$(1),$(2))
+dtc-option = $(call try-run, echo '/dts-v1/; / {};' | $(DTC) $(1),$(1),$(2))
+OBJCOPYFLAGS := 
+src := .
+*D = $(patsubst %/,%,$(dir $*))
+mixed-targets := 0
+PYTHON = python
+HOME = /home/book
+UBOOTRELEASE = $(shell cat include/config/uboot.release 2> /dev/null)
+as-instr = $(call try-run, printf "%b\n" "$(1)" | $(CC) $(KBUILD_AFLAGS) -c -x assembler -o "$$TMP" -,$(2),$(3))
+modbuiltin := -f ./scripts/Makefile.modbuiltin obj
+LESSCLOSE = /usr/bin/lesspipe %s %s
+cc-name = $(shell $(CC) -v 2>&1 | grep -q "clang version" && echo clang || echo gcc)
+LOGNAME = book
+binutils-version = $(shell $(CONFIG_SHELL) $(srctree)/scripts/binutils-version.sh $(AS))
+cc-option-align = $(subst -functions=0,, $(call cc-option,-falign-functions=0,-malign-functions=0))
+LDR = $(CROSS_COMPILE)ldr
+^D = $(patsubst %/,%,$(dir $^))
+KBUILD_VERBOSE = 0
+obj := .
+MAKELEVEL := 0
+MAKE = $(MAKE_COMMAND)
+MAKECMDGOALS := mx6ull_14x14_evk_defconfig
+SHLVL = 1
+KBUILD_DEFCONFIG := sandbox_defconfig
+silent_kecho := :
+NM = $(CROSS_COMPILE)nm
+AS = $(CROSS_COMPILE)as
+DTC_FLAGS := 
+XDG_SESSION_ID = 64
+USER = book
+.DEFAULT_GOAL := _all
+if_changed_dep = $(if $(strip $(any-prereq) $(arg-check) ), @set -e; $(echo-cmd) $(cmd_$(1)); scripts/basic/fixdep $(depfile) $@ '$(make-cmd)' > $(dot-target).tmp; rm -f $(depfile); mv -f $(dot-target).tmp $(dot-target).cmd)
+NAME = 
+RCS_TAR_IGNORE := --exclude SCCS --exclude BitKeeper --exclude .svn --exclude CVS --exclude .pc --exclude .hg --exclude .git
+build-dir = $(patsubst %/,%,$(dir $@))
+%D = $(patsubst %/,%,$(dir $%))
+CPU := 
+ld-option = $(call try-run, $(CC) -x c /dev/null -c -o "$$TMPO" ; $(LD) $(1) "$$TMPO" -o "$$TMP",$(1),$(2))
+HOSTCFLAGS = -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer $(if $(CONFIG_TOOLS_DEBUG),-g)
+MAKE_COMMAND := make
+OLDPWD = /home/book/100ask_imx6ull-sdk/test_make
+SOC := 
+.VARIABLES := 
+echo-cmd = $(if $($(quiet)cmd_$(1)), echo '  $(call escsq,$($(quiet)cmd_$(1)))$(echo-why)';)
+*F = $(notdir $*)
+depfile = $(subst $(comma),_,$(dot-target).d)
+KBUILD_KCONFIG := 
+ld-ifversion = $(shell [ $(ld-version) $(1) $(2) ] && echo $(3) || echo $(4))
+make-cmd = $(call escsq,$(subst #,\#,$(subst $$,$$$$,$(cmd_$(1)))))
+ARCH = arm
+MAKEFLAGS = prR -I/home/book/100ask_imx6ull-sdk/Uboot-2017.03 --no-print-directory
+baseprereq = $(basename $(notdir $<))
+MFLAGS = -prR -I/home/book/100ask_imx6ull-sdk/Uboot-2017.03 --no-print-directory
+SSH_CLIENT = 192.168.37.1 57533 22
+as-option = $(call try-run, $(CC) $(KBUILD_CFLAGS) $(1) -c -x assembler /dev/null -o "$$TMP",$(1),$(2))
+MAIL = /var/mail/book
+HOSTCXXFLAGS = -O2
+quiet = quiet_
++D = $(patsubst %/,%,$(dir $+))
+cc-option = $(call try-run, $(CC) -Werror $(KBUILD_CPPFLAGS) $(KBUILD_CFLAGS) $(1) -c -x c /dev/null -o "$$TMP",$(1),$(2))
+OBJDUMP = $(CROSS_COMPILE)objdump
++F = $(notdir $+)
+objectify = $(foreach o,$(1),$(if $(filter /%,$(o)),$(o),$(obj)/$(o)))
+BOARD := 
+STRIP = $(CROSS_COMPILE)strip
+DTC = dtc
+dtbinst := -f scripts/Makefile.dtbinst obj
+CROSS_COMPILE = arm-buildroot-linux-gnueabihf-
+cc-ifversion = $(shell [ $(cc-version) $(1) $(2) ] && echo $(3) || echo $(4))
+HOSTARCH := x86_64
+escsq = $(subst $(squote),'\$(squote)',$1)
+cmd = @$(echo-cmd) $(cmd_$(1))
+MAKEFILES := 
+KBUILD_SRC := 
+CONFIG_SHELL := /bin/bash
+<F = $(notdir $<)
+quiet_cmd_rmdirs = $(if $(wildcard $(rm-dirs)),CLEAN   $(wildcard $(rm-dirs)))
+HOSTOS := linux
+KBUILD_CPPFLAGS := -D__KERNEL__ -D__UBOOT__
+PERL = perl
+LC_ALL := 
+quiet_cmd_rmfiles = $(if $(wildcard $(rm-files)),CLEAN   $(wildcard $(rm-files)))
+dtc-version = $(shell $(CONFIG_SHELL) $(srctree)/scripts/dtc-version.sh $(DTC))
+arg-check = $(strip $(filter-out $(cmd_$(1)), $(cmd_$@)) $(filter-out $(cmd_$@),   $(cmd_$(1))) )
+target-dir = $(dir $@)
+quiet_kecho := echo
+RCS_FIND_IGNORE := \( -name SCCS -o -name BitKeeper -o -name .svn -o -name CVS -o -name .pc -o -name .hg -o -name .git \) -prune -o
+basetarget = $(basename $(notdir $@))
+^F = $(notdir $^)
+OBJCOPY = $(CROSS_COMPILE)objcopy
+SUFFIXES := 
+if_changed = $(if $(strip $(any-prereq) $(arg-check)), @set -e; $(echo-cmd) $(cmd_$(1)); printf '%s\n' 'cmd_$@ := $(make-cmd)' > $(dot-target).cmd)
+addtree = $(if $(patsubst -I%,%,$(1)), $(if $(filter-out -I/%,$(1)),$(patsubst -I%,-I$(srctree)/%,$(1))) $(1))
+cmd_files := 
+GREP_OPTIONS := 
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+KBUILD_EXTMOD := 
+KBUILD_CHECKSRC = 0
+.RECIPEPREFIX := 
+MAKE_TERMERR := /dev/pts/1
+TMPOUT := 
+MAKE_HOST := x86_64-pc-linux-gnu
+LANG = en_US.UTF-8
+TERM = xterm
+quote := "
+UBOOTVERSION = $(VERSION)$(if $(PATCHLEVEL),.$(PATCHLEVEL)$(if $(SUBLEVEL),.$(SUBLEVEL)))$(EXTRAVERSION)
+kecho := echo
+
+
+
+
+
+
+
+scripts/basic/%: scripts_basic
+	
+
+%config: scripts_basic outputmakefile FORCE
+	$(Q)$(MAKE) $(build)=scripts/kconfig $@
+
+%.s: %.c prepare scripts FORCE
+	$(Q)$(MAKE) $(build)=$(build-dir) $(target-dir)$(notdir $@)
+
+%.i: %.c prepare scripts FORCE
+	$(Q)$(MAKE) $(build)=$(build-dir) $(target-dir)$(notdir $@)
+
+%.o: %.c prepare scripts FORCE
+	$(Q)$(MAKE) $(build)=$(build-dir) $(target-dir)$(notdir $@)
+
+%.lst: %.c prepare scripts FORCE
+	$(Q)$(MAKE) $(build)=$(build-dir) $(target-dir)$(notdir $@)
+
+%.s: %.S prepare scripts FORCE
+	$(Q)$(MAKE) $(build)=$(build-dir) $(target-dir)$(notdir $@)
+
+%.o: %.S prepare scripts FORCE
+	$(Q)$(MAKE) $(build)=$(build-dir) $(target-dir)$(notdir $@)
+
+%.symtypes: %.c prepare scripts FORCE
+	$(Q)$(MAKE) $(build)=$(build-dir) $(target-dir)$(notdir $@)
+
+%/: prepare scripts FORCE
+	$(cmd_crmodverdir)
+	$(Q)$(MAKE) KBUILD_MODULES=$(if $(CONFIG_MODULES),1) \
+	$(build)=$(build-dir)
+
+%.ko: prepare scripts FORCE
+	$(cmd_crmodverdir)
+	$(Q)$(MAKE) KBUILD_MODULES=$(if $(CONFIG_MODULES),1)   \
+	$(build)=$(build-dir) $(@:.ko=.o)
+	$(Q)$(MAKE) -f $(srctree)/scripts/Makefile.modpost
+
+
+
+ubootversion:
+	@echo $(UBOOTVERSION)
+
+/: prepare scripts FORCE
+	$(cmd_crmodverdir)
+	$(Q)$(MAKE) KBUILD_MODULES=$(if $(CONFIG_MODULES),1) \
+	$(build)=$(build-dir)
+
+outputmakefile:
+
+config: scripts_basic outputmakefile FORCE
+	$(Q)$(MAKE) $(build)=scripts/kconfig $@
+
+FORCE:
+
+.PHONY: _all all scripts_basic outputmakefile checkstack ubootrelease ubootversion FORCE
+
+/home/book/100ask_imx6ull-sdk/Uboot-2017.03/Makefile:
+	
+
+scripts:
+
+ubootrelease:
+	@echo "$(UBOOTVERSION)$$($(CONFIG_SHELL) $(srctree)/scripts/setlocalversion $(srctree))"
+
+.SUFFIXES:
+
+Makefile:
+	
+
+prepare:
+
+all:
+
+mx6ull_14x14_evk_defconfig: scripts_basic outputmakefile FORCE
+	$(Q)$(MAKE) $(build)=scripts/kconfig $@
+
+checkstack:
+	$(OBJDUMP) -d u-boot $$(find . -name u-boot-spl) | \
+	$(PERL) $(src)/scripts/checkstack.pl $(ARCH)
+
+scripts/Kbuild.include:
+	
+
+.DEFAULT:
+
+scripts_basic:
+	$(Q)$(MAKE) $(build)=scripts/basic
+	$(Q)rm -f .tmp_quiet_recordmcount
+
+_all: all
+
+
+
+
+
+

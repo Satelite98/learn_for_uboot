@@ -1,0 +1,179 @@
+.
+├── api
+├── arch
+│   ├── arm
+│   │   ├── cpu
+│   │   │   ├── armv7
+│   │   │   │   ├── mx6
+│   │   ├── dts
+│   │   │   └── include
+│   │   │       └── dt-bindings -> ../../../../include/dt-bindings
+│   │   ├── imx-common
+│   │   │   └── sci
+│   │   │       └── svc
+│   │   │           ├── irq
+│   │   │           ├── misc
+│   │   │           ├── pad
+│   │   │           ├── pm
+│   │   │           ├── rm
+│   │   │           └── timer
+│   │   ├── include
+│   │   │   ├── asm
+│   │   │   │   ├── arch-imx
+│   │   │   │   ├── arch-imx8
+│   │   │   │   ├── arch-imx8m
+│   │   │   │   ├── imx-common
+│   │   │   └── debug
+│   │   ├── lib
+│   │   ├── mach-rockchip
+│   │   │   ├── rk3036
+│   │   │   ├── rk3288
+│   │   │   └── rk3399
+│   │   ├── lib
+├── board
+│   ├── freescale
+│   │   ├── common
+│   │   │   └── p_corenet
+│   │   ├── corenet_ds
+│   │   ├── mx6ul_14x14_ddr3_arm2
+│   │   ├── mx6ul_14x14_evk
+│   │   ├── mx6ul_14x14_lpddr2_arm2
+│   │   ├── mx6ull_ddr3_arm2
+│   │   ├── mx6ullevk
+├── cmd
+│   ├── fastboot
+│   └── mvebu
+├── common
+│   ├── eeprom
+│   ├── init
+│   └── spl
+├── configs
+├── disk
+├── drivers
+│   ├── adc
+│   ├── bios_emulator
+│   │   ├── include
+│   │   │   └── x86emu
+│   │   └── x86emu
+│   ├── block
+│   ├── bootcount
+│   ├── clk
+│   │   ├── aspeed
+│   │   ├── at91
+│   │   ├── exynos
+│   │   ├── rockchip
+│   │   ├── tegra
+│   │   └── uniphier
+│   ├── core
+│   ├── cpu
+│   ├── crypto
+│   │   ├── fsl
+│   │   └── rsa_mod_exp
+│   ├── ddr
+│   │   ├── altera
+│   │   ├── fsl
+│   │   ├── marvell
+│   │   │   ├── a38x
+│   │   │   └── axp
+│   │   └── microchip
+│   ├── demo
+│   ├── dfu
+│   ├── dma
+│   ├── fpga
+│   ├── gpio
+│   ├── hwmon
+│   ├── i2c
+│   │   └── muxes
+│   ├── input
+│   ├── led
+│   ├── mailbox
+│   ├── memory
+│   ├── misc
+│   ├── mmc
+│   ├── mtd
+│   │   ├── nand
+│   │   ├── onenand
+│   │   ├── spi
+│   │   ├── ubi
+│   │   └── ubispl
+│   ├── net
+│   │   ├── fm
+│   │   ├── fsl-mc
+│   │   │   └── dpio
+│   │   ├── ldpaa_eth
+│   │   └── phy
+│   ├── pch
+│   ├── pci
+│   ├── pcmcia
+│   ├── phy
+│   │   └── marvell
+│   ├── pinctrl
+│   │   ├── ath79
+│   │   ├── exynos
+│   │   ├── meson
+│   │   ├── mvebu
+│   │   ├── nxp
+│   │   ├── rockchip
+│   │   └── uniphier
+│   ├── power
+│   │   ├── battery
+│   │   ├── domain
+│   │   ├── fuel_gauge
+│   │   ├── mfd
+│   │   ├── pmic
+│   │   └── regulator
+│   ├── pwm
+│   ├── qe
+│   ├── ram
+│   ├── remoteproc
+│   ├── reset
+│   ├── rtc
+│   ├── serial
+│   ├── soc
+│   │   └── keystone
+│   ├── sound
+│   ├── spi
+│   ├── spmi
+│   ├── sysreset
+│   ├── thermal
+│   ├── timer
+│   ├── tpm
+│   ├── twserial
+│   ├── usb
+│   │   ├── cdns3
+│   │   ├── common
+│   │   ├── dwc3
+│   │   ├── emul
+│   │   ├── eth
+│   │   ├── gadget
+│   │   │   └── udc
+│   │   ├── host
+│   │   ├── musb
+│   │   ├── musb-new
+│   │   ├── phy
+│   │   └── ulpi
+│   ├── video
+│   │   ├── bridge
+│   │   ├── exynos
+│   │   ├── fonts
+│   │   ├── imx
+│   │   │   └── hdp
+│   │   ├── rockchip
+│   │   └── tegra124
+│   └── watchdog
+├── dts
+├── fs
+│   ├── cbfs
+│   ├── cramfs
+│   ├── ext4
+│   ├── fat
+│   ├── jffs2
+│   ├── reiserfs
+│   ├── sandbox
+│   ├── ubifs
+│   ├── yaffs2
+│   └── zfs
+├── include
+├── lib
+├── net
+├── post
