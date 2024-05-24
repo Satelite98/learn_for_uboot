@@ -343,5 +343,5 @@ enum command_ret_t cmd_process(int flag, int argc, char * const argv[],
 
 
 
-
+* boot z 命令执行
 
