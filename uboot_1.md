@@ -297,6 +297,8 @@ ENDPROC(lowlevel_init)
 
 ### 2.5 进入_main 函数
 
+​		==补充重点：==**建议看crt0.S 中关于_main 函数的作用，里面解释了为什么会有这些流程**
+
 ​		在上面步骤，应该是初步完成了CPU的一些配置，解下来会进入_main函数，进一步完成///////   `__main`函数定义在` arch/arm/lib/crt0.S`中。
 
 ​	首先判断是否定义了SPL build 相关，初始化栈sp 指针。然后会分别调用`board_init_f_alloc_reserve`、`board_init_f_init_reserve`、`board_init_f`(r0 ==0),可见下方代码：
@@ -588,8 +590,11 @@ static init_fnc_t init_sequence_f[] = {
 
 * 把 sp设置到DDR上：`ldr   sp, [r9, #GD_START_ADDR_SP] /* sp = gd->start_addr_sp */`
 
-*  
+*  初始化栈，之后会执行代码段的重定位，需要注意`lr`的值，再次返回时就已经到DDR中的重定位地址了。
 
+  * 问题：当前代码在什么地址？**R:**根据obj dump 来看，在`87802800 <_main>:`DDR 中。
+  * ==追问：==那为什么需要再搬运一次地址？新搬运的地址在哪里？**R:**搬运的地址是`board_init_f()`中设置的地址，提高了灵活性？
+  
   ```c
   #if defined(CONFIG_CPU_V7M)	/* v7M forbids using SP as BIC destination */
   	mov	r3, sp
@@ -603,7 +608,7 @@ static init_fnc_t init_sequence_f[] = {
   
   	adr	lr, here
   	ldr	r0, [r9, #GD_RELOC_OFF]		/* r0 = gd->reloc_off */
-  	add	lr, lr, r0				//lr  = here 地址 + gd->reloc_off 
+  	add	lr, lr, r0				  lr  = here 地址 + gd->reloc_off 
   #if defined(CONFIG_CPU_V7M)
   	orr	lr, #1				/* As required by Thumb-only */
   #endif
@@ -615,11 +620,146 @@ static init_fnc_t init_sequence_f[] = {
    */
   	bl	relocate_vectors 	 
   /* Set up final (full) environment */
-  	bl	c_runtime_cpu_setup	/* we still call old routine here */
+	bl	c_runtime_cpu_setup	/* we still call old routine here */
   #endif
   ```
-
   
+* 执行`relocate_code`函数
+
+  ​		见下方代码，r1是代码段起始地址，r0是传入的`gd->relocaddr`重定位地址，整体作用是判断起始地址和`relocaddr`是否相等，不相等的话就会进行代码段的搬运（__image_copy_start ~ image_copy_end）。然后进行`dyn`段，即动态代码段的符号表地址的更改。【此处涉及到elf文件的表示，有兴趣的可以查阅elf 文件格式，了解动态代码是如何执行的。】
+
+  **注意：**这里跳转使用的是`b`而不是**bl**就是不需要更改**LR**的值，因为LR 已经被重定位了。
+
+  ```asm
+  ENTRY(relocate_code)
+  	ldr	r1, =__image_copy_start	/* r1 <- SRC &__image_copy_start */
+  	subs	r4, r0, r1		/* r4 <- relocation offset */
+  	beq	relocate_done		/* skip relocation */
+  	ldr	r2, =__image_copy_end	/* r2 <- SRC &__image_copy_end */
+  
+  copy_loop:
+  	ldmia	r1!, {r10-r11}		/* copy from source address [r1]    */
+  	stmia	r0!, {r10-r11}		/* copy to   target address [r0]    */
+  	cmp	r1, r2			/* until source end address [r2]    */
+  	blo	copy_loop
+  
+  	/*
+  	 * fix .rel.dyn relocations
+  	 */
+  	ldr	r2, =__rel_dyn_start	/* r2 <- SRC &__rel_dyn_start */
+  	ldr	r3, =__rel_dyn_end	/* r3 <- SRC &__rel_dyn_end */
+  fixloop:
+  	ldmia	r2!, {r0-r1}		/* (r0,r1) <- (SRC location,fixup) */
+  	and	r1, r1, #0xff
+  	cmp	r1, #23			/* relative fixup? */
+  	bne	fixnext
+  
+  	/* relative fix: increase location by offset */
+  	add	r0, r0, r4
+  	ldr	r1, [r0]
+  	add	r1, r1, r4
+  	str	r1, [r0]
+  fixnext:
+  	cmp	r2, r3
+  	blo	fixloop
+  
+  relocate_done:
+  	bx	lr
+  ENDPROC(relocate_code)
+  ```
+
+* 向量表的重定位：
+
+  由于`arm`处理器将向量表放在代码头部，所以这里中断向量表的重定位也是设置 cp15-c12 的值，将其设置为`gd->relocaddr`，即重定位代码段的首地址。编译后的程序如下所示：
+
+  ```asm
+  ENTRY(relocate_vectors)	
+  	ldr	r0, [r9, #GD_RELOCADDR]	/* r0 = gd->relocaddr */
+  	mcr     p15, 0, r0, c12, c0, 0  /* Set VBAR */
+  	bx	lr
+  ENDPROC(relocate_vectors)	
+  ```
+
+* 执行`c_runtime_cpu_setup 函数`，此代码在`arch/arm/cpu/armv7/start.S `中，作用是关闭指令cache
+
+* 执行清除BSS段的汇编代码
+
+* 跳转执行到`board_init_r()`，至此**—main**函数运行结束。
+
+
+
+### 2.6 执行board_init_r函数，开始最后的初始化
+
+board_init_r函数如下，如同board_init_f 函数，主要是遍历了`init_sequence_r`这样一个函数指针结构提。
+
+```asm
+void board_init_r(gd_t *new_gd, ulong dest_addr)
+{
+	if (initcall_run_list(init_sequence_r))
+		hang();
+	/* NOTREACHED - run_main_loop() does not return */
+	hang();
+}
+```
+
+同样，对于`init_sequence_r`这样一个函数指针数据，我们分析其条件条件编译之后的参数项
+
+```c
+init_fnc_t init_sequence_r[] = {
+	initr_trace,
+	initr_reloc,
+	/* TODO: could x86/PPC have this also perhaps? */
+#ifdef CONFIG_ARM
+	initr_caches,
+#endif
+	initr_reloc_global_data,
+	initr_barrier,
+	initr_malloc,
+	initr_console_record,
+	bootstage_relocate,
+#ifdef CONFIG_DM
+	initr_dm,
+#endif
+	initr_bootstage,
+#if defined(CONFIG_ARM) || defined(CONFIG_NDS32)
+	board_init,	/* Setup chipselects */
+#endif
+	stdio_init_tables,
+	initr_serial,
+	initr_announce,
+	INIT_FUNC_WATCHDOG_RESET    
+	power_init_board,        
+#ifdef CONFIG_GENERIC_MMC
+	initr_mmc,
+#endif
+    initr_env,
+   	INIT_FUNC_WATCHDOG_RESET
+	initr_secondary_cpu,
+   	stdio_add_devices,
+	initr_jumptable,
+    interrupt_init,
+#if defined(CONFIG_ARM) || defined(CONFIG_AVR32)
+	initr_enable_interrupts,
+#endif
+    #ifdef CONFIG_CMD_NET
+	initr_ethaddr,
+#endif
+#ifdef CONFIG_BOARD_LATE_INIT
+	board_late_init,
+#endif
+#ifdef CONFIG_CMD_NET
+	INIT_FUNC_WATCHDOG_RESET
+	initr_net,
+#endif
+        imx6_light_up_led2,
+
+	run_main_loop,
+};       
+```
+
+
+
+
 
 
 
