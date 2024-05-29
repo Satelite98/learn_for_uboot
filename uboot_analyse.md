@@ -278,7 +278,7 @@ struct cmd_tbl_s {
 };
 ```
 
-* section 再内存中的存储位置如下所示：四字节对齐之后存储在rodata 段之后。
+* section 在内存中的存储位置如下所示：四字节对齐之后存储在rodata 段之后。
 
 ```c
  .rodata : { *(SORT_BY_ALIGNMENT(SORT_BY_NAME(.rodata*))) }

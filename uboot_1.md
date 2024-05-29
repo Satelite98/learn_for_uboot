@@ -236,7 +236,7 @@ ENTRY(lowlevel_init)
 #ifdef CONFIG_SPL_DM
 	mov	r9, #0
 #else
-#ifdef CONFIG_SPL_BUILD
+#ifdef CONFIG_SPL_BUILD  
 	ldr	r9, =gdata
 #else
 	sub	sp, sp, #GD_SIZE  @减去 GD_SIZE 的值。
@@ -299,7 +299,7 @@ ENDPROC(lowlevel_init)
 
 ​		==补充重点：==**建议看crt0.S 中关于_main 函数的作用，里面解释了为什么会有这些流程**
 
-​		在上面步骤，应该是初步完成了CPU的一些配置，解下来会进入_main函数，进一步完成///////   `__main`函数定义在` arch/arm/lib/crt0.S`中。
+​		在上面步骤，应该是初步完成了CPU的一些配置，解下来会进入_main函数，进一步完成系统级的初始化工作。   `__main`函数定义在` arch/arm/lib/crt0.S`中。【crt0.S 作用是 准备计入C语言需要的环境。】
 
 ​	首先判断是否定义了SPL build 相关，初始化栈sp 指针。然后会分别调用`board_init_f_alloc_reserve`、`board_init_f_init_reserve`、`board_init_f`(r0 ==0),可见下方代码：
 
@@ -706,60 +706,86 @@ void board_init_r(gd_t *new_gd, ulong dest_addr)
 
 ```c
 init_fnc_t init_sequence_r[] = {
-	initr_trace,
-	initr_reloc,
+	initr_trace, /* 初始化追踪调试内容 */
+	initr_reloc,	/* gd->flags |= GD_FLG_RELOC | GD_FLG_FULL_MALLOC_INIT; 表示重定位完成 */
 	/* TODO: could x86/PPC have this also perhaps? */
 #ifdef CONFIG_ARM
-	initr_caches,
+	initr_caches,/* 使能cache  */
 #endif
-	initr_reloc_global_data,
-	initr_barrier,
-	initr_malloc,
-	initr_console_record,
-	bootstage_relocate,
-#ifdef CONFIG_DM
-	initr_dm,
-#endif
-	initr_bootstage,
+	initr_reloc_global_data, /* 修改重定位之后的 gd 参数 */
+	initr_barrier,			/*  I.MX6ULL 来说是空函数   */
+	initr_malloc,			/* 初始化 malloc 的内存空间，一些全局变量参数  */
+	initr_console_record,	/* I.MX6ULL 来说是空函数  */
+	bootstage_relocate,		/* bootstage重定位-但实际未看到*/
+	initr_bootstage,		/* 初始化 bootstage*/
 #if defined(CONFIG_ARM) || defined(CONFIG_NDS32)
-	board_init,	/* Setup chipselects */
+	board_init,	/* Setup chipselects 	- 片上外设初始化在这里 USB IIC FEC QSPI 等等*/
 #endif
-	stdio_init_tables,
-	initr_serial,
+	stdio_init_tables,		/* 初始化 STDIO */
+	initr_serial,			/* 串行设备初始化 */
 	initr_announce,
 	INIT_FUNC_WATCHDOG_RESET    
-	power_init_board,        
+	power_init_board,       /* 电源初始化- imx6ull 来说是空函数*/
 #ifdef CONFIG_GENERIC_MMC
-	initr_mmc,
+	initr_mmc,				/* 初始化mmc */
 #endif
-    initr_env,
+    initr_env,				/* 环境变量初始化 */
    	INIT_FUNC_WATCHDOG_RESET
-	initr_secondary_cpu,
-   	stdio_add_devices,
-	initr_jumptable,
-    interrupt_init,
+	initr_secondary_cpu,	/* 多核初始化,I.MX6ULL 来说是空函数 */
+   	stdio_add_devices,		/* 各种输入输出外设初始化 */
+	initr_jumptable,		/* 初始化跳转表 */
+    console_init_r,			/* 人机交互控制台初始化 */
+    interrupt_init,			/* 中断堆栈初始化 */
 #if defined(CONFIG_ARM) || defined(CONFIG_AVR32)
-	initr_enable_interrupts,
+	initr_enable_interrupts,	/* 中断使能 */
 #endif
     #ifdef CONFIG_CMD_NET
-	initr_ethaddr,
+	initr_ethaddr,			/* 获取环境变量“ethaddr” 来初始化MAC的值 */
 #endif
 #ifdef CONFIG_BOARD_LATE_INIT
-	board_late_init,
+	board_late_init,		/* 后续初始化，如果环境变量需要存储在EMMC/SD 中的话， 会初始化EMMC,并且调用了 cmd 接口*/
 #endif
 #ifdef CONFIG_CMD_NET
 	INIT_FUNC_WATCHDOG_RESET
-	initr_net,
+	initr_net,				/* 网口初始化 */
 #endif
         imx6_light_up_led2,
 
-	run_main_loop,
+	run_main_loop,			/* uboot 的主命令循环 */
 };       
+```
+
+由上注释可见，调用`board_init_r`函数更多的是板级初始化的设置，让整个SOC板子和外设能够正常的运行起来，进入到main_loop 的函数。
+
+
+
+## 3. 整体函数调用框架
+
+```mermaid
+graph LR
+a[reset]-->|set scv mode|cpu_init_cp15
+a-->cpu_init_crit-->lowlevel_init-->s_init
+a-->b[_main]
+b-->board_init_f_alloc_reserve
+b-->board_init_f_init_reserve
+b-->board_init_f-->initcall_run_list-init_sequence_f
+b-->relocate_code
+b-->relocate_vectors
+b-->|bss-init|c_runtime_cpu_setup
+b-->board_init_r
 ```
 
 
 
+有了整体框架之后我们依次简短的介绍下各个函数的作用
 
+* cpu_init_cp15：在进入SVC 模式之后，关闭各种Cache、MMU，读取`CPU variant + revision`CPU 信息。
+* cpu_init_crit：第一次初始化 SP 在CPU内部的SRAM中。并且给结构体数组`gd_date`留出空间，把`gd_data`的指针赋值给r9，后面可以直接通过r9寄存器调用gd。（sram内部）然后调用s_init了。
+* board_init_f_alloc_reserve：在_main 函数中会重新设定`sp`的值为`CONFIG_SYS_INIT_SP_ADDR`，在此函数中会在sram中留出**malloc 和 global_data**的空间
+* board_init_f_init_reserve：把global_data 的空间清0，并且设定malloc 的空间起始地址。为执行C语言的环境做准备。
+* board_init_f：调用`initcall_run_list(init_sequence_f)`函数来初步板级初始化（CPU特性、时钟、环境变量、串行显示等）和对内存的划分（boot 使用的内存空间、global_date、relocate、mmu_TLB、ENV）信息的存储。
+* relocate_code & relocate_vectors：代码和中断向量的重定位
+* board_init_r：调用`initcall_run_list(init_sequence_r)`函数来进一步初始化板级外设、设置和开启中断，最后进入**run_main_loop**函数等待执行命令。
 
 
 
