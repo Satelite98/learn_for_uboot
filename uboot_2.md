@@ -280,94 +280,93 @@ enum command_ret_t cmd_process(int flag, int argc, char * const argv[],
    ```
 
 * 利用一个CMD来分析
-
-```c
+	```c
 U_BOOT_CMD(
 	spibootldr, 2, 0, do_spibootldr,
 	"boot ldr image from spi",
 	"[offset]\n"
 	"    - boot ldr image stored at offset into spi\n");
-```
-
-经过上述的分析，此命令可以被解析为：
-
-```c
+	```
+  
+  经过上述的分析，此命令可以被解析为：
+  ```c
 --ll_entry_declare(_type, _name, _list)
   ->  cmd_tbl_t _u_boot_list_2_spibootldr_2_spibootldr __aligned(4)		\
 			__attribute__((unused,				\
 			section(".u_boot_list_2_do_spibootldr_2_spibootldr)))
 
---{ "spibootldr", 2, 0, do_spibootldr," boot ldr image from spi",			\
-			"[offset]\n""- boot ldr image stored at offset into spi\n", NULL, }               
-```
+	--{ "spibootldr", 2, 0, do_spibootldr," boot ldr image from spi",			\
+			"[offset]\n""- boot ldr image stored at offset into spi\n", 	NULL, }               
+	```
+	
+	`##` 连接符:表示后面直接链接
+	
+	`#` 字符串化：表示将传来的参数字符串化。
+	
+	所以最后实现的语句如下所示：
+	```c
+        cmd_tbl_t _u_boot_list_2_spibootldr_2_spibootldr __aligned(4)	\ __attribute__((unused, section(".u_boot_list_2_do_spibootldr_2_spibootldr"))) 
+                                   = { "spibootldr", 2, 0, do_spibootldr,
+                                      " boot ldr image from spi",
+                                      "[offset]\n""- boot ldr image stored at offset into spi\n",
+                                      NULL, } 
+	```
 
-`##` 连接符:表示后面直接链接
 
-`#` 字符串化：表示将传来的参数字符串化。
 
-所以最后实现的语句如下所示：
-
-```c
-cmd_tbl_t _u_boot_list_2_spibootldr_2_spibootldr __aligned(4)		\
-__attribute__((unused, section(".u_boot_list_2_do_spibootldr_2_spibootldr"))) 
-                               = { "spibootldr", 2, 0, do_spibootldr,
-                                  " boot ldr image from spi",
-                                  "[offset]\n""- boot ldr image stored at offset into spi\n",
-                                  NULL, } 
-```
-
-4字节对齐定义了一个`cmd_tbl_t`的结构体变量`_u_boot_list_2_spibootldr_2_spibootldr`，且被划分到了`u_boot_list_2_do_spibootldr_2_spibootldr` section。
+​		4字节对齐定义了一个`cmd_tbl_t`的结构体变量`_u_boot_list_2_spibootldr_2_spibootldr`，且被划分到了`u_boot_list_2_do_spibootldr_2_spibootldr` section。
 
 * 其中对于`cmd_tbl_t` 有以下定义: 
 
-```c
-struct cmd_tbl_s {
-	char		*name;		/* Command Name	  		*/          
-	int		maxargs;	/* maximum number of arguments	*/
-	int		repeatable;	/* autorepeat allowed?		*/
-					/* Implementation function	*/
-	int		(*cmd)(struct cmd_tbl_s *, int, int, char * const []);  /* 函数指针 */
-	char		*usage;		/* Usage message	(short)	*/
-#ifdef	CONFIG_SYS_LONGHELP
-	char		*help;		/* Help  message	(long)	*/
-#endif
-#ifdef CONFIG_AUTO_COMPLETE
-	/* do auto completion on the arguments */
-	int		(*complete)(int argc, char * const argv[], char last_char, int maxv, char *cmdv[]);
-#endif
-};
-```
+	```c
+    struct cmd_tbl_s {
+        char		*name;		/* Command Name	  		*/          
+        int		maxargs;	/* maximum number of arguments	*/
+        int		repeatable;	/* autorepeat allowed?		*/
+                        /* Implementation function	*/
+        int		(*cmd)(struct cmd_tbl_s *, int, int, char * const []);  /* 函数指针 */
+        char		*usage;		/* Usage message	(short)	*/
+    #ifdef	CONFIG_SYS_LONGHELP
+        char		*help;		/* Help  message	(long)	*/
+    #endif
+    #ifdef CONFIG_AUTO_COMPLETE
+        /* do auto completion on the arguments */
+        int		(*complete)(int argc, char * const argv[], char last_char, int maxv, char *cmdv[]);
+    #endif
+    };
+	```
 
 * section 在内存中的存储位置如下所示：四字节对齐之后存储在rodata 段之后。
 
-```c
- .rodata : { *(SORT_BY_ALIGNMENT(SORT_BY_NAME(.rodata*))) }
- . = ALIGN(4);
- .data : {
-  *(.data*)
- }
- . = ALIGN(4);
- . = .;
- . = ALIGN(4);
- .u_boot_list : {
-  KEEP(*(SORT(.u_boot_list*)));
- }
-```
+	```c
+     .rodata : { *(SORT_BY_ALIGNMENT(SORT_BY_NAME(.rodata*))) }
+     . = ALIGN(4);
+     .data : {
+      *(.data*)
+     }
+     . = ALIGN(4);
+     . = .;
+     . = ALIGN(4);
+     .u_boot_list : {
+      KEEP(*(SORT(.u_boot_list*)));
+     }
+	```
 
 **注意：**这里有一次`SORT`排序，结合下面的代码，就会发现能够获取板子的整个命令段。函数内部静态定义也会存在全局变量中。
+* ```asm
+  #define ll_entry_start(_type, _list)\
+  ({\
+      static char start[0] __aligned(4) __attribute__((unused,	\
+          section(".u_boot_list_2_"#_list"_1")));			\
+      (_type *)&start;						\
+  })
+  #define ll_entry_end(_type, _list)\
+  ({									\
+      static char end[0] __aligned(4) __attribute__((unused,		\
+          section(".u_boot_list_2_"#_list"_3")));			\
+      (_type *)&end;							\
+  })
+  ```
 
-```asm
-#define ll_entry_start(_type, _list)\
-({\
-	static char start[0] __aligned(4) __attribute__((unused,	\
-		section(".u_boot_list_2_"#_list"_1")));			\
-	(_type *)&start;						\
-})
-#define ll_entry_end(_type, _list)\
-({									\
-	static char end[0] __aligned(4) __attribute__((unused,		\
-		section(".u_boot_list_2_"#_list"_3")));			\
-	(_type *)&end;							\
-})
-```
+  
 
