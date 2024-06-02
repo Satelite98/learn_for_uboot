@@ -1,16 +1,10 @@
 # 从头理清uboot（4）-boot_cmd 的处理
 
-
-
 [toc]
 
 上次我们分析到，uboot在启动linux的过程中，最后是执行`bootcmd`这个环境变量，那么我们今天来分析，这个环境变量到底执行了哪些功能，这些功能调用了哪些函数，最后是如何实现linux的boot的？
 
 ==关于环境变量：==**对于imax6ull来说，都是存储在/include/configs/mx6ullevk.h和include/env_dedault.h**
-
-
-
-
 
 
 
@@ -131,6 +125,7 @@ mmcboot 的源码如下：
     "loadfdt=fatload mmc ${mmcdev}:${mmcpart} ${fdt_addr} ${fdt_file}\0" \
      /* mmcdev=1、mmcpart=1 fdt_addr=0x83000000 、fdt_file= imx6ull-14x14-evk.dtb \0 */
         fatload mmc 1:1 0x83000000 imx6ull-14x14-evk.dtb
+    ```
   ```
   
   * 于是` run loadfdt`执行成功，就会执行指令：
@@ -139,7 +134,7 @@ mmcboot 的源码如下：
     bootz ${loadaddr} - ${fdt_addr};
     /* loadaddr =  0x80800000  fdt_addr=0x83000000*/
     bootz 0x80800000 - 0x83000000 
-    ```
+  ```
 
 ### 1.2 netboot
 
@@ -390,6 +385,10 @@ int do_bootz(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
   	if (!ret && (states & BOOTM_STATE_OS_PREP))
   		ret = boot_fn(BOOTM_STATE_OS_PREP, argc, argv, images);
   	......
+      	/* Now run the OS! We hope this doesn't return */
+  	if (!ret && (states & BOOTM_STATE_OS_GO))
+  		ret = boot_selected_os(argc, argv, BOOTM_STATE_OS_GO,
+  				images, boot_fn);
   }
   ```
 
@@ -397,7 +396,7 @@ int do_bootz(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 
 上面说到，在本次启动过程中，最后实际调用的是`do_bootm_linux`于是再继续分析这个函数。
 
-* 我们再`do_bootz`的时候，实际调用的是这三个宏`BOOTM_STATE_OS_PREP | BOOTM_STATE_OS_FAKE_GO | BOOTM_STATE_OS_GO`
+* 我们在`do_bootz`的时候，实际调用的是这调用整个宏`BOOTM_STATE_OS_PREP `，会调用`boot_prep_linux(images);` 这个函数进行启动前的准备。
 
   ```c
   int do_bootm_linux(int flag, int argc, char * const argv[],
@@ -420,6 +419,86 @@ int do_bootz(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
   	boot_prep_linux(images);
   	boot_jump_linux(images, flag);
   	return 0;
+  }
+  ```
+
+* 后面`do_bootz`会调用`boot_selected_os`函数，之后继续调用`do_bootm_linux`并且将flag 设置为`BOOTM_STATE_OS_GO`，执行`boot_jump_linux(images, flag);`
+
+  ```c
+  boot_selected_os(argc, argv, BOOTM_STATE_OS_GO,
+  				images, boot_fn);
+  /* 实际还是调用了  boot_fn(state, argc, argv, images); */
+  /* 在bootlinux 的情况下，实际执行的是：do_bootm_linux*/
+   do_bootm_linux (BOOTM_STATE_OS_GO,argc,argv，images)
+  ```
+
+
+
+### 2.2.4boot_jump_linux函数
+
+* 
+
+  ```c
+  /* Subcommand: GO */
+  static void boot_jump_linux(bootm_headers_t *images, int flag)
+  {
+  #ifdef CONFIG_ARM64
+  	void (*kernel_entry)(void *fdt_addr, void *res0, void *res1,
+  			void *res2);
+  	int fake = (flag & BOOTM_STATE_OS_FAKE_GO);
+  
+  	kernel_entry = (void (*)(void *fdt_addr, void *res0, void *res1,
+  				void *res2))images->ep;
+  
+  	debug("## Transferring control to Linux (at address %lx)...\n",
+  		(ulong) kernel_entry);
+  	bootstage_mark(BOOTSTAGE_ID_RUN_OS);
+  
+  	announce_and_cleanup(fake);
+  
+  	if (!fake) {
+  		do_nonsec_virt_switch();
+  		kernel_entry(images->ft_addr, NULL, NULL, NULL);
+  	}
+  #else
+  	unsigned long machid = gd->bd->bi_arch_number;
+  	char *s;
+  	void (*kernel_entry)(int zero, int arch, uint params);
+  	unsigned long r2;
+  	int fake = (flag & BOOTM_STATE_OS_FAKE_GO);
+  
+  	kernel_entry = (void (*)(int, int, uint))images->ep;
+  
+  	s = getenv("machid");
+  	if (s) {
+  		if (strict_strtoul(s, 16, &machid) < 0) {
+  			debug("strict_strtoul failed!\n");
+  			return;
+  		}
+  		printf("Using machid 0x%lx from environment\n", machid);
+  	}
+  
+  	debug("## Transferring control to Linux (at address %08lx)" \
+  		"...\n", (ulong) kernel_entry);
+  	bootstage_mark(BOOTSTAGE_ID_RUN_OS);
+  	announce_and_cleanup(fake);
+  
+  	if (IMAGE_ENABLE_OF_LIBFDT && images->ft_len)
+  		r2 = (unsigned long)images->ft_addr;
+  	else
+  		r2 = gd->bd->bi_boot_params;
+  
+  	if (!fake) {
+  #ifdef CONFIG_ARMV7_NONSEC
+  		if (armv7_boot_nonsec()) {
+  			armv7_init_nonsec();
+  			secure_ram_addr(_do_nonsec_entry)(kernel_entry,
+  							  0, machid, r2);
+  		} else
+  #endif
+  			kernel_entry(0, machid, r2);
+  	}
+  #endif
   }
   ```
 
