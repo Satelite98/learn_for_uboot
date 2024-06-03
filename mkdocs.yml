@@ -1,0 +1,5 @@
+site_name: wxwang's site
+
+nav:
+  - home: index.md
+  - uboot: uboot_3.md
