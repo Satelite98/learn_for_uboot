@@ -434,42 +434,28 @@ int do_bootz(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 
 
 
-### 2.2.4boot_jump_linux函数
+### 2.2.4 boot_jump_linux函数
 
-* 
+* 可见`boot_jump_linux`的作用如下：
 
+  * 定义函数指针并且赋值为`images->ep`,作为程序跳转到linux 的入口。
+  * 获取`id`值和环境变量`machid`比较，判断是否相等。
+  * 清除CPU的cache 环境。
+  * 设置函数指针`kernel_entry`的参数，分别是0、machid、fdt地址/或者bi_boot_params。如果不使用设备数的话，就是`bootargs`
+  
   ```c
   /* Subcommand: GO */
   static void boot_jump_linux(bootm_headers_t *images, int flag)
   {
-  #ifdef CONFIG_ARM64
-  	void (*kernel_entry)(void *fdt_addr, void *res0, void *res1,
-  			void *res2);
-  	int fake = (flag & BOOTM_STATE_OS_FAKE_GO);
-  
-  	kernel_entry = (void (*)(void *fdt_addr, void *res0, void *res1,
-  				void *res2))images->ep;
-  
-  	debug("## Transferring control to Linux (at address %lx)...\n",
-  		(ulong) kernel_entry);
-  	bootstage_mark(BOOTSTAGE_ID_RUN_OS);
-  
-  	announce_and_cleanup(fake);
-  
-  	if (!fake) {
-  		do_nonsec_virt_switch();
-  		kernel_entry(images->ft_addr, NULL, NULL, NULL);
-  	}
-  #else
   	unsigned long machid = gd->bd->bi_arch_number;
   	char *s;
-  	void (*kernel_entry)(int zero, int arch, uint params);
+  	void (*kernel_entry)(int zero, int arch, uint params);/* 定义函数指针 */
   	unsigned long r2;
   	int fake = (flag & BOOTM_STATE_OS_FAKE_GO);
   
-  	kernel_entry = (void (*)(int, int, uint))images->ep;
+  	kernel_entry = (void (*)(int, int, uint))images->ep; /*给函数指针赋值为*/
   
-  	s = getenv("machid");
+  	s = getenv("machid");    /* 比较id 是不是和环境变量是相同的 */
   	if (s) {
   		if (strict_strtoul(s, 16, &machid) < 0) {
   			debug("strict_strtoul failed!\n");
@@ -481,9 +467,9 @@ int do_bootz(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
   	debug("## Transferring control to Linux (at address %08lx)" \
   		"...\n", (ulong) kernel_entry);
   	bootstage_mark(BOOTSTAGE_ID_RUN_OS);
-  	announce_and_cleanup(fake);
+  	announce_and_cleanup(fake);					/* CPU clean up,把cache 都刷掉了。 */
   
-  	if (IMAGE_ENABLE_OF_LIBFDT && images->ft_len)
+  	if (IMAGE_ENABLE_OF_LIBFDT && images->ft_len)/* 把 r2 寄存器设置为ft_addr 或者 bi_boot_params*/
   		r2 = (unsigned long)images->ft_addr;
   	else
   		r2 = gd->bd->bi_boot_params;
@@ -501,10 +487,9 @@ int do_bootz(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
   #endif
   }
   ```
-
   
-
-
+  * 小问题，之前提到的`bootargs` 是在哪里设定的呢，怎么传递过去的？
+    * 如果不适用fdt的话，参数r2 就是`bootargs`的值。
 
 
 
